@@ -10,7 +10,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
-    return view('welcome');
+    print_r(DB::select('call USER_INFO'));
+//    return view('welcome');
 });
+Route::get('/mytests/{section}/{id}','TestsController@show');
+Route::post('/mytests/{section}', 'TestsController@store');
+
+Route::get('/questions', function () {
+    $questions = DB::table('question_bank')->first();
+    echo $questions->question;
+    return;
+    return view('questions', [
+        'question' => $questions->question
+    ]);
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
