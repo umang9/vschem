@@ -12,6 +12,7 @@
 */
 use Illuminate\Support\Facades\DB;
 
+/*
 Route::get('/', function () {
      print_r(DB::select('call USER_INFO'));
    return view('welcome');
@@ -28,7 +29,7 @@ Route::get('/questions', function () {
     ]);
 });
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -39,6 +40,6 @@ Route::get('/react', function () {
 Route::view('/{path?}', 'welcome-react')
      ->where('path', '.*')
      ->name('react');
-
-
-Route::view('/{path?}', 'welcome-react');
+*/
+Auth::routes();
+Route::get('/{path?}', 'MainController@index');

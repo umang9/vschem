@@ -29,7 +29,7 @@ import OnlineTestQuiz from "./components/Quiz/quiz";
 
 const routes = [
     { path: '/', exact: true, name: 'Home', component: DashBoard },
-    // { path: '/dashboard', name: 'Dashboard', component: DashBoard },
+    { path: '/dashboard', name: 'Dashboard', component: DashBoard },
     { path: '/user', exact: false, name: 'User', component: User },
     { path: '/admin', exact: false, name: 'User', component: Admin },
     { path: '/onlinetest', exact: false, name: 'Test Info', component: OnlineTestInfo },
