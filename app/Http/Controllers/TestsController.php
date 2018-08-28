@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App;
+use Constants;//Todo-m
 
 class TestsController extends Controller
 {
@@ -19,7 +19,10 @@ class TestsController extends Controller
         if (!in_array($testType, array('JEE', 'NEET'))) {
             echo '{"success":"false"}';
         } else {
-            echo App\Test::where('type', $testType)->get()->toJson();
+            $spCall = 'call '.'GET_USER_TEST_DETAILS'.'(@user_id:='.$request->user()->id.',@type:="'.$testType.'")';
+//            echo $spCall;
+//            return;
+            echo json_encode(DB::select($spCall));
         }
     }
 
