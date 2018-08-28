@@ -16456,6 +16456,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Student_student__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Test_test__ = __webpack_require__(131);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16491,9 +16492,10 @@ __webpack_require__(56);
 
 
 
+
 // import './index.css';
 
-var routes = [{ path: '/', exact: true, name: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/dashboard', name: 'Dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/user', exact: false, name: 'User', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/admin', exact: false, name: 'User', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["a" /* Admin */] }, { path: '/onlinetest', exact: false, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["b" /* OnlineTestInfo */] }, { path: '/create-onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["a" /* CreateTestInfo */] }, { path: '/create-student', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["a" /* CreateStudent */] }, { path: '/student', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["b" /* Student */] }, { path: '/create-admin', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["b" /* CreateAdmin */] }, { path: '/admin/:id', exact: true, name: 'Student Details', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__["a" /* default */] }];
+var routes = [{ path: '/', exact: true, name: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/dashboard', name: 'Dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/user', exact: false, name: 'User', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/admin', exact: false, name: 'User', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["a" /* Admin */] }, { path: '/onlinetest', exact: false, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["b" /* OnlineTestInfo */] }, { path: '/create-onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["a" /* CreateTestInfo */] }, { path: '/create-student', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["a" /* CreateStudent */] }, { path: '/student', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["b" /* Student */] }, { path: '/create-admin', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["b" /* CreateAdmin */] }, { path: '/admin/:id', exact: true, name: 'Student Details', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__["a" /* default */] }, { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: __WEBPACK_IMPORTED_MODULE_11__components_Test_test__["a" /* default */] }];
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -58189,11 +58191,7 @@ var Header = function (_Component) {
 
     _createClass(Header, [{
         key: 'componentDidMount',
-        value: function componentDidMount() {
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr').then(function (json) {
-                return console.log(json);
-            });
-        }
+        value: function componentDidMount() {}
     }, {
         key: 'render',
         value: function render() {
@@ -60844,6 +60842,8 @@ module.exports = hoistNonReactStatics;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -60880,6 +60880,7 @@ var SideBar = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/api/getuser').then(function (json) {
 
                 var data = json.data;
+                console.log('data', data);
                 var full_name = data.first_name + ' ' + data.last_name;
 
                 _this2.setState({
@@ -60898,226 +60899,361 @@ var SideBar = function (_Component) {
             });
         }
     }, {
+        key: 'logout',
+        value: function logout(event) {
+            var _this3 = this;
+
+            event.preventDefault();
+
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/logout').then(function (json) {
+                _this3.props.history.push('/login');
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var aside;
+            if (this.state.user.group_id == 1) {
+                var _React$createElement;
 
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'aside',
-                { className: 'left-sidebar' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'scroll-sidebar' },
+                aside = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'aside',
+                    { className: 'left-sidebar' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'user-profile' },
+                        { className: 'scroll-sidebar' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'profile-img' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/users/profile.png', alt: 'user' }),
+                            { className: 'user-profile' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
-                                { className: 'notify setpos' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'heartbit' }),
-                                ' ',
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'point' })
+                                { className: 'profile-img' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/users/profile.png', alt: 'user' }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'notify setpos' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'heartbit' }),
+                                    ' ',
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'point' })
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'profile-text' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'h5',
+                                    null,
+                                    this.state.name
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { href: '', onClick: this.showMenu, className: 'dropdown-toggle u-dropdown', 'data-toggle': 'dropdown', role: 'button',
+                                        'aria-haspopup': 'true', 'aria-expanded': 'true' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-settings' })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { href: 'pages-login.html', className: '', 'data-toggle': 'tooltip', title: 'Logout' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-power' })
+                                ),
+                                this.state.showMenu ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'dropdown-menu animated flipInY' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { href: '#', className: 'dropdown-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-user' }),
+                                        ' My Profile'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'dropdown-divider' }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { href: '#', className: 'dropdown-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-settings' }),
+                                        ' Account Setting'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'dropdown-divider' }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        (_React$createElement = { href: '' }, _defineProperty(_React$createElement, 'href', ''), _defineProperty(_React$createElement, 'onClick', this.logout), _defineProperty(_React$createElement, 'className', 'dropdown-item'), _React$createElement),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-power-off' }),
+                                        'Logout'
+                                    )
+                                ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'profile-text' },
+                            'nav',
+                            { className: 'sidebar-nav' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'h5',
-                                null,
-                                this.state.name
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'a',
-                                { href: '', onClick: this.showMenu, className: 'dropdown-toggle u-dropdown', 'data-toggle': 'dropdown', role: 'button',
-                                    'aria-haspopup': 'true', 'aria-expanded': 'true' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-settings' })
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'a',
-                                { href: 'pages-login.html', className: '', 'data-toggle': 'tooltip', title: 'Logout' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-power' })
-                            ),
-                            this.state.showMenu ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'div',
-                                { className: 'dropdown-menu animated flipInY' },
+                                'ul',
+                                { id: 'sidebarnav' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('li', { className: 'nav-devider' }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { href: '#', className: 'dropdown-item' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-user' }),
-                                    ' My Profile'
+                                    'li',
+                                    { className: 'nav-small-cap' },
+                                    'ADMIN'
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'dropdown-divider' }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { href: '#', className: 'dropdown-item' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-settings' }),
-                                    ' Account Setting'
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'dropdown-divider' }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { href: 'login.html', className: 'dropdown-item' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-power-off' }),
-                                    ' Logout'
-                                )
-                            ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'nav',
-                        { className: 'sidebar-nav' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'ul',
-                            { id: 'sidebarnav' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('li', { className: 'nav-devider' }),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                { className: 'nav-small-cap' },
-                                'ADMIN'
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-gauge' }),
+                                    'li',
+                                    null,
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'span',
-                                        { className: 'hide-menu' },
-                                        'Admin'
-                                    )
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'ul',
-                                    { 'aria-expanded': 'false', className: 'collapse' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'li',
-                                        null,
+                                        'a',
+                                        { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-gauge' }),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                            { to: '/create-admin' },
-                                            'Create Admin'
+                                            'span',
+                                            { className: 'hide-menu' },
+                                            'Admin'
                                         )
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'li',
-                                        null,
+                                        'ul',
+                                        { 'aria-expanded': 'false', className: 'collapse' },
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                            { to: '/admin' },
-                                            'Update Admin'
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/create-admin' },
+                                                'Create Admin'
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/admin' },
+                                                'Update Admin'
+                                            )
                                         )
-                                    )
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-bullseye' }),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'span',
-                                        { className: 'hide-menu' },
-                                        'Student'
                                     )
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'ul',
-                                    { 'aria-expanded': 'false', className: 'collapse' },
+                                    'li',
+                                    null,
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'li',
-                                        null,
+                                        'a',
+                                        { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-bullseye' }),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                            { to: '/create-student' },
-                                            'Create Student'
+                                            'span',
+                                            { className: 'hide-menu' },
+                                            'Student'
                                         )
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'li',
-                                        null,
+                                        'ul',
+                                        { 'aria-expanded': 'false', className: 'collapse' },
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                            { to: '/student' },
-                                            'Update Student'
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/create-student' },
+                                                'Create Student'
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/student' },
+                                                'Update Student'
+                                            )
                                         )
-                                    )
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-email' }),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'span',
-                                        { className: 'hide-menu' },
-                                        'Online Test'
                                     )
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'ul',
-                                    { 'aria-expanded': 'false', className: 'collapse' },
+                                    'li',
+                                    null,
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'li',
-                                        null,
+                                        'a',
+                                        { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-email' }),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                            { to: '/create-onlinetest' },
-                                            'Create Test'
+                                            'span',
+                                            { className: 'hide-menu' },
+                                            'Online Test'
                                         )
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'li',
-                                        null,
+                                        'ul',
+                                        { 'aria-expanded': 'false', className: 'collapse' },
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                            { to: '/onlinetest' },
-                                            'Update Test'
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/create-onlinetest' },
+                                                'Create Test'
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/onlinetest' },
+                                                'Update Test'
+                                            )
                                         )
-                                    )
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-email' }),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'span',
-                                        { className: 'hide-menu' },
-                                        'Quiz'
                                     )
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'ul',
-                                    { 'aria-expanded': 'false', className: 'collapse' },
+                                    'li',
+                                    null,
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'li',
-                                        null,
+                                        'a',
+                                        { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-email' }),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                            { to: '/onlinetests-quiz' },
-                                            'Solve Quiz'
+                                            'span',
+                                            { className: 'hide-menu' },
+                                            'Quiz'
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'ul',
+                                        { 'aria-expanded': 'false', className: 'collapse' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/onlinetests-quiz' },
+                                                'Solve Quiz'
+                                            )
                                         )
                                     )
                                 )
                             )
                         )
                     )
-                )
-            );
+                );
+            } else {
+                aside = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'aside',
+                    { className: 'left-sidebar' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'scroll-sidebar' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'user-profile' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'profile-img' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/users/profile.png', alt: 'user' }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'notify setpos' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'heartbit' }),
+                                    ' ',
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'point' })
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'profile-text' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'h5',
+                                    null,
+                                    this.state.name
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { href: '', onClick: this.showMenu, className: 'dropdown-toggle u-dropdown', 'data-toggle': 'dropdown', role: 'button',
+                                        'aria-haspopup': 'true', 'aria-expanded': 'true' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-settings' })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { href: 'pages-login.html', className: '', 'data-toggle': 'tooltip', title: 'Logout' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-power' })
+                                ),
+                                this.state.showMenu ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'dropdown-menu animated flipInY' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { href: '#', className: 'dropdown-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-user' }),
+                                        ' My Profile'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'dropdown-divider' }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { href: '#', className: 'dropdown-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-settings' }),
+                                        ' Account Setting'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'dropdown-divider' }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { href: '', onClick: this.logout, className: 'dropdown-item' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-power-off' }),
+                                        ' Logout'
+                                    )
+                                ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null)
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'nav',
+                            { className: 'sidebar-nav' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'ul',
+                                { id: 'sidebarnav' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('li', { className: 'nav-devider' }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'li',
+                                    { className: 'nav-small-cap' },
+                                    'STUDENT'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'li',
+                                    null,
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-email' }),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'span',
+                                            { className: 'hide-menu' },
+                                            'Test'
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'ul',
+                                        { 'aria-expanded': 'false', className: 'collapse' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/onlinetests/cet' },
+                                                'CET'
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/onlinetests/jee' },
+                                                'JEE'
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+            return aside;
         }
     }]);
 
@@ -61182,14 +61318,387 @@ var DashBoard = function (_Component) {
                         { className: 'row' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'col-12' },
+                            { className: 'col-lg-12 col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
-                                { className: 'card' },
+                                { className: 'card card-default' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'div',
-                                    { className: 'card-body' },
-                                    'This is some text within a card block.'
+                                    { className: 'card-header' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'card-actions' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { className: '', 'data-action': 'collapse' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-minus' })
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { className: 'btn-minimize', 'data-action': 'expand' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-arrow-expand' })
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { className: 'btn-close', 'data-action': 'close' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-close' })
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h4',
+                                        { className: 'card-title m-b-0' },
+                                        'CET Test'
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'card-body collapse' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'table-responsive' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'table',
+                                            { className: 'table product-overview' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'thead',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Customer'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Photo'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Quantity'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Date'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Status'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Actions'
+                                                    )
+                                                )
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'tbody',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        'Steave Jobs'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/gallery/chair.jpg', alt: 'iMac', width: '80' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '20'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '10-7-2017'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { className: 'label label-success font-weight-100' },
+                                                            'Paid'
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse p-r-10', 'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-marker-alt' })
+                                                        ),
+                                                        ' ',
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse', title: '', 'data-toggle': 'tooltip', 'data-original-title': 'Delete' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-trash' })
+                                                        )
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        'Varun Dhavan'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/gallery/chair2.jpg', alt: 'iPhone', width: '80' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '25'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '09-7-2017'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { className: 'label label-warning font-weight-100' },
+                                                            'Pending'
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse p-r-10',
+                                                                'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-marker-alt' })
+                                                        ),
+                                                        ' ',
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)',
+                                                                className: 'text-inverse', title: '',
+                                                                'data-toggle': 'tooltip',
+                                                                'data-original-title': 'Delete' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-trash' })
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-lg-12 col-md-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card card-default' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'card-header' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'card-actions' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { className: '', 'data-action': 'collapse' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-minus' })
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { className: 'btn-minimize', 'data-action': 'expand' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-arrow-expand' })
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { className: 'btn-close', 'data-action': 'close' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-close' })
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h4',
+                                        { className: 'card-title m-b-0' },
+                                        'JEE Test'
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'card-body collapse' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'table-responsive' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'table',
+                                            { className: 'table product-overview' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'thead',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Test Name'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Score'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('th', null),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Date'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Status'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Actions'
+                                                    )
+                                                )
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'tbody',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        'Steave Jobs'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/gallery/chair.jpg', alt: 'iMac', width: '80' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '20'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '10-7-2017'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { className: 'label label-success font-weight-100' },
+                                                            'Paid'
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse p-r-10', 'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-marker-alt' })
+                                                        ),
+                                                        ' ',
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse', title: '', 'data-toggle': 'tooltip', 'data-original-title': 'Delete' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-trash' })
+                                                        )
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        'Varun Dhavan'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/gallery/chair2.jpg', alt: 'iPhone', width: '80' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '25'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '09-7-2017'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { className: 'label label-warning font-weight-100' },
+                                                            'Pending'
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse p-r-10',
+                                                                'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-marker-alt' })
+                                                        ),
+                                                        ' ',
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)',
+                                                                className: 'text-inverse', title: '',
+                                                                'data-toggle': 'tooltip',
+                                                                'data-original-title': 'Delete' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-trash' })
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
                                 )
                             )
                         )
@@ -65848,6 +66357,267 @@ NavHashLink.propTypes = propTypes;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var Test = function (_Component) {
+    _inherits(Test, _Component);
+
+    function Test(prop) {
+        _classCallCheck(this, Test);
+
+        var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, prop));
+
+        console.log(_this.props.match.params);
+        return _this;
+    }
+
+    _createClass(Test, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'page-wrapper' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row page-titles' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-5 align-self-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h3',
+                            { className: 'text-themecolor' },
+                            'Test'
+                        )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'container-fluid' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-lg-12 col-md-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card card-default' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'card-header' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'card-actions' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { className: '', 'data-action': 'collapse' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-minus' })
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { className: 'btn-minimize', 'data-action': 'expand' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-arrow-expand' })
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h4',
+                                        { className: 'card-title m-b-0' },
+                                        'CET Test'
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'card-body collapse show' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'div',
+                                        { className: 'table-responsive' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'table',
+                                            { className: 'table product-overview' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'thead',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Customer'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Photo'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Quantity'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Date'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Status'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'th',
+                                                        null,
+                                                        'Actions'
+                                                    )
+                                                )
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'tbody',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        'Steave Jobs'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/gallery/chair.jpg', alt: 'iMac', width: '80' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '20'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '10-7-2017'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { className: 'label label-success font-weight-100' },
+                                                            'Paid'
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse p-r-10', 'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-marker-alt' })
+                                                        ),
+                                                        ' ',
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse', title: '', 'data-toggle': 'tooltip', 'data-original-title': 'Delete' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-trash' })
+                                                        )
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        'Varun Dhavan'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/gallery/chair2.jpg', alt: 'iPhone', width: '80' })
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '25'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        '09-7-2017'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'span',
+                                                            { className: 'label label-warning font-weight-100' },
+                                                            'Pending'
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)', className: 'text-inverse p-r-10',
+                                                                'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-marker-alt' })
+                                                        ),
+                                                        ' ',
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'a',
+                                                            { href: 'javascript:void(0)',
+                                                                className: 'text-inverse', title: '',
+                                                                'data-toggle': 'tooltip',
+                                                                'data-original-title': 'Delete' },
+                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                                                className: 'ti-trash' })
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Test;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Test);
 
 /***/ })
 /******/ ]);
