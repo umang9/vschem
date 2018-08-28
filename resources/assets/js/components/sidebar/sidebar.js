@@ -230,10 +230,9 @@ class SideBar extends Component {
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
                                         {/*<Link to="/onlinetests/cet">CET</Link>*/}
-                                        <Link to={{pathname:"/onlinetests/NEET"}}>CET</Link>
                                         <NavLink
                                             to="onlinetests/cet"
-                                        >Event 123</NavLink>
+                                        >CET</NavLink>
                                     </li>
                                     <li>
                                         <Link to="/onlinetests/JEE">JEE</Link>

@@ -61232,16 +61232,11 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: { pathname: "/onlinetests/NEET" } },
-                                                'CET'
-                                            ),
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"],
                                                 {
                                                     to: 'onlinetests/cet'
                                                 },
-                                                'Event 123'
+                                                'CET'
                                             )
                                         ),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -66440,12 +66435,12 @@ var Test = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'td',
                             null,
-                            name.score
+                            name.score ? name.score : 'NA'
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'td',
                             null,
-                            name.highest_score
+                            name.highest_score ? name.highest_score : 'NA'
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'td',
@@ -66455,26 +66450,14 @@ var Test = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'td',
                             null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'span',
-                                { className: 'label label-success font-weight-100' },
-                                'Paid'
-                            )
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'td',
-                            null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'a',
-                                { href: 'javascript:void(0)', className: 'text-inverse p-r-10', 'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-marker-alt' })
-                            ),
-                            ' ',
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'a',
-                                { href: 'javascript:void(0)', className: 'text-inverse', title: '', 'data-toggle': 'tooltip', 'data-original-title': 'Delete' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
-                                    className: 'ti-trash' })
+                            name.is_test_taken ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'button',
+                                { type: 'button', className: 'btn btn-rounded btn-block btn-outline-secondary' },
+                                'Review'
+                            ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'button',
+                                { type: 'button', className: 'btn btn-rounded btn-block btn-outline-primary' },
+                                'Take Test'
                             )
                         )
                     );

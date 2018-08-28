@@ -34,15 +34,15 @@ class Test extends Component {
                 return <tr key={index}>
                     <td>{name.test_name}</td>
                     <td>
-                        {name.score}
+                        {name.score ? name.score:'NA'}
                     </td>
-                    <td>{name.highest_score}</td>
+                    <td>{name.highest_score ? name.highest_score:'NA'}</td>
                     <td>{name.end_date}</td>
                     <td>
-                        <span className="label label-success font-weight-100">Paid</span>
+                        {name.is_test_taken ? <button type="button" className="btn btn-rounded btn-block btn-outline-secondary">Review</button> :
+                            <button type="button" className="btn btn-rounded btn-block btn-outline-primary">Take Test</button> }
                     </td>
-                    <td><a href="javascript:void(0)" className="text-inverse p-r-10" data-toggle="tooltip" title="" data-original-title="Edit"><i className="ti-marker-alt"></i></a> <a href="javascript:void(0)" className="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete"><i
-                        className="ti-trash"></i></a></td>
+
                 </tr>;
 
             });
