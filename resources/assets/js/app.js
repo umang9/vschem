@@ -24,6 +24,7 @@ import { Admin,CreateAdmin} from "./components/Admin/admin";
 import { Student,CreateStudent} from "./components/Student/student";
 import { OnlineTestInfo,CreateTestInfo } from "./components/OnlineTest/onlinetest";
 import OnlineTestQuiz from "./components/Quiz/quiz";
+import Test from "./components/Test/test";
 
 // import './index.css';
 
@@ -39,6 +40,7 @@ const routes = [
     { path: '/create-admin', exact: false, name: 'Admin', component: CreateAdmin },
     { path: '/admin/:id', exact: true, name: 'Student Details', component: User },
     { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
+    { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: Test },
 ];
 
 class App extends Component {

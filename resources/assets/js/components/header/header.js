@@ -4,9 +4,9 @@ import axios from "axios";
 
 class Header extends Component {
     componentDidMount(){
-        axios.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr')
-            .then(json => console.log(json))
+
     }
+
     render() {
         return (
 
