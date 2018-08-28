@@ -27,11 +27,10 @@ class Header extends Component {
 
                             <li className="nav-item"><a
                                 className="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i className="mdi mdi-menu"></i></a></li>
+                                href="javascript:void(0)"><i className="mdi mdi-menu"/></a></li>
                             <li className="nav-item m-l-10"><a
                                 className="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i className="ti-menu"></i></a></li>
-
+                                href="javascript:void(0)"><i className="ti-menu"/></a></li>
 
                         </ul>
 
@@ -39,10 +38,10 @@ class Header extends Component {
 
                             <li className="nav-item hidden-sm-down search-box"><a
                                 className="nav-link hidden-sm-down text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i className="ti-search"></i></a>
+                                href="javascript:void(0)"><i className="ti-search"/></a>
                                 <form className="app-search">
                                     <input type="text" className="form-control" placeholder="Search & enter"/>
-                                    <a className="srh-btn"><i className="ti-close"></i></a></form>
+                                    <a className="srh-btn"><i className="ti-close"/></a></form>
                             </li>
 
                             <li className="nav-item dropdown">

@@ -19,7 +19,7 @@ import Header from './components/header/header';
 import SideBar from './components/sidebar/sidebar';
 import DashBoard from './components/dashboard/dashboard';
 import User from "./components/user/user";
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Admin,CreateAdmin} from "./components/Admin/admin";
 import { Student,CreateStudent} from "./components/Student/student";
 import { OnlineTestInfo,CreateTestInfo } from "./components/OnlineTest/onlinetest";
@@ -33,12 +33,12 @@ const routes = [
     { path: '/user', exact: false, name: 'User', component: User },
     { path: '/admin', exact: false, name: 'User', component: Admin },
     { path: '/onlinetest', exact: false, name: 'Test Info', component: OnlineTestInfo },
-    { path: '/create/onlinetest', exact: false, name: 'Test Info', component: CreateTestInfo },
-    { path: '/create/student', exact: false, name: 'Admin', component: CreateStudent },
+    { path: '/create-onlinetest', exact: true, name: 'Test Info', component: CreateTestInfo },
+    { path: '/create-student', exact: false, name: 'Admin', component: CreateStudent },
     { path: '/student', exact: false, name: 'Admin', component: Student },
-    { path: '/create/admin', exact: false, name: 'Admin', component: CreateAdmin },
+    { path: '/create-admin', exact: false, name: 'Admin', component: CreateAdmin },
     { path: '/admin/:id', exact: true, name: 'Student Details', component: User },
-    { path: '/onlinetests/quiz', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
+    { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
 ];
 
 class App extends Component {
@@ -52,6 +52,7 @@ class App extends Component {
                 {/**
                  * This will render component html
                  **/}
+                <Switch>
                 {routes.map((route, index) => (
                     // You can render a <Route> in as many places
                     // as you want in your app. It will render along
@@ -68,6 +69,7 @@ class App extends Component {
                         prop={route}
                     />
                 ))}
+                </Switch>
             </div>
         );
     }

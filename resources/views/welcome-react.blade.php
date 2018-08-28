@@ -18,31 +18,33 @@
 </head>
 <body class="fix-header fix-sidebar card-no-border">
 <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div class="preloader">
-      <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-    </div>
-<div id="root">
-	
+    You need to enable JavaScript to run this app.
+</noscript>
+<div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
 </div>
-<script src="{{mix('js/app.js')}}" ></script>
-<script src="{{asset("assets/plugins/jquery/jquery.min.js")}}"></script>
-  <script src="{{asset("assets/plugins/bootstrap/js/popper.min.js")}}"></script>
-  <script src="{{asset("assets/plugins/bootstrap/js/bootstrap.min.js")}}"></script>
-  <script src="{{asset("js/jquery.slimscroll.js")}}"></script>
-  <script src="{{asset("js/waves.js")}}"></script>
-  <script src="{{asset("js/sidebarmenu.js")}}"></script>
-  <script src="{{asset("assets/plugins/sticky-kit-master/dist/sticky-kit.min.js")}}"></script>
-  <script src="{{asset("js/custom.min.js")}}"></script>
-  <script src="{{asset("assets/plugins/sparkline/jquery.sparkline.min.js")}}"></script>
-  <script src="{{asset("assets/plugins/raphael/raphael-min.js")}}"></script>
-  <script src="{{asset("assets/plugins/morrisjs/morris.min.js")}}"></script>
-  <script src="{{asset("js/dashboard.js")}}"></script>
-  <script src="{{asset("assets/plugins/wizard/jquery.steps.min.js")}}"></script>
-  <script src="{{asset("assets/plugins/wizard/jquery.validate.min.js")}}"></script>
-  <script src="{{asset("assets/plugins/horizontal-timeline/js/horizontal-timeline.js")}}"></script>
-  <script src="{{asset("assets/plugins/styleswitcher/jQuery.style.switcher.js")}}"></script>
+<div id="root">
+
+</div>
+
+    <script src="{{mix('js/app.js')}}"></script>
+    <script src="{{asset("assets/plugins/jquery/jquery.min.js")}}"></script>
+    <script src="{{asset("assets/plugins/bootstrap/js/popper.min.js")}}"></script>
+    <script src="{{asset("assets/plugins/bootstrap/js/bootstrap.min.js")}}"></script>
+    <script src="{{asset("js/jquery.slimscroll.js")}}"></script>
+    <script src="{{asset("js/waves.js")}}"></script>
+    <script src="{{asset("js/sidebarmenu.js")}}"></script>
+    <script src="{{asset("assets/plugins/sticky-kit-master/dist/sticky-kit.min.js")}}"></script>
+    <script src="{{asset("js/custom.min.js")}}"></script>
+    <script src="{{asset("assets/plugins/sparkline/jquery.sparkline.min.js")}}"></script>
+    <script src="{{asset("assets/plugins/raphael/raphael-min.js")}}"></script>
+    <script src="{{asset("assets/plugins/morrisjs/morris.min.js")}}"></script>
+    <script src="{{asset("js/dashboard.js")}}"></script>
+    <script src="{{asset("assets/plugins/wizard/jquery.steps.min.js")}}"></script>
+    <script src="{{asset("assets/plugins/wizard/jquery.validate.min.js")}}"></script>
+    <script src="{{asset("assets/plugins/horizontal-timeline/js/horizontal-timeline.js")}}"></script>
+    <script src="{{asset("assets/plugins/styleswitcher/jQuery.style.switcher.js")}}"></script>
 </body>
 </html>

@@ -12,10 +12,10 @@
 */
 use Illuminate\Support\Facades\DB;
 
-//Route::get('/', function () {
-    // print_r(DB::select('call USER_INFO'));
-  // return view('welcome');
-//});
+Route::get('/', function () {
+     print_r(DB::select('call USER_INFO'));
+   return view('welcome');
+});
 Route::get('/mytests/{section}/{id}','TestsController@show');
 Route::post('/mytests/{section}', 'TestsController@store');
 
@@ -39,3 +39,6 @@ Route::get('/react', function () {
 Route::view('/{path?}', 'welcome-react')
      ->where('path', '.*')
      ->name('react');
+
+
+Route::view('/{path?}', 'welcome-react');

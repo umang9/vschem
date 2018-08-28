@@ -1,7 +1,27 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class SideBar extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            showMenu: false,
+        };
+
+        this.showMenu = this.showMenu.bind(this);
+    }
+
+    showMenu(event) {
+        event.preventDefault();
+
+        this.setState({
+            showMenu: true
+        });
+    }
+
     render() {
         return (
             <aside className="left-sidebar">
@@ -19,12 +39,15 @@ class SideBar extends Component {
 
                         <div className="profile-text">
                             <h5>Markarn Doe</h5>
-                            <a href="#" className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
+                            <a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="true">
                                 <i className="mdi mdi-settings"></i>
                             </a>
 
-                            <a href="pages-login.html" className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
+                            <a href="pages-login.html"  className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
+                            {
+                                this.state.showMenu
+                                    ? (
                             <div className="dropdown-menu animated flipInY">
 
                                 <a href="#" className="dropdown-item"><i className="ti-user"></i> My Profile</a>
@@ -39,6 +62,11 @@ class SideBar extends Component {
                                 <a href="login.html" className="dropdown-item"><i className="fa fa-power-off"></i> Logout</a>
 
                             </div>
+                                )
+                                : (
+                                        <div></div>
+                                )
+                        }
                         </div>
                     </div>
 
@@ -57,7 +85,7 @@ class SideBar extends Component {
                                 </a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
-                                        <Link to="/create/admin">Create Admin</Link>
+                                        <Link to="/create-admin">Create Admin</Link>
 
                                     </li>
                                     <li>
@@ -73,7 +101,7 @@ class SideBar extends Component {
                                 <ul aria-expanded="false" className="collapse">
 
                                     <li>
-                                        <Link to="/create/student">Create Student</Link>
+                                        <Link to="/create-student">Create Student</Link>
                                     </li>
                                     <li>
                                         <Link to="/student">Update Student</Link>
@@ -86,7 +114,7 @@ class SideBar extends Component {
                                 <ul aria-expanded="false" className="collapse">
 
                                     <li>
-                                        <Link to="/create/onlinetest">Create Test</Link>
+                                        <Link to="/create-onlinetest">Create Test</Link>
                                     </li>
                                     <li>
                                         <Link to="/onlinetest">Update Test</Link>
@@ -98,7 +126,7 @@ class SideBar extends Component {
                                 <span className="hide-menu">Quiz</span></a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
-                                        <Link to="/onlinetests/quiz">Solve Quiz</Link>
+                                        <Link to="/onlinetests-quiz">Solve Quiz</Link>
                                     </li>
                                 </ul>
                             </li>
