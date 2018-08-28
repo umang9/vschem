@@ -229,10 +229,8 @@ class SideBar extends Component {
                                 <span className="hide-menu">Test</span></a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
-                                        {/*<Link to="/onlinetests/cet">CET</Link>*/}
-                                        <NavLink
-                                            to="onlinetests/cet"
-                                        >CET</NavLink>
+                                        <Link to="/onlinetests/NEET">CET</Link>
+
                                     </li>
                                     <li>
                                         <Link to="/onlinetests/JEE">JEE</Link>

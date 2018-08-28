@@ -61232,10 +61232,8 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"],
-                                                {
-                                                    to: 'onlinetests/cet'
-                                                },
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/onlinetests/NEET' },
                                                 'CET'
                                             )
                                         ),
@@ -66405,7 +66403,7 @@ var Test = function (_Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            var url = '/api/tests?type=JEE';
+            var url = '/api/tests?type=' + this.props.match.params.test;
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (json) {
 
                 var data = json.data;
@@ -66513,7 +66511,8 @@ var Test = function (_Component) {
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'h4',
                                         { className: 'card-title m-b-0' },
-                                        'CET Test'
+                                        this.props.match.params.test,
+                                        ' Test'
                                     )
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

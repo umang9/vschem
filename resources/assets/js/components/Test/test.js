@@ -12,7 +12,8 @@ class Test extends Component {
         };
     }
     componentDidMount(){
-        let url = '/api/tests?type=JEE';
+
+        let url = '/api/tests?type='+this.props.match.params.test;
         axios.get(url)
             .then(json => {
 
@@ -68,7 +69,7 @@ class Test extends Component {
                                             <i className="mdi mdi-arrow-expand"></i>
                                         </a>
                                     </div>
-                                    <h4 className="card-title m-b-0">CET Test</h4>
+                                    <h4 className="card-title m-b-0">{this.props.match.params.test} Test</h4>
                                 </div>
                                 <div className="card-body collapse show">
                                     <div className="table-responsive">
@@ -84,19 +85,6 @@ class Test extends Component {
                                             </thead>
                                             <tbody>
                                             {table_row}
-                                            {/*<tr>*/}
-                                                {/*<td>Steave Jobs</td>*/}
-                                                {/*<td>*/}
-                                                    {/*<img src="../assets/images/gallery/chair.jpg" alt="iMac" width="80"/>*/}
-                                                {/*</td>*/}
-                                                {/*<td>20</td>*/}
-                                                {/*<td>10-7-2017</td>*/}
-                                                {/*<td>*/}
-                                                    {/*<span className="label label-success font-weight-100">Paid</span>*/}
-                                                {/*</td>*/}
-                                                {/*<td><a href="javascript:void(0)" className="text-inverse p-r-10" data-toggle="tooltip" title="" data-original-title="Edit"><i className="ti-marker-alt"></i></a> <a href="javascript:void(0)" className="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete"><i*/}
-                                                    {/*className="ti-trash"></i></a></td>*/}
-                                            {/*</tr>*/}
 
                                             </tbody>
                                         </table>
