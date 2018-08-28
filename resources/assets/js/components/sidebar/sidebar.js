@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import axios from 'axios';
 
 class SideBar extends Component {
@@ -229,10 +229,14 @@ class SideBar extends Component {
                                 <span className="hide-menu">Test</span></a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
-                                        <Link to="/onlinetests/cet">CET</Link>
+                                        {/*<Link to="/onlinetests/cet">CET</Link>*/}
+                                        <Link to={{pathname:"/onlinetests/NEET"}}>CET</Link>
+                                        <NavLink
+                                            to="onlinetests/cet"
+                                        >Event 123</NavLink>
                                     </li>
                                     <li>
-                                        <Link to="/onlinetests/jee">JEE</Link>
+                                        <Link to="/onlinetests/JEE">JEE</Link>
                                     </li>
                                 </ul>
                             </li>

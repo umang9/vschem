@@ -9,7 +9,7 @@ import './index.css';
 
 
 ReactDOM.render(
-    <Router>
+    <Router history={ history }>
        <App/>
     </Router>,
     document.getElementById('root'));

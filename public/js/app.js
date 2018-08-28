@@ -61233,8 +61233,15 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/onlinetests/cet' },
+                                                { to: { pathname: "/onlinetests/NEET" } },
                                                 'CET'
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"],
+                                                {
+                                                    to: 'onlinetests/cet'
+                                                },
+                                                'Event 123'
                                             )
                                         ),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -61242,7 +61249,7 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/onlinetests/jee' },
+                                                { to: '/onlinetests/JEE' },
                                                 'JEE'
                                             )
                                         )
@@ -66392,12 +66399,89 @@ var Test = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, prop));
 
         console.log(_this.props.match.params);
+        _this.state = {
+            data: []
+        };
         return _this;
     }
 
     _createClass(Test, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            var url = '/api/tests?type=JEE';
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (json) {
+
+                var data = json.data;
+                console.log('data', data);
+                _this2.setState({
+                    data: data
+                });
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var table_row = void 0;
+
+            if (this.state.data.length > 0) {
+                var tr = void 0;
+                table_row = this.state.data.map(function (name, index) {
+
+                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'tr',
+                        { key: index },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'td',
+                            null,
+                            name.test_name
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'td',
+                            null,
+                            name.score
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'td',
+                            null,
+                            name.highest_score
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'td',
+                            null,
+                            name.end_date
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'td',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'span',
+                                { className: 'label label-success font-weight-100' },
+                                'Paid'
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'td',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { href: 'javascript:void(0)', className: 'text-inverse p-r-10', 'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-marker-alt' })
+                            ),
+                            ' ',
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { href: 'javascript:void(0)', className: 'text-inverse', title: '', 'data-toggle': 'tooltip', 'data-original-title': 'Delete' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
+                                    className: 'ti-trash' })
+                            )
+                        )
+                    );
+                });
+            } else {
+                table_row = null;
+            }
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'page-wrapper' },
@@ -66467,141 +66551,34 @@ var Test = function (_Component) {
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'th',
                                                         null,
-                                                        'Customer'
+                                                        'Test Name'
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'th',
                                                         null,
-                                                        'Photo'
+                                                        'Your Score'
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'th',
                                                         null,
-                                                        'Quantity'
+                                                        'Highest Score'
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'th',
                                                         null,
-                                                        'Date'
+                                                        'Test Ends'
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'th',
                                                         null,
-                                                        'Status'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'th',
-                                                        null,
-                                                        'Actions'
+                                                        'Review'
                                                     )
                                                 )
                                             ),
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'tbody',
                                                 null,
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'tr',
-                                                    null,
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        'Steave Jobs'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/gallery/chair.jpg', alt: 'iMac', width: '80' })
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        '20'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        '10-7-2017'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'span',
-                                                            { className: 'label label-success font-weight-100' },
-                                                            'Paid'
-                                                        )
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'a',
-                                                            { href: 'javascript:void(0)', className: 'text-inverse p-r-10', 'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
-                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-marker-alt' })
-                                                        ),
-                                                        ' ',
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'a',
-                                                            { href: 'javascript:void(0)', className: 'text-inverse', title: '', 'data-toggle': 'tooltip', 'data-original-title': 'Delete' },
-                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
-                                                                className: 'ti-trash' })
-                                                        )
-                                                    )
-                                                ),
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'tr',
-                                                    null,
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        'Varun Dhavan'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/gallery/chair2.jpg', alt: 'iPhone', width: '80' })
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        '25'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        '09-7-2017'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'span',
-                                                            { className: 'label label-warning font-weight-100' },
-                                                            'Pending'
-                                                        )
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'td',
-                                                        null,
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'a',
-                                                            { href: 'javascript:void(0)', className: 'text-inverse p-r-10',
-                                                                'data-toggle': 'tooltip', title: '', 'data-original-title': 'Edit' },
-                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
-                                                                className: 'ti-marker-alt' })
-                                                        ),
-                                                        ' ',
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'a',
-                                                            { href: 'javascript:void(0)',
-                                                                className: 'text-inverse', title: '',
-                                                                'data-toggle': 'tooltip',
-                                                                'data-original-title': 'Delete' },
-                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', {
-                                                                className: 'ti-trash' })
-                                                        )
-                                                    )
-                                                )
+                                                table_row
                                             )
                                         )
                                     )

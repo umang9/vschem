@@ -7,9 +7,48 @@ class Test extends Component {
     constructor(prop){
         super(prop);
         console.log(this.props.match.params);
+        this.state = {
+            data:[]
+        };
+    }
+    componentDidMount(){
+        let url = '/api/tests?type=JEE';
+        axios.get(url)
+            .then(json => {
+
+                let data = json.data;
+                console.log('data',data);
+                this.setState({
+                    data: data
+                });
+            });
     }
 
     render() {
+        let table_row;
+
+        if(this.state.data.length>0){
+            let tr;
+            table_row = this.state.data.map((name, index)=>{
+
+                return <tr key={index}>
+                    <td>{name.test_name}</td>
+                    <td>
+                        {name.score}
+                    </td>
+                    <td>{name.highest_score}</td>
+                    <td>{name.end_date}</td>
+                    <td>
+                        <span className="label label-success font-weight-100">Paid</span>
+                    </td>
+                    <td><a href="javascript:void(0)" className="text-inverse p-r-10" data-toggle="tooltip" title="" data-original-title="Edit"><i className="ti-marker-alt"></i></a> <a href="javascript:void(0)" className="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete"><i
+                        className="ti-trash"></i></a></td>
+                </tr>;
+
+            });
+        }else{
+            table_row = null
+        }
         return (
             <div className="page-wrapper">
                 <div className="row page-titles">
@@ -36,46 +75,28 @@ class Test extends Component {
                                         <table className="table product-overview">
                                             <thead>
                                             <tr>
-                                                <th>Customer</th>
-                                                <th>Photo</th>
-                                                <th>Quantity</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
+                                                <th>Test Name</th>
+                                                <th>Your Score</th>
+                                                <th>Highest Score</th>
+                                                <th>Test Ends</th>
+                                                <th>Review</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>Steave Jobs</td>
-                                                <td>
-                                                    <img src="../assets/images/gallery/chair.jpg" alt="iMac" width="80"/>
-                                                </td>
-                                                <td>20</td>
-                                                <td>10-7-2017</td>
-                                                <td>
-                                                    <span className="label label-success font-weight-100">Paid</span>
-                                                </td>
-                                                <td><a href="javascript:void(0)" className="text-inverse p-r-10" data-toggle="tooltip" title="" data-original-title="Edit"><i className="ti-marker-alt"></i></a> <a href="javascript:void(0)" className="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete"><i
-                                                    className="ti-trash"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Varun Dhavan</td>
-                                                <td>
-                                                    <img src="../assets/images/gallery/chair2.jpg" alt="iPhone" width="80"/>
-                                                </td>
-                                                <td>25</td>
-                                                <td>09-7-2017</td>
-                                                <td>
-                                                    <span className="label label-warning font-weight-100">Pending</span>
-                                                </td>
-                                                <td><a href="javascript:void(0)" className="text-inverse p-r-10"
-                                                       data-toggle="tooltip" title="" data-original-title="Edit"><i
-                                                    className="ti-marker-alt"></i></a> <a href="javascript:void(0)"
-                                                                                          className="text-inverse" title=""
-                                                                                          data-toggle="tooltip"
-                                                                                          data-original-title="Delete"><i
-                                                    className="ti-trash"></i></a></td>
-                                            </tr>
+                                            {table_row}
+                                            {/*<tr>*/}
+                                                {/*<td>Steave Jobs</td>*/}
+                                                {/*<td>*/}
+                                                    {/*<img src="../assets/images/gallery/chair.jpg" alt="iMac" width="80"/>*/}
+                                                {/*</td>*/}
+                                                {/*<td>20</td>*/}
+                                                {/*<td>10-7-2017</td>*/}
+                                                {/*<td>*/}
+                                                    {/*<span className="label label-success font-weight-100">Paid</span>*/}
+                                                {/*</td>*/}
+                                                {/*<td><a href="javascript:void(0)" className="text-inverse p-r-10" data-toggle="tooltip" title="" data-original-title="Edit"><i className="ti-marker-alt"></i></a> <a href="javascript:void(0)" className="text-inverse" title="" data-toggle="tooltip" data-original-title="Delete"><i*/}
+                                                    {/*className="ti-trash"></i></a></td>*/}
+                                            {/*</tr>*/}
 
                                             </tbody>
                                         </table>
