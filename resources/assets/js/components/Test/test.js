@@ -11,9 +11,28 @@ class Test extends Component {
             data:[]
         };
     }
+    componentWillReceiveProps(nextProps, nextState){
+        console.log(nextProps, nextState);
+        this.setState({
+            data: []
+        });
+        // console.log('componentWillReceiveProps',nextProps.match.params);
+        this.getCallApi(nextProps.match.params.test)
+    }
+    componentWillMount() {
+        console.log('test 1')
+    }
+    componentWillUnmount() {
+        console.log('test 2')
+    }
     componentDidMount(){
 
-        let url = '/api/tests?type='+this.props.match.params.test;
+        // let url = '/api/tests?type='+this.props.match.params.test;
+        this.getCallApi(this.props.match.params.test)
+    }
+
+    getCallApi(test){
+        let url = '/api/tests?type='+test;
         axios.get(url)
             .then(json => {
 
