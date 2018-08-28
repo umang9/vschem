@@ -60863,7 +60863,9 @@ var SideBar = function (_Component) {
         var _this = _possibleConstructorReturn(this, (SideBar.__proto__ || Object.getPrototypeOf(SideBar)).call(this));
 
         _this.state = {
-            showMenu: false
+            showMenu: false,
+            name: '',
+            user: {}
         };
 
         _this.showMenu = _this.showMenu.bind(_this);
@@ -60873,8 +60875,17 @@ var SideBar = function (_Component) {
     _createClass(SideBar, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr').then(function (json) {
-                return console.log(json);
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/api/getuser').then(function (json) {
+
+                var data = json.data;
+                var full_name = data.first_name + ' ' + data.last_name;
+
+                _this2.setState({
+                    name: full_name,
+                    user: data
+                });
             });
         }
     }, {
@@ -60889,6 +60900,7 @@ var SideBar = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'aside',
                 { className: 'left-sidebar' },
@@ -60916,7 +60928,7 @@ var SideBar = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'h5',
                                 null,
-                                'Markarn Doe'
+                                this.state.name
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'a',

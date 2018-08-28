@@ -9,14 +9,25 @@ class SideBar extends Component {
 
         this.state = {
             showMenu: false,
+            name:'',
+            user:{}
         };
 
         this.showMenu = this.showMenu.bind(this);
     }
 
     componentDidMount(){
-        axios.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr')
-            .then(json => console.log(json))
+        axios.get('/api/getuser')
+            .then(json => {
+
+                let data = json.data;
+                let full_name = data.first_name+' '+data.last_name;
+
+                this.setState({
+                    name: full_name,
+                    user: data
+                });
+            });
     }
 
 
@@ -29,6 +40,7 @@ class SideBar extends Component {
     }
 
     render() {
+
         return (
             <aside className="left-sidebar">
 
@@ -44,7 +56,7 @@ class SideBar extends Component {
                         </div>
 
                         <div className="profile-text">
-                            <h5>Markarn Doe</h5>
+                            <h5>{this.state.name}</h5>
                             <a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="true">
                                 <i className="mdi mdi-settings"></i>
