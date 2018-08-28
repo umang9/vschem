@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
+import axios from 'axios'
+
 
 class DashBoard extends Component {
+
+    constructor(prop){
+        super(prop);
+    }
+
     render() {
         return (
             <div className="page-wrapper">

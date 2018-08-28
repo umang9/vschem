@@ -14,6 +14,12 @@ class SideBar extends Component {
         this.showMenu = this.showMenu.bind(this);
     }
 
+    componentDidMount(){
+        axios.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr')
+            .then(json => console.log(json))
+    }
+
+
     showMenu(event) {
         event.preventDefault();
 
