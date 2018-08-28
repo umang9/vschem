@@ -43,4 +43,5 @@ Route::view('/{path?}', 'welcome-react')
 */
 Auth::routes();
 Route::get('/api/getuser', 'ApiController@user');//Todo-m: Auth middleware
+Route::get('api/tests','TestsController@show');
 Route::get('/{path?}', 'MainController@index');
