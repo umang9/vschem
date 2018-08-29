@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App;
-use Constants;//Todo-m
+include_once '../ud-utils/ApiUtil.php';
+include_once '../ud-constants/database.php';
 
 class TestsController extends Controller
 {
@@ -17,9 +18,9 @@ class TestsController extends Controller
     {
         $testType = strtoupper($request->query('type'));
         if (!in_array($testType, array('JEE', 'NEET'))) {
-            echo '{"success":"false"}';
+            \ApiUtil::printFailureResponse('Invalid test type');
         } else {
-            $spCall = 'call '.'GET_USER_TEST_DETAILS'.'(@user_id:='.$request->user()->id.',@type:="'.$testType.'")';
+            $spCall = 'call '.\SPCalls::TESTS_API.'(@user_id:='.$request->user()->id.',@type:="'.$testType.'")';
 //            echo $spCall;
 //            return;
             echo json_encode(DB::select($spCall));

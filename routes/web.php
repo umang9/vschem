@@ -42,6 +42,13 @@ Route::view('/{path?}', 'welcome-react')
      ->name('react');
 */
 Auth::routes();
-Route::get('/api/getuser', 'ApiController@user');//Todo-m: Auth middleware
-Route::get('api/tests','TestsController@show');
+$apiMiddleware = ['authapi'];
+Route::group([
+    'prefix' => 'api',
+    'middleware' => $apiMiddleware
+], function () {
+    Route::get('/getuser', 'ApiController@user');
+    Route::get('/tests', 'TestsController@show');
+}
+);
 Route::get('/{path?}', 'MainController@index');
