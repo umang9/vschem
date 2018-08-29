@@ -60857,11 +60857,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var SideBar = function (_Component) {
     _inherits(SideBar, _Component);
 
-    function SideBar() {
+    function SideBar(prop) {
         _classCallCheck(this, SideBar);
 
-        var _this = _possibleConstructorReturn(this, (SideBar.__proto__ || Object.getPrototypeOf(SideBar)).call(this));
+        var _this = _possibleConstructorReturn(this, (SideBar.__proto__ || Object.getPrototypeOf(SideBar)).call(this, prop));
 
+        console.log(prop);
         _this.state = {
             showMenu: false,
             name: '',
@@ -61217,7 +61218,7 @@ var SideBar = function (_Component) {
                                     null,
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'a',
-                                        { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
+                                        { className: 'has-arrow waves-effect waves-dark', href: '      #', 'aria-expanded': 'false' },
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-email' }),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                             'span',
@@ -61232,11 +61233,9 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"],
-                                                {
-                                                    to: 'onlinetests/cet'
-                                                },
-                                                'CET'
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
+                                                { to: '/onlinetests/NEET' },
+                                                'NEET'
                                             )
                                         ),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -66397,11 +66396,38 @@ var Test = function (_Component) {
     }
 
     _createClass(Test, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps, nextState) {
+            console.log(nextProps, nextState);
+            this.setState({
+                data: []
+            });
+            // console.log('componentWillReceiveProps',nextProps.match.params);
+            this.getCallApi(nextProps.match.params.test);
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            console.log('test 1');
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log('test 2');
+        }
+    }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
+
+            // let url = '/api/tests?type='+this.props.match.params.test;
+            this.getCallApi(this.props.match.params.test);
+        }
+    }, {
+        key: 'getCallApi',
+        value: function getCallApi(test) {
             var _this2 = this;
 
-            var url = '/api/tests?type=JEE';
+            var url = '/api/tests?type=' + test;
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (json) {
 
                 var data = json.data;
@@ -66509,7 +66535,8 @@ var Test = function (_Component) {
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'h4',
                                         { className: 'card-title m-b-0' },
-                                        'CET Test'
+                                        this.props.match.params.test,
+                                        ' Test'
                                     )
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

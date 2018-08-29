@@ -4,9 +4,9 @@ import axios from 'axios';
 
 class SideBar extends Component {
 
-    constructor() {
-        super();
-
+    constructor(prop) {
+        super(prop);
+        console.log(prop);
         this.state = {
             showMenu: false,
             name:'',
@@ -225,14 +225,13 @@ class SideBar extends Component {
                             <li className="nav-small-cap">STUDENT</li>
 
 
-                            <li><a className="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i className="mdi mdi-email"></i>
+                            <li><a className="has-arrow waves-effect waves-dark" href="      #" aria-expanded="false"><i className="mdi mdi-email"></i>
                                 <span className="hide-menu">Test</span></a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
-                                        {/*<Link to="/onlinetests/cet">CET</Link>*/}
-                                        <NavLink
-                                            to="onlinetests/cet"
-                                        >CET</NavLink>
+                                        {/*<Link to="/onlinetests/NEET">CET</Link>*/}
+                                        <Link to={`/onlinetests/NEET`}>NEET</Link>
+
                                     </li>
                                     <li>
                                         <Link to="/onlinetests/JEE">JEE</Link>
