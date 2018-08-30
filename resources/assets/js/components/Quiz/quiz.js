@@ -22,12 +22,18 @@ class OnlineTestQuiz extends Component {
         let url = '/api/taketest/'+this.props.match.params.test_id;
         axios.get(url)
             .then(json => {
-                if
+
 
                 let data = json.data;
-                this.setState({
-                    questions: data
-                });
+                if(data.success) {
+                    this.setState({
+                        questions: data.data
+                    });
+                }else{
+                    this.setState({
+                        questions: []
+                    });
+                }
             });
 
     }

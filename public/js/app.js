@@ -649,34 +649,35 @@ var createPath = function createPath(location) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(80);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(87);
-/* unused harmony reexport HashRouter */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(34);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(88);
-/* unused harmony reexport MemoryRouter */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(90);
-/* unused harmony reexport NavLink */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(92);
-/* unused harmony reexport Prompt */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(94);
-/* unused harmony reexport Redirect */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(35);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(16);
-/* unused harmony reexport Router */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(96);
-/* unused harmony reexport StaticRouter */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(98);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__generatePath__ = __webpack_require__(100);
-/* unused harmony reexport generatePath */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "generatePath", function() { return __WEBPACK_IMPORTED_MODULE_11__generatePath__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__matchPath__ = __webpack_require__(101);
-/* unused harmony reexport matchPath */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_12__matchPath__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__withRouter__ = __webpack_require__(102);
-/* unused harmony reexport withRouter */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_13__withRouter__["a"]; });
 
 
 
@@ -16455,7 +16456,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Student_student__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Test_test__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Test_instruction__ = __webpack_require__(132);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -16497,7 +16497,7 @@ __webpack_require__(56);
 
 // import './index.css';
 
-var routes = [{ path: '/', exact: true, name: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/dashboard', exact: true, name: 'Dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/user', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/admin', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["a" /* Admin */] }, { path: '/onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["b" /* OnlineTestInfo */] }, { path: '/create-onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["a" /* CreateTestInfo */] }, { path: '/create-student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["a" /* CreateStudent */] }, { path: '/student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["b" /* Student */] }, { path: '/create-admin', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["b" /* CreateAdmin */] }, { path: '/admin/:id', exact: true, name: 'Student Details', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/taketest/:test_id', exact: true, name: 'Online Test Quiz', component: __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__["default"] }, { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: __WEBPACK_IMPORTED_MODULE_11__components_Test_test__["a" /* default */] }, { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: __WEBPACK_IMPORTED_MODULE_12__components_Test_instruction__["a" /* default */] }];
+var routes = [{ path: '/', exact: true, name: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/dashboard', exact: true, name: 'Dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/user', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/admin', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["a" /* Admin */] }, { path: '/onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["b" /* OnlineTestInfo */] }, { path: '/create-onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["a" /* CreateTestInfo */] }, { path: '/create-student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["a" /* CreateStudent */] }, { path: '/student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["b" /* Student */] }, { path: '/create-admin', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["b" /* CreateAdmin */] }, { path: '/admin/:id', exact: true, name: 'Student Details', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/taketest/:test_id', exact: true, name: 'Online Test Quiz', component: __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__["a" /* default */] }, { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: __WEBPACK_IMPORTED_MODULE_11__components_Test_test__["a" /* default */] }, { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: __WEBPACK_IMPORTED_MODULE_12__components_Test_instruction__["a" /* default */] }];
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -16517,7 +16517,7 @@ var App = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_header_header__["a" /* default */], null),
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_sidebar_sidebar__["a" /* default */], null),
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_6_react_router_dom__["d" /* Switch */],
+                    __WEBPACK_IMPORTED_MODULE_6_react_router_dom__["Switch"],
                     null,
                     routes.map(function (route, index) {
                         return (
@@ -16528,7 +16528,7 @@ var App = function (_Component) {
                             // that requires you to render multiple things
                             // in multiple places at the same URL is nothing
                             // more than multiple <Route>s.
-                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_router_dom__["c" /* Route */], {
+                            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_router_dom__["Route"], {
                                 key: index,
                                 path: route.path,
                                 exact: route.exact,
@@ -16546,7 +16546,7 @@ var App = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
 
 __WEBPACK_IMPORTED_MODULE_0_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_6_react_router_dom__["a" /* BrowserRouter */],
+    __WEBPACK_IMPORTED_MODULE_6_react_router_dom__["BrowserRouter"],
     null,
     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(App, null)
 ), document.getElementById('root'));
@@ -59979,7 +59979,7 @@ HashRouter.propTypes = {
 };
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (HashRouter);
+/* harmony default export */ __webpack_exports__["a"] = (HashRouter);
 
 /***/ }),
 /* 88 */
@@ -59990,7 +59990,7 @@ HashRouter.propTypes = {
 // Written in this round about way for babel-transform-imports
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__["a" /* default */]);
 
 /***/ }),
 /* 89 */
@@ -60142,7 +60142,7 @@ NavLink.defaultProps = {
   "aria-current": "page"
 };
 
-/* unused harmony default export */ var _unused_webpack_default_export = (NavLink);
+/* harmony default export */ __webpack_exports__["a"] = (NavLink);
 
 /***/ }),
 /* 91 */
@@ -60162,7 +60162,7 @@ module.exports = Array.isArray || function (arr) {
 // Written in this round about way for babel-transform-imports
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__["a" /* default */]);
 
 /***/ }),
 /* 93 */
@@ -60264,7 +60264,7 @@ Prompt.contextTypes = {
 // Written in this round about way for babel-transform-imports
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__["a" /* default */]);
 
 /***/ }),
 /* 95 */
@@ -60404,7 +60404,7 @@ Redirect.contextTypes = {
 // Written in this round about way for babel-transform-imports
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__["a" /* default */]);
 
 /***/ }),
 /* 97 */
@@ -60684,7 +60684,7 @@ Switch.propTypes = {
 // Written in this round about way for babel-transform-imports
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_generatePath__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_generatePath__["a" /* default */]);
 
 /***/ }),
 /* 101 */
@@ -60695,7 +60695,7 @@ Switch.propTypes = {
 // Written in this round about way for babel-transform-imports
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__["a" /* default */]);
 
 /***/ }),
 /* 102 */
@@ -60706,7 +60706,7 @@ Switch.propTypes = {
 // Written in this round about way for babel-transform-imports
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__["a" /* default */]);
 
 /***/ }),
 /* 103 */
@@ -61017,7 +61017,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/create-admin' },
                                                 'Create Admin'
                                             )
@@ -61026,7 +61026,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/admin' },
                                                 'Update Admin'
                                             )
@@ -61053,7 +61053,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/create-student' },
                                                 'Create Student'
                                             )
@@ -61062,7 +61062,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/student' },
                                                 'Update Student'
                                             )
@@ -61089,7 +61089,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/create-onlinetest' },
                                                 'Create Test'
                                             )
@@ -61098,7 +61098,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/onlinetest' },
                                                 'Update Test'
                                             )
@@ -61125,7 +61125,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/onlinetests-quiz' },
                                                 'Solve Quiz'
                                             )
@@ -61235,7 +61235,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/onlinetests/NEET' },
                                                 'NEET'
                                             )
@@ -61244,7 +61244,7 @@ var SideBar = function (_Component) {
                                             'li',
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                                                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
                                                 { to: '/onlinetests/JEE' },
                                                 'JEE'
                                             )
@@ -65871,15 +65871,505 @@ var Question = function (_Component) {
 
 /***/ }),
 /* 121 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token, expected ( (27:16)\n\n\u001b[0m \u001b[90m 25 | \u001b[39m                \u001b[36mif\u001b[39m\n \u001b[90m 26 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 | \u001b[39m                let data \u001b[33m=\u001b[39m json\u001b[33m.\u001b[39mdata\u001b[33m;\u001b[39m\n \u001b[90m    | \u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 | \u001b[39m                \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState({\n \u001b[90m 29 | \u001b[39m                    questions\u001b[33m:\u001b[39m data\n \u001b[90m 30 | \u001b[39m                })\u001b[33m;\u001b[39m\u001b[0m\n");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__quiz_css__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__quiz_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__quiz_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_hash_link__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_hash_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_router_hash_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var OnlineTestQuiz = function (_Component) {
+    _inherits(OnlineTestQuiz, _Component);
+
+    function OnlineTestQuiz(props) {
+        _classCallCheck(this, OnlineTestQuiz);
+
+        // This binding is necessary to make `this` work in the callback
+        var _this = _possibleConstructorReturn(this, (OnlineTestQuiz.__proto__ || Object.getPrototypeOf(OnlineTestQuiz)).call(this, props));
+
+        _this.handleClick = _this.handleClick.bind(_this);
+        _this.checkboxHandler = _this.checkboxHandler.bind(_this);
+        _this.submitQuiz = _this.submitQuiz.bind(_this);
+        _this.state = { isToggleOn: false };
+        _this.state = { questionNumber: '1' };
+        _this.state = { isSubmit: false };
+        _this.state = { questions: [] };
+        return _this;
+    }
+
+    _createClass(OnlineTestQuiz, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            var url = '/api/taketest/' + this.props.match.params.test_id;
+            __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get(url).then(function (json) {
+
+                var data = json.data;
+                if (data.success) {
+                    _this2.setState({
+                        questions: data.data
+                    });
+                } else {
+                    _this2.setState({
+                        questions: []
+                    });
+                }
+            });
+        }
+    }, {
+        key: 'handleClick',
+        value: function handleClick(nextIndex, ele, total) {
+            var nextStep = this.refs[ele];
+            nextStep.click();
+            console.log(nextIndex, total);
+            if (nextIndex + 2 <= total - 1) {
+                this.setState(function () {
+                    return {
+                        isSubmit: false
+                    };
+                });
+            } else {
+                this.setState(function () {
+                    return {
+                        isSubmit: true
+                    };
+                });
+            }
+        }
+    }, {
+        key: 'checkboxHandler',
+        value: function checkboxHandler() {
+            console.log('in checkboxHandler click', this);
+        }
+    }, {
+        key: 'submitQuiz',
+        value: function submitQuiz() {
+            console.log('Thank You');
+            alert('Thank You!!!!');
+        }
+    }, {
+        key: 'getActiveQuestion',
+        value: function getActiveQuestion(index, totalQuestions) {
+            if (index < totalQuestions - 1) {
+                this.setState(function () {
+                    return {
+                        isSubmit: false
+                    };
+                });
+            } else {
+                this.setState(function () {
+                    return {
+                        isSubmit: true
+                    };
+                });
+            }
+            this.setState(function () {
+                return {
+                    questionNumber: index + 1
+                };
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            /**
+             * Create Steps circles
+             **/
+
+            var questions = [{ isActive: 'active', step: '#step1', stepClassName: 'step1', question_id: 1,
+                text: "If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
+                options: [{ id: 1, answer: '33' }, { id: 2, answer: '18' }, { id: 3, answer: '72' }, { id: 4, answer: '42' }],
+                category: 'Maths'
+            }, { isActive: 'disabled', step: '#step2', stepClassName: 'step2', question_id: 13,
+                text: "If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
+                options: [{ id: 1, answer: '33' }, { id: 2, answer: '18' }, { id: 3, answer: '72' }, { id: 4, answer: '42' }],
+                category: 'Maths1'
+            }, { isActive: 'disabled', step: '#step3', stepClassName: 'step3', question_id: 3,
+                text: "If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
+                options: [{ id: 1, answer: '33' }, { id: 2, answer: '18' }, { id: 3, answer: '72' }, { id: 4, answer: '42' }],
+                category: 'Maths2'
+            }, { isActive: 'disabled', step: '#step4', stepClassName: 'step4', question_id: 4,
+                text: "If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
+                options: [{ id: 3, answer: 'Yes' }, { id: 1, answer: 'No' }, { id: 2, answer: 'Not Sure' }],
+                category: 'Science'
+            }];
+
+            var stepsList = this.state.questions.map(function (question, index) {
+
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'li',
+                    { role: 'presentation', className: 'nav-item', key: index },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'a',
+                        { href: '#step' + question.question_id, ref: 'step' + question.question_id, 'data-toggle': 'tab', 'aria-controls': 'step1', onClick: function onClick() {
+                                return _this3.getActiveQuestion(index, _this3.state.questions.length);
+                            },
+                            role: 'tab', title: "Step 1", className: "nav-link" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: 'round-tab' },
+                            index + 1
+                        )
+                    )
+                );
+            });
+            /**
+             * Create Steps circles
+             **/
+
+            var questionsLists = this.state.questions.map(function (question, index) {
+
+                var optionList;
+                optionList = question.options.map(function (option, option_index) {
+
+                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'li',
+                        { key: option_index },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'radio_' + index, value: 'value1', type: 'radio', id: 'radio_' + option_index + index, onChange: function onChange(e) {
+                                console.log(e.target);
+                            } }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'label',
+                            { htmlFor: 'radio_' + option_index + index },
+                            option.text
+                        )
+                    );
+                });
+
+                var button;
+
+                if (_this3.state.isSubmit) {
+                    button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { type: 'button', onClick: function onClick() {
+                                return _this3.submitQuiz();
+                            }, className: 'btn btn-md btn-info btn-common next-step next-button' },
+                        'Submit'
+                    );
+                } else {
+                    button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { type: 'button', onClick: function onClick() {
+                                return _this3.handleClick(index, 'step' + _this3.state.questions[index + 1].question_id, _this3.state.questions.length);
+                            }, className: 'btn btn-md btn-info btn-common next-step next-button' },
+                        'Next'
+                    );
+                }
+
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: "tab-pane text-center " + question.isActive, role: 'tabpanel', key: index, id: 'step' + question.question_id },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h2',
+                        { className: 'text-md-left' },
+                        index + 1,
+                        '. Question'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h3', { className: 'text-md-left', dangerouslySetInnerHTML: { __html: question.text } }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'row form-group' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'ul',
+                            { className: 'questionList' },
+                            optionList
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'ul',
+                        { className: 'list-inline text-md-right' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            null,
+                            button
+                        )
+                    )
+                );
+            });
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'page-wrapper' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row page-titles' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-5 align-self-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h3',
+                            { className: 'text-themecolor' },
+                            'Online Quiz'
+                        )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'container-fluid' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'card-body' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'form',
+                                        { className: 'form cf {!this.state.isToggleOn ? \'setHidden\' : \'\'}' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'wizard' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { className: 'wizard-inner' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'b',
+                                                        null,
+                                                        'Time Limit :'
+                                                    ),
+                                                    ' \'00:00:00\''
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'ul',
+                                                    { className: 'nav nav-tabs', role: 'tablist' },
+                                                    stepsList
+                                                )
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { className: "questionOf" },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'p',
+                                                    { className: 'text-md-center' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'b',
+                                                        null,
+                                                        'Question ',
+                                                        this.state.questionNumber,
+                                                        ' of ',
+                                                        this.state.questions.length
+                                                    )
+                                                )
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { className: 'tab-content' },
+                                                questionsLists,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'clearfix' })
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return OnlineTestQuiz;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (OnlineTestQuiz);
 
 /***/ }),
-/* 122 */,
-/* 123 */,
-/* 124 */,
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(123);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(40)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./quiz.css", function() {
+			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./quiz.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(39)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".wizard {\n    margin: 20px auto;\n    background: #fff;\n}\n\n.wizard .nav-tabs {\n    position: relative;\n    margin: auto;\n    margin-bottom: 0;\n    border-bottom-color: #e0e0e0;\n    border-top-color: #e0e0e0;\n    border-top: 1px solid #dee2e6\n}\n\n.wizard > div.wizard-inner {\n    position: relative;\n}\n\n.connecting-line {\n    height: 2px;\n    background: #e0e0e0;\n    position: absolute;\n    width: 80%;\n    margin: 0 auto;\n    left: 0;\n    right: 0;\n    top: 50%;\n    z-index: 1;\n}\n\n.wizard .nav-tabs > li.active > a,\n.wizard .nav-tabs > li.active > a:hover,\n.wizard .nav-tabs > li.active > a:focus {\n    color: #555555;\n    cursor: default;\n    border: 0;\n    border-bottom-color: transparent;\n}\n\nspan.round-tab {\n    width: 50px;\n    height: 50px;\n    line-height: 50px;\n    display: inline-block;\n    border-radius: 100px;\n    background: #fff;\n    border: 2px solid #e0e0e0;\n    z-index: 2;\n    position: absolute;\n    left: 0;\n    text-align: center;\n    font-size: 25px;\n}\n\nspan.round-tab i {\n    color: #555555;\n}\n\n.wizard li a.active span.round-tab {\n    background: #fff;\n    border: 2px solid #5bc0de;\n\n}\n\n.wizard li a.active span.round-tab i {\n    color: #5bc0de;\n}\n\nspan.round-tab:hover {\n    color: #333;\n    border: 2px solid #333;\n}\n\n.wizard .nav-tabs > li {\n    width: 8%;\n}\n\n.wizard li a:after {\n    content: \" \";\n    position: relative;\n    left: 46%;\n    top: -20px;\n    opacity: 0;\n    margin: 0 auto;\n    bottom: 0px;\n    border: 5px solid transparent;\n    border-bottom-color: #5bc0de;\n    transition: 0.1s ease-in-out;\n}\n\n.wizard li.active.nav-item:after {\n    content: \" \";\n    position: relative;\n    left: 46%;\n    top: -20px;\n    opacity: 1;\n    margin: 0 auto;\n    bottom: 0px;\n    border: 10px solid transparent;\n    border-bottom-color: #5bc0de;\n}\n\n.wizard .nav-tabs > li a {\n    width: 50px;\n    height: 50px;\n    margin: 20px auto;\n    border-radius: 100%;\n    padding: 0;\n    position: relative;\n}\n\n.wizard .nav-tabs > li a:hover {\n    background: transparent;\n}\n\n.wizard .tab-pane {\n    position: relative;\n    padding-top: 50px;\n}\n\n.wizard h3 {\n    margin-top: 0;\n}\n\n.questionList{\n    list-style-type: none;\n    text-align: left;\n}\n\n.setHidden { display:none; }\n\n.questionOf{\n    padding-top: 2%;\n}\n\n\n@media( max-width: 585px) {\n\n    .wizard {\n        width: 90%;\n        height: auto !important;\n    }\n\n    span.round-tab {\n        font-size: 16px;\n        width: 50px;\n        height: 50px;\n        line-height: 50px;\n    }\n\n    .wizard .nav-tabs > li a {\n        width: 50px;\n        height: 50px;\n        line-height: 50px;\n    }\n\n    .wizard li.active:after {\n        content: \" \";\n        position: absolute;\n        left: 35%;\n    }\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.genericHashLink = genericHashLink;
+exports.HashLink = HashLink;
+exports.NavHashLink = NavHashLink;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRouterDom = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var hashFragment = '';
+var observer = null;
+var asyncTimerId = null;
+var scrollFunction = null;
+
+function reset() {
+  hashFragment = '';
+  if (observer !== null) observer.disconnect();
+  if (asyncTimerId !== null) {
+    window.clearTimeout(asyncTimerId);
+    asyncTimerId = null;
+  }
+}
+
+function getElAndScroll() {
+  var element = document.getElementById(hashFragment);
+  if (element !== null) {
+    scrollFunction(element);
+    reset();
+    return true;
+  }
+  return false;
+}
+
+function hashLinkScroll() {
+  // Push onto callback queue so it runs after the DOM is updated
+  window.setTimeout(function () {
+    if (getElAndScroll() === false) {
+      if (observer === null) {
+        observer = new MutationObserver(getElAndScroll);
+      }
+      observer.observe(document, {
+        attributes: true,
+        childList: true,
+        subtree: true
+      });
+      // if the element doesn't show up in 10 seconds, stop checking
+      asyncTimerId = window.setTimeout(function () {
+        reset();
+      }, 10000);
+    }
+  }, 0);
+}
+
+function genericHashLink(props, As) {
+  function handleClick(e) {
+    reset();
+    if (props.onClick) props.onClick(e);
+    if (typeof props.to === 'string') {
+      hashFragment = props.to.split('#').slice(1).join('#');
+    } else if (_typeof(props.to) === 'object' && typeof props.to.hash === 'string') {
+      hashFragment = props.to.hash.replace('#', '');
+    }
+    if (hashFragment !== '') {
+      scrollFunction = props.scroll || function (el) {
+        return el.scrollIntoView(props.smooth ? { behavior: 'smooth' } : undefined);
+      };
+      hashLinkScroll();
+    }
+  }
+
+  var scroll = props.scroll,
+      smooth = props.smooth,
+      filteredProps = _objectWithoutProperties(props, ['scroll', 'smooth']);
+
+  return _react2.default.createElement(
+    As,
+    _extends({}, filteredProps, { onClick: handleClick }),
+    props.children
+  );
+}
+
+function HashLink(props) {
+  return genericHashLink(props, _reactRouterDom.Link);
+}
+
+function NavHashLink(props) {
+  return genericHashLink(props, _reactRouterDom.NavLink);
+}
+
+var propTypes = {
+  onClick: _propTypes2.default.func,
+  children: _propTypes2.default.node,
+  scroll: _propTypes2.default.func,
+  to: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object])
+};
+
+HashLink.propTypes = propTypes;
+NavHashLink.propTypes = propTypes;
+
+/***/ }),
 /* 125 */
 /***/ (function(module, exports) {
 
