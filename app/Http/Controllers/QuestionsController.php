@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 include_once '../ud-constants/database.php';
+include_once '../ud-utils/ApiUtil.php';
 
 class QuestionsController extends Controller
 {
@@ -15,6 +16,9 @@ class QuestionsController extends Controller
     {
         $spCall = 'call ' . \SPCalls::QUESTIONS_API . '(@user_id:=' . $request->user()->id . ',@test_id:="' . $test_id . '",@test_flag:="TAKE TEST")';//Other option is "REVIEW TEST"
         $questions = DB::select($spCall);
+        if (count($questions) == 0) {
+            return \ApiUtil::printFailureResponse('No questions available');
+        }
         $outputQuestions = array();
 //        var_dump($questions[0]);
 //        die();
@@ -37,6 +41,10 @@ class QuestionsController extends Controller
             array_push($outputQuestions, $outputQuestion);
         }
         $outputQuestions[0]['isActive'] = 'active';//We want to display the first question
-        echo json_encode($outputQuestions);
+        $response = array(
+            "success" => "true",
+            "data" => $outputQuestions
+        );
+        echo json_encode($response);
     }
 }
