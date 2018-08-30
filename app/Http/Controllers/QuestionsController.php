@@ -14,6 +14,26 @@ class QuestionsController extends Controller
     public function show(Request $request, $test_id)
     {
         $spCall = 'call ' . \SPCalls::QUESTIONS_API . '(@user_id:=' . $request->user()->id . ',@test_id:="' . $test_id . '",@test_flag:="TAKE TEST")';//Other option is "REVIEW TEST"
-        echo json_encode(DB::select($spCall));
+        $questions = DB::select($spCall);
+        $outputQuestions = array();
+//        var_dump($questions[0]);
+//        die();
+        foreach ($questions as $i => $question) {
+//            dd($question);
+            $outputQuestion = array();
+            $outputQuestion['text'] = $question->question;
+            $optionsArray = array();
+            for ($i = 1; $i <= 4; $i++) {
+                $optionColumn = 'option_' . $i;
+                $options = array(
+                    'id' => $i,
+                    'text' => $question->$optionColumn
+                );
+                array_push($optionsArray, $options);
+            }
+            $outputQuestion['options'] = $optionsArray;
+            array_push($outputQuestions, $outputQuestion);
+        }
+        echo json_encode($outputQuestions);
     }
 }
