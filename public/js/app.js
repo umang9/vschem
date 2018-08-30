@@ -65911,7 +65911,7 @@ var OnlineTestQuiz = function (_Component) {
         _this.state = { isToggleOn: false };
         _this.state = { questionNumber: '1' };
         _this.state = { isSubmit: false };
-        _this.state = { questions: [] };
+        _this.state = { questions: [], submitted: false };
 
         return _this;
     }
@@ -65979,6 +65979,9 @@ var OnlineTestQuiz = function (_Component) {
     }, {
         key: 'submitQuiz',
         value: function submitQuiz() {
+            this.setState({
+                submitted: true
+            });
             console.log('end date', new Date().toJSON().slice(0, 19).replace('T', ' '));
             this.setState({
                 end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
@@ -66109,7 +66112,7 @@ var OnlineTestQuiz = function (_Component) {
                 if (_this3.state.isSubmit) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
-                        { type: 'button', onClick: function onClick() {
+                        { type: 'button', disabled: _this3.state.submitted, onClick: function onClick() {
                                 return _this3.submitQuiz();
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Submit'

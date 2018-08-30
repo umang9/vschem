@@ -16,7 +16,7 @@ class OnlineTestQuiz extends Component {
         this.state = {isToggleOn: false};
         this.state = {questionNumber: '1'};
         this.state = {isSubmit: false};
-        this.state = {questions : [] };
+        this.state = {questions : [] , submitted:false };
 
     }
     componentDidMount(){
@@ -77,6 +77,9 @@ class OnlineTestQuiz extends Component {
     }
 
     submitQuiz() {
+        this.setState({
+            submitted: true
+        });
         console.log('end date',new Date().toJSON().slice(0, 19).replace('T', ' '));
         this.setState({
             end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
@@ -185,7 +188,7 @@ class OnlineTestQuiz extends Component {
             var button;
 
             if(this.state.isSubmit){
-                button = <button type="button" onClick={()=>this.submitQuiz()} className="btn btn-md btn-info btn-common next-step next-button">
+                button = <button type="button" disabled={this.state.submitted} onClick={()=>this.submitQuiz()} className="btn btn-md btn-info btn-common next-step next-button">
                     Submit
                 </button>;
             }else{
