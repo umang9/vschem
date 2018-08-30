@@ -49,6 +49,7 @@ Route::group([
 ], function () {
     Route::get('/getuser', 'ApiController@user');
     Route::get('/tests', 'TestsController@show');
+    Route::get('/taketest/{test_id}', 'QuestionsController@show');
 }
 );
 Route::get('/{path?}', 'MainController@index');
