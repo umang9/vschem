@@ -24,7 +24,6 @@ class OnlineTestQuiz extends Component {
             .then(json => {
 
                 let data = json.data;
-                console.log('data',data);
                 this.setState({
                     questions: data
                 });
@@ -135,7 +134,7 @@ class OnlineTestQuiz extends Component {
                     Submit
                 </button>;
             }else{
-                button = <button type="button" onClick={()=>this.handleClick(index,'step'+question.question_id,this.state.questions.length)} className="btn btn-md btn-info btn-common next-step next-button">
+                button = <button type="button" onClick={()=>this.handleClick(index,'step'+this.state.questions[index+1].question_id,this.state.questions.length)} className="btn btn-md btn-info btn-common next-step next-button">
                     Next
                 </button>;
             }
@@ -192,7 +191,7 @@ class OnlineTestQuiz extends Component {
                                                 </ul>
                                             </div>
                                             <div className={"questionOf"}>
-                                                <p className="text-md-center"><b>Question {this.state.questionNumber} of 4</b></p>
+                                                <p className="text-md-center"><b>Question {this.state.questionNumber} of {this.state.questions.length}</b></p>
                                             </div>
                                             <div className="tab-content">
                                                 {questionsLists}

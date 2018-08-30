@@ -65923,7 +65923,6 @@ var OnlineTestQuiz = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get(url).then(function (json) {
 
                 var data = json.data;
-                console.log('data', data);
                 _this2.setState({
                     questions: data
                 });
@@ -66065,7 +66064,7 @@ var OnlineTestQuiz = function (_Component) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { type: 'button', onClick: function onClick() {
-                                return _this3.handleClick(index, 'step' + question.question_id, _this3.state.questions.length);
+                                return _this3.handleClick(index, 'step' + _this3.state.questions[index + 1].question_id, _this3.state.questions.length);
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Next'
                     );
@@ -66174,7 +66173,8 @@ var OnlineTestQuiz = function (_Component) {
                                                         null,
                                                         'Question ',
                                                         this.state.questionNumber,
-                                                        ' of 4'
+                                                        ' of ',
+                                                        this.state.questions.length
                                                     )
                                                 )
                                             ),
