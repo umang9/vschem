@@ -22,6 +22,7 @@ class OnlineTestQuiz extends Component {
         let url = '/api/taketest/'+this.props.match.params.test_id;
         axios.get(url)
             .then(json => {
+                if
 
                 let data = json.data;
                 this.setState({
@@ -144,7 +145,7 @@ class OnlineTestQuiz extends Component {
 
                 {/*<h5 className="text-md-left">Category: {question.category}</h5>*/}
 
-                <h3 className="text-md-left"> {question.text}
+                <h3 className="text-md-left" dangerouslySetInnerHTML={{__html: question.text}}>
                 </h3>
 
                 <div className="row form-group">
