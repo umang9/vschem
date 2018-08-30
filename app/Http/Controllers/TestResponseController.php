@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 include_once '../ud-utils/ApiUtil.php';
 include_once '../ud-constants/database.php';
 
 class TestResponseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
+
     public function store(Request $request, $test_id)
     {
         $answers = $request['user_response'];
