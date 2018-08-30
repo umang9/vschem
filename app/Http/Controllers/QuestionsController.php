@@ -22,6 +22,7 @@ class QuestionsController extends Controller
 //            dd($question);
             $outputQuestion = array();
             $outputQuestion['text'] = $question->question;
+            $outputQuestion['isActive'] = 'disabled';//For front-end css;
             $optionsArray = array();
             for ($i = 1; $i <= 4; $i++) {
                 $optionColumn = 'option_' . $i;
@@ -34,6 +35,7 @@ class QuestionsController extends Controller
             $outputQuestion['options'] = $optionsArray;
             array_push($outputQuestions, $outputQuestion);
         }
+        $outputQuestions[0]['isActive'] = 'active';//We want to display the first question
         echo json_encode($outputQuestions);
     }
 }
