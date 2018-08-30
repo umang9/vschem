@@ -1,4 +1,5 @@
 <?php
 class SPCalls {
     const TESTS_API = 'GET_USER_TEST_DETAILS';
+    const QUESTIONS_API = 'GET_TEST_INTERFACE_DETAILS';
 }
