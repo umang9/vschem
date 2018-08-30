@@ -44,6 +44,10 @@ class OnlineTestQuiz extends Component {
                     });
                 }
             });
+        console.log('start date',new Date().toJSON().slice(0, 19).replace('T', ' '));
+        this.setState({
+            start_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
+        });
 
     }
 
@@ -73,10 +77,24 @@ class OnlineTestQuiz extends Component {
     }
 
     submitQuiz() {
+        console.log('end date',new Date().toJSON().slice(0, 19).replace('T', ' '));
+        this.setState({
+            end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
+        });
         console.log('Thank You');
         let url = '/submitTest/'+this.props.match.params.test_id;
-        axios.post(url,{user_response:this.state.questionOptions})
+        // axios.post(url,{user_response:this.state.questionOptions})
+        axios({
+            method: 'post',
+            url: url,
+            data: {
+                user_response: this.state.questionOptions,
+                start_datetime: this.state.start_datetime,
+                end_datetime: this.state.end_datetime,
+            }
+        })
             .then(json => {
+                console.log(json);
                 // this.props.history.push('/onlinetests/JEE')
             });
         alert('Thank You!!!!');

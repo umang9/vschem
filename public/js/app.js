@@ -65943,6 +65943,10 @@ var OnlineTestQuiz = function (_Component) {
                     });
                 }
             });
+            console.log('start date', new Date().toJSON().slice(0, 19).replace('T', ' '));
+            this.setState({
+                start_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
+            });
         }
     }, {
         key: 'getQuestionOptionArray',
@@ -65975,9 +65979,23 @@ var OnlineTestQuiz = function (_Component) {
     }, {
         key: 'submitQuiz',
         value: function submitQuiz() {
+            console.log('end date', new Date().toJSON().slice(0, 19).replace('T', ' '));
+            this.setState({
+                end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
+            });
             console.log('Thank You');
             var url = '/submitTest/' + this.props.match.params.test_id;
-            __WEBPACK_IMPORTED_MODULE_3_axios___default.a.post(url, { user_response: this.state.questionOptions }).then(function (json) {
+            // axios.post(url,{user_response:this.state.questionOptions})
+            __WEBPACK_IMPORTED_MODULE_3_axios___default()({
+                method: 'post',
+                url: url,
+                data: {
+                    user_response: this.state.questionOptions,
+                    start_datetime: this.state.start_datetime,
+                    end_datetime: this.state.end_datetime
+                }
+            }).then(function (json) {
+                console.log(json);
                 // this.props.history.push('/onlinetests/JEE')
             });
             alert('Thank You!!!!');
