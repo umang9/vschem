@@ -117,14 +117,14 @@ class OnlineTestQuiz extends Component {
 
 
 
-        var questionsLists = questions.map((question, index)=> {
+        var questionsLists = this.state.questions.map((question, index)=> {
 
             var optionList;
             optionList = question.options.map(function(option,option_index){
 
                 return <li key={option_index}>
                     <input name={'radio_'+index} value='value1' type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>
-                    <label htmlFor={'radio_'+option_index+index}>{option.answer}</label>
+                    <label htmlFor={'radio_'+option_index+index}>{option.text}</label>
                 </li>
             });
 
@@ -135,12 +135,12 @@ class OnlineTestQuiz extends Component {
                     Submit
                 </button>;
             }else{
-                button = <button type="button" onClick={()=>this.handleClick(index,questions[index+1].stepClassName,questions.length)} className="btn btn-md btn-info btn-common next-step next-button">
+                button = <button type="button" onClick={()=>this.handleClick(index,'step'+question.question_id,this.state.questions.length)} className="btn btn-md btn-info btn-common next-step next-button">
                     Next
                 </button>;
             }
 
-            return <div className={"tab-pane text-center "+question.isActive} role="tabpanel" key={index} id={question.stepClassName}>
+            return <div className={"tab-pane text-center "+question.isActive} role="tabpanel" key={index} id={'step'+question.question_id}>
                 <h2 className="text-md-left">{index+1}. Question</h2>
 
                 {/*<h5 className="text-md-left">Category: {question.category}</h5>*/}

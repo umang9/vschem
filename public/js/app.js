@@ -66032,7 +66032,7 @@ var OnlineTestQuiz = function (_Component) {
              * Create Steps circles
              **/
 
-            var questionsLists = questions.map(function (question, index) {
+            var questionsLists = this.state.questions.map(function (question, index) {
 
                 var optionList;
                 optionList = question.options.map(function (option, option_index) {
@@ -66046,7 +66046,7 @@ var OnlineTestQuiz = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'label',
                             { htmlFor: 'radio_' + option_index + index },
-                            option.answer
+                            option.text
                         )
                     );
                 });
@@ -66065,7 +66065,7 @@ var OnlineTestQuiz = function (_Component) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { type: 'button', onClick: function onClick() {
-                                return _this3.handleClick(index, questions[index + 1].stepClassName, questions.length);
+                                return _this3.handleClick(index, 'step' + question.question_id, _this3.state.questions.length);
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Next'
                     );
@@ -66073,7 +66073,7 @@ var OnlineTestQuiz = function (_Component) {
 
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: "tab-pane text-center " + question.isActive, role: 'tabpanel', key: index, id: question.stepClassName },
+                    { className: "tab-pane text-center " + question.isActive, role: 'tabpanel', key: index, id: 'step' + question.question_id },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h2',
                         { className: 'text-md-left' },
