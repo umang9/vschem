@@ -40,7 +40,7 @@ const routes = [
     { path: '/student', exact: true, name: 'Admin', component: Student },
     { path: '/create-admin', exact: true, name: 'Admin', component: CreateAdmin },
     { path: '/admin/:id', exact: true, name: 'Student Details', component: User },
-    { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
+    { path: '/taketest/:test_id', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
     { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: Test },
     { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: Instruction },
 ];

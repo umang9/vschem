@@ -16497,7 +16497,7 @@ __webpack_require__(56);
 
 // import './index.css';
 
-var routes = [{ path: '/', exact: true, name: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/dashboard', exact: true, name: 'Dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/user', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/admin', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["a" /* Admin */] }, { path: '/onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["b" /* OnlineTestInfo */] }, { path: '/create-onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["a" /* CreateTestInfo */] }, { path: '/create-student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["a" /* CreateStudent */] }, { path: '/student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["b" /* Student */] }, { path: '/create-admin', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["b" /* CreateAdmin */] }, { path: '/admin/:id', exact: true, name: 'Student Details', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__["a" /* default */] }, { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: __WEBPACK_IMPORTED_MODULE_11__components_Test_test__["a" /* default */] }, { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: __WEBPACK_IMPORTED_MODULE_12__components_Test_instruction__["a" /* default */] }];
+var routes = [{ path: '/', exact: true, name: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/dashboard', exact: true, name: 'Dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/user', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/admin', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["a" /* Admin */] }, { path: '/onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["b" /* OnlineTestInfo */] }, { path: '/create-onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["a" /* CreateTestInfo */] }, { path: '/create-student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["a" /* CreateStudent */] }, { path: '/student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["b" /* Student */] }, { path: '/create-admin', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["b" /* CreateAdmin */] }, { path: '/admin/:id', exact: true, name: 'Student Details', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/taketest/:test_id', exact: true, name: 'Online Test Quiz', component: __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__["a" /* default */] }, { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: __WEBPACK_IMPORTED_MODULE_11__components_Test_test__["a" /* default */] }, { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: __WEBPACK_IMPORTED_MODULE_12__components_Test_instruction__["a" /* default */] }];
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -65880,6 +65880,8 @@ var Question = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__quiz_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__quiz_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_hash_link__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_hash_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_router_hash_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65887,6 +65889,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -65907,10 +65910,26 @@ var OnlineTestQuiz = function (_Component) {
         _this.state = { isToggleOn: false };
         _this.state = { questionNumber: '1' };
         _this.state = { isSubmit: false };
+        _this.state = { questions: [] };
         return _this;
     }
 
     _createClass(OnlineTestQuiz, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            var url = '/api/taketest/' + this.props.match.params.test_id;
+            __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get(url).then(function (json) {
+
+                var data = json.data;
+                console.log('data', data);
+                _this2.setState({
+                    questions: data
+                });
+            });
+        }
+    }, {
         key: 'handleClick',
         value: function handleClick(nextIndex, ele, total) {
             var nextStep = this.refs[ele];
@@ -65966,7 +65985,7 @@ var OnlineTestQuiz = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             /**
              * Create Steps circles
@@ -65976,7 +65995,7 @@ var OnlineTestQuiz = function (_Component) {
                 text: "If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
                 options: [{ id: 1, answer: '33' }, { id: 2, answer: '18' }, { id: 3, answer: '72' }, { id: 4, answer: '42' }],
                 category: 'Maths'
-            }, { isActive: 'disabled', step: '#step2', stepClassName: 'step2', question_id: 2,
+            }, { isActive: 'disabled', step: '#step2', stepClassName: 'step2', question_id: 13,
                 text: "If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
                 options: [{ id: 1, answer: '33' }, { id: 2, answer: '18' }, { id: 3, answer: '72' }, { id: 4, answer: '42' }],
                 category: 'Maths1'
@@ -65990,17 +66009,17 @@ var OnlineTestQuiz = function (_Component) {
                 category: 'Science'
             }];
 
-            var stepsList = questions.map(function (name, index) {
+            var stepsList = this.state.questions.map(function (question, index) {
 
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'li',
                     { role: 'presentation', className: 'nav-item', key: index },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'a',
-                        { href: name.step, ref: name.stepClassName, 'data-toggle': 'tab', 'aria-controls': 'step1', onClick: function onClick() {
-                                return _this2.getActiveQuestion(index, questions.length);
+                        { href: '#step' + question.question_id, ref: 'step' + question.question_id, 'data-toggle': 'tab', 'aria-controls': 'step1', onClick: function onClick() {
+                                return _this3.getActiveQuestion(index, _this3.state.questions.length);
                             },
-                            role: 'tab', title: 'Step 1', className: "nav-link" },
+                            role: 'tab', title: "Step 1", className: "nav-link" },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: 'round-tab' },
@@ -66014,7 +66033,7 @@ var OnlineTestQuiz = function (_Component) {
              **/
 
             var questionsLists = questions.map(function (question, index) {
-                // console.log(question.options);
+
                 var optionList;
                 optionList = question.options.map(function (option, option_index) {
 
@@ -66034,11 +66053,11 @@ var OnlineTestQuiz = function (_Component) {
 
                 var button;
 
-                if (_this2.state.isSubmit) {
+                if (_this3.state.isSubmit) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { type: 'button', onClick: function onClick() {
-                                return _this2.submitQuiz();
+                                return _this3.submitQuiz();
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Submit'
                     );
@@ -66046,7 +66065,7 @@ var OnlineTestQuiz = function (_Component) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { type: 'button', onClick: function onClick() {
-                                return _this2.handleClick(index, questions[index + 1].stepClassName, questions.length);
+                                return _this3.handleClick(index, questions[index + 1].stepClassName, questions.length);
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Next'
                     );
@@ -66060,12 +66079,6 @@ var OnlineTestQuiz = function (_Component) {
                         { className: 'text-md-left' },
                         index + 1,
                         '. Question'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'h5',
-                        { className: 'text-md-left' },
-                        'Category: ',
-                        question.category
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h3',
@@ -66630,7 +66643,10 @@ var Instruction = function (_Component) {
     function Instruction(prop) {
         _classCallCheck(this, Instruction);
 
-        return _possibleConstructorReturn(this, (Instruction.__proto__ || Object.getPrototypeOf(Instruction)).call(this, prop));
+        var _this = _possibleConstructorReturn(this, (Instruction.__proto__ || Object.getPrototypeOf(Instruction)).call(this, prop));
+
+        _this.state = { test_id: _this.props.match.params.test_id };
+        return _this;
     }
 
     _createClass(Instruction, [{
@@ -66713,7 +66729,7 @@ var Instruction = function (_Component) {
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'a',
-                                        { href: '#', className: 'btn btn-primary' },
+                                        { href: '/taketest/' + this.state.test_id, className: 'btn btn-primary' },
                                         'Start Test'
                                     )
                                 )

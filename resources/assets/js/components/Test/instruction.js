@@ -6,6 +6,7 @@ class Instruction extends Component {
 
     constructor(prop){
         super(prop);
+        this.state = {test_id:this.props.match.params.test_id};
     }
 
     render() {
@@ -44,7 +45,8 @@ class Instruction extends Component {
                                         {/*The candidates must sign on the Attendance Sheet at the appropriate place.*/}
                                         </ul>
                                     {/*</p>*/}
-                                    <a href="#" className="btn btn-primary">Start Test</a>
+                                    <a href={'/taketest/'+this.state.test_id} className="btn btn-primary">Start Test</a>
+
                                 </div>
                             </div>
                         </div>

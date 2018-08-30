@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import quizStyle from './quiz.css';
 import { HashLink as Link } from 'react-router-hash-link';
+import axios from "axios";
 
 class OnlineTestQuiz extends Component {
 
@@ -14,8 +15,22 @@ class OnlineTestQuiz extends Component {
         this.state = {isToggleOn: false};
         this.state = {questionNumber: '1'};
         this.state = {isSubmit: false};
+        this.state = {questions : [] };
     }
+    componentDidMount(){
 
+        let url = '/api/taketest/'+this.props.match.params.test_id;
+        axios.get(url)
+            .then(json => {
+
+                let data = json.data;
+                console.log('data',data);
+                this.setState({
+                    questions: data
+                });
+            });
+
+    }
     handleClick(nextIndex,ele,total) {
         let nextStep = this.refs[ele];
         nextStep.click();
@@ -67,7 +82,7 @@ class OnlineTestQuiz extends Component {
                 options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
                 category:'Maths'
             },
-            {isActive:'disabled',step:'#step2',stepClassName:'step2',question_id:2,
+            {isActive:'disabled',step:'#step2',stepClassName:'step2',question_id:13,
                 text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
                 options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
                 category:'Maths1'
@@ -84,11 +99,11 @@ class OnlineTestQuiz extends Component {
             },
         ];
 
-        var stepsList = questions.map((name, index)=>{
+        var stepsList = this.state.questions.map((question, index)=>{
 
             return <li role="presentation" className="nav-item" key={index}>
-                <a href={name.step} ref={name.stepClassName}   data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,questions.length)}
-                   role="tab" title="Step 1" className={"nav-link"}>
+                <a href={'#step'+question.question_id} ref={'step'+question.question_id} data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,this.state.questions.length)}
+                   role="tab" title={"Step 1"} className={"nav-link"}>
                     <span className="round-tab">
                         {index+1}
                     </span>
@@ -103,12 +118,11 @@ class OnlineTestQuiz extends Component {
 
 
         var questionsLists = questions.map((question, index)=> {
-            // console.log(question.options);
+
             var optionList;
             optionList = question.options.map(function(option,option_index){
 
                 return <li key={option_index}>
-                    {/*<input name={"group_"+option.id+index} type="radio" id={"radio_"+option_index+index} className="custom-control-input"  />*/}
                     <input name={'radio_'+index} value='value1' type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>
                     <label htmlFor={'radio_'+option_index+index}>{option.answer}</label>
                 </li>
@@ -129,7 +143,7 @@ class OnlineTestQuiz extends Component {
             return <div className={"tab-pane text-center "+question.isActive} role="tabpanel" key={index} id={question.stepClassName}>
                 <h2 className="text-md-left">{index+1}. Question</h2>
 
-                <h5 className="text-md-left">Category: {question.category}</h5>
+                {/*<h5 className="text-md-left">Category: {question.category}</h5>*/}
 
                 <h3 className="text-md-left"> {question.text}
                 </h3>
