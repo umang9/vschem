@@ -52,4 +52,5 @@ Route::group([
     Route::get('/taketest/{test_id}', 'QuestionsController@show');
 }
 );
+Route::post('/submitTest/{test_id}', 'TestResponseController@store');
 Route::get('/{path?}', 'MainController@index');
