@@ -16456,7 +16456,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Student_student__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Test_test__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Test_test__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Test_instruction__ = __webpack_require__(132);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16493,9 +16494,10 @@ __webpack_require__(56);
 
 
 
+
 // import './index.css';
 
-var routes = [{ path: '/', exact: true, name: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/dashboard', name: 'Dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/user', exact: false, name: 'User', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/admin', exact: false, name: 'User', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["a" /* Admin */] }, { path: '/onlinetest', exact: false, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["b" /* OnlineTestInfo */] }, { path: '/create-onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["a" /* CreateTestInfo */] }, { path: '/create-student', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["a" /* CreateStudent */] }, { path: '/student', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["b" /* Student */] }, { path: '/create-admin', exact: false, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["b" /* CreateAdmin */] }, { path: '/admin/:id', exact: true, name: 'Student Details', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__["a" /* default */] }, { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: __WEBPACK_IMPORTED_MODULE_11__components_Test_test__["a" /* default */] }];
+var routes = [{ path: '/', exact: true, name: 'Home', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/dashboard', exact: true, name: 'Dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dashboard__["a" /* default */] }, { path: '/user', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/admin', exact: true, name: 'User', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["a" /* Admin */] }, { path: '/onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["b" /* OnlineTestInfo */] }, { path: '/create-onlinetest', exact: true, name: 'Test Info', component: __WEBPACK_IMPORTED_MODULE_9__components_OnlineTest_onlinetest__["a" /* CreateTestInfo */] }, { path: '/create-student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["a" /* CreateStudent */] }, { path: '/student', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_8__components_Student_student__["b" /* Student */] }, { path: '/create-admin', exact: true, name: 'Admin', component: __WEBPACK_IMPORTED_MODULE_7__components_Admin_admin__["b" /* CreateAdmin */] }, { path: '/admin/:id', exact: true, name: 'Student Details', component: __WEBPACK_IMPORTED_MODULE_5__components_user_user__["a" /* default */] }, { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: __WEBPACK_IMPORTED_MODULE_10__components_Quiz_quiz__["a" /* default */] }, { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: __WEBPACK_IMPORTED_MODULE_11__components_Test_test__["a" /* default */] }, { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: __WEBPACK_IMPORTED_MODULE_12__components_Test_instruction__["a" /* default */] }];
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -66361,7 +66363,11 @@ NavHashLink.propTypes = propTypes;
 
 /***/ }),
 /* 126 */,
-/* 127 */
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66407,14 +66413,10 @@ var Test = function (_Component) {
         }
     }, {
         key: 'componentWillMount',
-        value: function componentWillMount() {
-            console.log('test 1');
-        }
+        value: function componentWillMount() {}
     }, {
         key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            console.log('test 2');
-        }
+        value: function componentWillUnmount() {}
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
@@ -66473,12 +66475,12 @@ var Test = function (_Component) {
                             'td',
                             null,
                             name.is_test_taken ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'button',
+                                'a',
                                 { type: 'button', className: 'btn btn-rounded btn-block btn-outline-secondary' },
                                 'Review'
                             ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'button',
-                                { type: 'button', className: 'btn btn-rounded btn-block btn-outline-primary' },
+                                'a',
+                                { href: '/onlinetest/instruction/' + name.test_id, target: '_blank', className: 'btn btn-rounded btn-block btn-outline-primary' },
                                 'Take Test'
                             )
                         )
@@ -66601,6 +66603,132 @@ var Test = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (Test);
+
+/***/ }),
+/* 132 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var Instruction = function (_Component) {
+    _inherits(Instruction, _Component);
+
+    function Instruction(prop) {
+        _classCallCheck(this, Instruction);
+
+        return _possibleConstructorReturn(this, (Instruction.__proto__ || Object.getPrototypeOf(Instruction)).call(this, prop));
+    }
+
+    _createClass(Instruction, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'page-wrapper' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'row page-titles' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'col-md-5 align-self-center' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h3',
+                            { className: 'text-themecolor' },
+                            'Instructions'
+                        )
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'container-fluid' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'row' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'card' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'card-body' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h4',
+                                        { className: 'card-title' },
+                                        'Please follow below instructions'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'ul',
+                                        null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            'The test will start exactly after click on start test button.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            'The test will be of 1 hrs duration.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            'The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            'The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            'There will be three parts in the question paper consisting of Physics, Chemistry and Mathematics having equal weightage.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            'Each question is allotted 4 (four) marks for the correct response. \xBC (one fourth) marks i.e. one mark will be deducted for indicating incorrect response of each question. No deduction from the total score will be made if no response is indicated for a question.'
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            'There is only one correct response for each question out of four responses given.'
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'a',
+                                        { href: '#', className: 'btn btn-primary' },
+                                        'Start Test'
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Instruction;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Instruction);
 
 /***/ })
 /******/ ]);

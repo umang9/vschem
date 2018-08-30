@@ -51,4 +51,5 @@ Route::group([
     Route::get('/tests', 'TestsController@show');
 }
 );
-Route::get('/{path?}', 'MainController@index');
+//Route::get('/{path?}', 'MainController@index');
+Route::any('{all}', 'MainController@index')->where(['all' => '.*']);

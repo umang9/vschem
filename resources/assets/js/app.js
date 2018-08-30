@@ -25,22 +25,24 @@ import { Student,CreateStudent} from "./components/Student/student";
 import { OnlineTestInfo,CreateTestInfo } from "./components/OnlineTest/onlinetest";
 import OnlineTestQuiz from "./components/Quiz/quiz";
 import Test from "./components/Test/test";
+import Instruction from "./components/Test/instruction";
 
 // import './index.css';
 
 const routes = [
     { path: '/', exact: true, name: 'Home', component: DashBoard },
-    { path: '/dashboard', name: 'Dashboard', component: DashBoard },
-    { path: '/user', exact: false, name: 'User', component: User },
-    { path: '/admin', exact: false, name: 'User', component: Admin },
-    { path: '/onlinetest', exact: false, name: 'Test Info', component: OnlineTestInfo },
+    { path: '/dashboard', exact:true,name: 'Dashboard', component: DashBoard },
+    { path: '/user', exact: true, name: 'User', component: User },
+    { path: '/admin', exact: true, name: 'User', component: Admin },
+    { path: '/onlinetest', exact: true, name: 'Test Info', component: OnlineTestInfo },
     { path: '/create-onlinetest', exact: true, name: 'Test Info', component: CreateTestInfo },
-    { path: '/create-student', exact: false, name: 'Admin', component: CreateStudent },
-    { path: '/student', exact: false, name: 'Admin', component: Student },
-    { path: '/create-admin', exact: false, name: 'Admin', component: CreateAdmin },
+    { path: '/create-student', exact: true, name: 'Admin', component: CreateStudent },
+    { path: '/student', exact: true, name: 'Admin', component: Student },
+    { path: '/create-admin', exact: true, name: 'Admin', component: CreateAdmin },
     { path: '/admin/:id', exact: true, name: 'Student Details', component: User },
     { path: '/onlinetests-quiz', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
     { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: Test },
+    { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: Instruction },
 ];
 
 class App extends Component {
