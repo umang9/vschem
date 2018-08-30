@@ -21,6 +21,7 @@ class QuestionsController extends Controller
         foreach ($questions as $i => $question) {
 //            dd($question);
             $outputQuestion = array();
+            $outputQuestion['question_id'] = $question->question_id;
             $outputQuestion['text'] = $question->question;
             $outputQuestion['isActive'] = 'disabled';//For front-end css;
             $optionsArray = array();
