@@ -10,7 +10,8 @@ class SideBar extends Component {
         this.state = {
             showMenu: false,
             name:'',
-            user:{}
+            user:{},
+            test_type:[]
         };
 
         this.showMenu = this.showMenu.bind(this);
@@ -21,15 +22,17 @@ class SideBar extends Component {
             .then(json => {
 
                 let data = json.data;
-                console.log('data',data);
+                console.log('data',data.test_type.split(','));
                 let full_name = data.first_name+' '+data.last_name;
 
                 this.setState({
                     name: full_name,
-                    user: data
+                    user: data,
+                    test_type: data.test_type.split(',')
                 });
             });
     }
+
 
 
     showMenu(event) {
@@ -51,6 +54,18 @@ class SideBar extends Component {
 
     render() {
         var aside;
+        // var test_type = this.state.user.test_type.split(',');
+
+        var testList = this.state.test_type.map((name, index)=>{
+
+            return <li key={index}>
+                <Link to={`/onlinetests/`+name}>{name}</Link>
+                </li>
+                 ;
+
+        });
+
+
         if(this.state.user.group_id==1){
             aside = <aside className="left-sidebar">
 
@@ -228,14 +243,7 @@ class SideBar extends Component {
                             <li><a className="has-arrow waves-effect waves-dark" href="      #" aria-expanded="false"><i className="mdi mdi-email"></i>
                                 <span className="hide-menu">Test</span></a>
                                 <ul aria-expanded="false" className="collapse">
-                                    <li>
-                                        {/*<Link to="/onlinetests/NEET">CET</Link>*/}
-                                        <Link to={`/onlinetests/NEET`}>NEET</Link>
-
-                                    </li>
-                                    <li>
-                                        <Link to="/onlinetests/JEE">JEE</Link>
-                                    </li>
+                                    {testList}
                                 </ul>
                             </li>
 
