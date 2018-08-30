@@ -52,5 +52,7 @@ Route::group([
     Route::get('/taketest/{test_id}', 'QuestionsController@show');
 }
 );
-//Route::get('/{path?}', 'MainController@index');
+
 Route::any('{all}', 'MainController@index')->where(['all' => '.*']);
+Route::post('/submitTest/{test_id}', 'TestResponseController@store');
+

@@ -75,9 +75,9 @@ class OnlineTestQuiz extends Component {
     submitQuiz() {
         console.log('Thank You');
         let url = '/submitTest/'+this.props.match.params.test_id;
-        axios.post(url)
+        axios.post(url,{user_response:this.state.questionOptions})
             .then(json => {
-                this.props.history.push('/onlinetests/JEE')
+                // this.props.history.push('/onlinetests/JEE')
             });
         alert('Thank You!!!!');
     }
