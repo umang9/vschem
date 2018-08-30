@@ -12,10 +12,12 @@ class OnlineTestQuiz extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
         this.submitQuiz = this.submitQuiz.bind(this);
+        this.handleOptionChange = this.handleOptionChange.bind(this);
         this.state = {isToggleOn: false};
         this.state = {questionNumber: '1'};
         this.state = {isSubmit: false};
         this.state = {questions : [] };
+
     }
     componentDidMount(){
 
@@ -23,11 +25,18 @@ class OnlineTestQuiz extends Component {
         axios.get(url)
             .then(json => {
 
-
                 let data = json.data;
+                console.log('',data);
                 if(data.success) {
                     this.setState({
                         questions: data.data
+                    });
+                    var array = this.state.questions.map((question,index)=>{
+                        return {question_id:question.question_id,selected_option:null};
+                    });
+
+                    this.setState({
+                        questionOptions: array
                     });
                 }else{
                     this.setState({
@@ -37,6 +46,12 @@ class OnlineTestQuiz extends Component {
             });
 
     }
+
+    getQuestionOptionArray(){
+
+
+    }
+
     handleClick(nextIndex,ele,total) {
         let nextStep = this.refs[ele];
         nextStep.click();
@@ -59,6 +74,11 @@ class OnlineTestQuiz extends Component {
 
     submitQuiz() {
         console.log('Thank You');
+        let url = '/submitTest/'+this.props.match.params.test_id;
+        axios.post(url)
+            .then(json => {
+                this.props.history.push('/onlinetests/JEE')
+            });
         alert('Thank You!!!!');
     }
 
@@ -75,6 +95,17 @@ class OnlineTestQuiz extends Component {
         this.setState(() => ({
             questionNumber: index+1
         }));
+    }
+
+    handleOptionChange(question_id,option_id){
+
+        for (var i=0;i<this.state.questionOptions.length;i++){
+            if(this.state.questionOptions[i].question_id==question_id){
+                this.state.questionOptions[i].selected_option = option_id
+                this.forceUpdate();
+            }
+        }
+        console.log(this.state.questionOptions,question_id, option_id);
     }
 
     render() {
@@ -121,18 +152,17 @@ class OnlineTestQuiz extends Component {
          * Create Steps circles
          **/
 
-
-
         var questionsLists = this.state.questions.map((question, index)=> {
 
             var optionList;
             optionList = question.options.map(function(option,option_index){
 
                 return <li key={option_index}>
-                    <input name={'radio_'+index} value='value1' type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>
+                    {/*<input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>*/}
+                    <input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={()=>this.handleOptionChange(question.question_id,option.id)}/>
                     <label htmlFor={'radio_'+option_index+index}>{option.text}</label>
                 </li>
-            });
+            }.bind(this));
 
             var button;
 
