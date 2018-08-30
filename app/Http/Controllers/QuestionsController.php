@@ -42,7 +42,7 @@ class QuestionsController extends Controller
         }
         $outputQuestions[0]['isActive'] = 'active';//We want to display the first question
         $response = array(
-            "success" => "true",
+            "success" => true,
             "data" => $outputQuestions
         );
         echo json_encode($response);
