@@ -234,32 +234,81 @@ class OnlineTestQuiz extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12">
-                            <div className="card">
-                                <div className="card-body">
+                            {!this.state.submitted ?
+                                <div className="card">
+                                    <div className="card-body">
 
-                                    <form className="form cf {!this.state.isToggleOn ? 'setHidden' : ''}">
-                                        <div className="wizard">
+                                        <form className="form cf {!this.state.isToggleOn ? 'setHidden' : ''}">
+                                            <div className="wizard">
 
-                                            <div className="wizard-inner">
-                                                <div>
-                                                    <b>Time Limit :</b> '00:00:00'
+                                                <div className="wizard-inner">
+                                                    <div>
+                                                        <b>Time Limit :</b> '00:00:00'
+                                                    </div>
+                                                    <ul className="nav nav-tabs" role="tablist">
+                                                        {stepsList}
+                                                    </ul>
                                                 </div>
-                                                <ul className="nav nav-tabs" role="tablist">
-                                                    {stepsList}
-                                                </ul>
+                                                <div className={"questionOf"}>
+                                                    <p className="text-md-center"><b>Question {this.state.questionNumber} of {this.state.questions.length}</b></p>
+                                                </div>
+                                                <div className="tab-content">
+                                                    {questionsLists}
+                                                    <div className="clearfix"></div>
+                                                </div>
+
                                             </div>
-                                            <div className={"questionOf"}>
-                                                <p className="text-md-center"><b>Question {this.state.questionNumber} of {this.state.questions.length}</b></p>
-                                            </div>
-                                            <div className="tab-content">
-                                                {questionsLists}
-                                                <div className="clearfix"></div>
-                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                :
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex no-block">
+                                            <h4 className="card-title">Test Report<br/>
+                                                <small className="text-muted">Test summary report</small>
+                                            </h4>
 
                                         </div>
-                                    </form>
+                                    </div>
+                                    <div className="bg-light p-20">
+                                        <div className="d-flex">
+                                            <div className="align-self-center">
+                                                <h3 className="m-b-0">Test Name</h3>
+                                                <small>Total Score</small>
+                                            </div>
+                                            <div className="ml-auto align-self-center">
+                                                <h2 className="text-success">20</h2></div>
+                                        </div>
+                                    </div>
+                                    <div className="card-body">
+                                        <div className="table-responsive">
+                                            <table className="table table-hover earning-box">
+                                                <thead>
+                                                <tr>
+                                                    <th colSpan="2">Name</th>
+                                                    <th>Priority</th>
+                                                    <th>Earnings</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr className="active">
+                                                    <td><span className="round"><img src="../assets/images/users/2.jpg"
+                                                                                     alt="user" width="50"/></span></td>
+                                                    <td>
+                                                        <h6>Andrew</h6>
+                                                        <small className="text-muted">Project Manager</small>
+                                                    </td>
+                                                    <td><span className="label label-info">Medium</span></td>
+                                                    <td>$23.9K</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            }
+
                         </div>
                     </div>
                 </div>
