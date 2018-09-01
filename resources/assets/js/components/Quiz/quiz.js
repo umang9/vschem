@@ -77,10 +77,7 @@ class OnlineTestQuiz extends Component {
     }
 
     submitQuiz() {
-        this.setState({
-            submitted: true
-        });
-        console.log('end date',new Date().toJSON().slice(0, 19).replace('T', ' '));
+
         this.setState({
             end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
         });
@@ -98,9 +95,12 @@ class OnlineTestQuiz extends Component {
         })
             .then(json => {
                 console.log(json);
+                this.setState({
+                    submitted: true
+                });
                 // this.props.history.push('/onlinetests/JEE')
             });
-        alert('Thank You!!!!');
+        // alert('Thank You!!!!');
     }
 
     getActiveQuestion(index,totalQuestions) {

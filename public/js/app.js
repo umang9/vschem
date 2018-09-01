@@ -65979,10 +65979,8 @@ var OnlineTestQuiz = function (_Component) {
     }, {
         key: 'submitQuiz',
         value: function submitQuiz() {
-            this.setState({
-                submitted: true
-            });
-            console.log('end date', new Date().toJSON().slice(0, 19).replace('T', ' '));
+            var _this3 = this;
+
             this.setState({
                 end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
             });
@@ -65999,9 +65997,12 @@ var OnlineTestQuiz = function (_Component) {
                 }
             }).then(function (json) {
                 console.log(json);
+                _this3.setState({
+                    submitted: true
+                });
                 // this.props.history.push('/onlinetests/JEE')
             });
-            alert('Thank You!!!!');
+            // alert('Thank You!!!!');
         }
     }, {
         key: 'getActiveQuestion',
@@ -66040,7 +66041,7 @@ var OnlineTestQuiz = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this4 = this;
 
             /**
              * Create Steps circles
@@ -66072,7 +66073,7 @@ var OnlineTestQuiz = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'a',
                         { href: '#step' + question.question_id, ref: 'step' + question.question_id, 'data-toggle': 'tab', 'aria-controls': 'step1', onClick: function onClick() {
-                                return _this3.getActiveQuestion(index, _this3.state.questions.length);
+                                return _this4.getActiveQuestion(index, _this4.state.questions.length);
                             },
                             role: 'tab', title: "Step 1", className: "nav-link" },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -66091,13 +66092,13 @@ var OnlineTestQuiz = function (_Component) {
 
                 var optionList;
                 optionList = question.options.map(function (option, option_index) {
-                    var _this4 = this;
+                    var _this5 = this;
 
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'li',
                         { key: option_index },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'radio_' + index, value: option.id, type: 'radio', id: 'radio_' + option_index + index, onChange: function onChange() {
-                                return _this4.handleOptionChange(question.question_id, option.id);
+                                return _this5.handleOptionChange(question.question_id, option.id);
                             } }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'label',
@@ -66105,15 +66106,15 @@ var OnlineTestQuiz = function (_Component) {
                             option.text
                         )
                     );
-                }.bind(_this3));
+                }.bind(_this4));
 
                 var button;
 
-                if (_this3.state.isSubmit) {
+                if (_this4.state.isSubmit) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
-                        { type: 'button', disabled: _this3.state.submitted, onClick: function onClick() {
-                                return _this3.submitQuiz();
+                        { type: 'button', disabled: _this4.state.submitted, onClick: function onClick() {
+                                return _this4.submitQuiz();
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Submit'
                     );
@@ -66121,7 +66122,7 @@ var OnlineTestQuiz = function (_Component) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { type: 'button', onClick: function onClick() {
-                                return _this3.handleClick(index, 'step' + _this3.state.questions[index + 1].question_id, _this3.state.questions.length);
+                                return _this4.handleClick(index, 'step' + _this4.state.questions[index + 1].question_id, _this4.state.questions.length);
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Next'
                     );
