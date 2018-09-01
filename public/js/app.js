@@ -58264,16 +58264,6 @@ var Header = function (_Component) {
                                         className: 'nav-link hidden-sm-down text-muted waves-effect waves-dark',
                                         href: 'javascript:void(0)' },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-search' })
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'form',
-                                    { className: 'app-search' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Search & enter' }),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'a',
-                                        { className: 'srh-btn' },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-close' })
-                                    )
                                 )
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -58284,7 +58274,7 @@ var Header = function (_Component) {
                                     { className: 'nav-link dropdown-toggle text-muted waves-effect waves-dark', href: '',
                                         'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
-                                        src: '../assets/images/users/1.jpg', alt: 'user', className: 'profile-pic' })
+                                        src: '/assets/images/users/1.jpg', alt: 'user', className: 'profile-pic' })
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'div',
@@ -60931,14 +60921,7 @@ var SideBar = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'profile-img' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/users/profile.png', alt: 'user' }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'div',
-                                    { className: 'notify setpos' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'heartbit' }),
-                                    ' ',
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'point' })
-                                )
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "/assets/images/users/profile.png", alt: 'user' })
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
@@ -60950,13 +60933,7 @@ var SideBar = function (_Component) {
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'a',
-                                    { href: '', onClick: this.showMenu, className: 'dropdown-toggle u-dropdown', 'data-toggle': 'dropdown', role: 'button',
-                                        'aria-haspopup': 'true', 'aria-expanded': 'true' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-settings' })
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { href: 'pages-login.html', className: '', 'data-toggle': 'tooltip', title: 'Logout' },
+                                    { href: '', onClick: this.logout, className: '', 'data-toggle': 'tooltip', title: 'Logout' },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-power' })
                                 ),
                                 this.state.showMenu ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -61149,14 +61126,7 @@ var SideBar = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'profile-img' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/users/profile.png', alt: 'user' }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'div',
-                                    { className: 'notify setpos' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'heartbit' }),
-                                    ' ',
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'point' })
-                                )
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "/assets/images/users/profile.png", alt: 'user' })
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
@@ -61168,13 +61138,7 @@ var SideBar = function (_Component) {
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'a',
-                                    { href: '', onClick: this.showMenu, className: 'dropdown-toggle u-dropdown', 'data-toggle': 'dropdown', role: 'button',
-                                        'aria-haspopup': 'true', 'aria-expanded': 'true' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-settings' })
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { href: 'pages-login.html', className: '', 'data-toggle': 'tooltip', title: 'Logout' },
+                                    { href: '', onClick: this.logout, className: '', 'data-toggle': 'tooltip', title: 'Logout' },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-power' })
                                 ),
                                 this.state.showMenu ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -65911,7 +65875,15 @@ var OnlineTestQuiz = function (_Component) {
         _this.state = { isToggleOn: false };
         _this.state = { questionNumber: '1' };
         _this.state = { isSubmit: false };
-        _this.state = { questions: [], submitted: false };
+        _this.state = { questions: [], submitted: false,
+            total_score: '',
+            is_correct: '',
+            is_incorrect: '',
+            unmarked: '',
+            total: '',
+            score: '',
+            submittedTest: false
+        };
 
         return _this;
     }
@@ -65982,7 +65954,8 @@ var OnlineTestQuiz = function (_Component) {
             var _this3 = this;
 
             this.setState({
-                end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
+                end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' '),
+                submittedTest: true
             });
             console.log('Thank You');
             var url = '/submitTest/' + this.props.match.params.test_id;
@@ -65992,14 +65965,25 @@ var OnlineTestQuiz = function (_Component) {
                 url: url,
                 data: {
                     user_response: this.state.questionOptions,
-                    start_datetime: this.state.start_datetime,
-                    end_datetime: this.state.end_datetime
+                    start_time: this.state.start_datetime,
+                    end_time: new Date().toJSON().slice(0, 19).replace('T', ' ')
                 }
             }).then(function (json) {
                 console.log(json);
-                _this3.setState({
-                    submitted: true
-                });
+                var data = json.data;
+                if (data.success) {
+                    var test_response = data.data[0];
+                    _this3.setState({
+                        submitted: true,
+                        total_score: test_response.total_score,
+                        is_correct: test_response.is_correct,
+                        is_incorrect: test_response.is_incorrect,
+                        unmarked: test_response.unmarked,
+                        total: test_response.total,
+                        score: test_response.score
+                    });
+                } else {}
+
                 // this.props.history.push('/onlinetests/JEE')
             });
             // alert('Thank You!!!!');
@@ -66113,7 +66097,7 @@ var OnlineTestQuiz = function (_Component) {
                 if (_this4.state.isSubmit) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
-                        { type: 'button', disabled: _this4.state.submitted, onClick: function onClick() {
+                        { type: 'button', disabled: _this4.state.submittedTest, onClick: function onClick() {
                                 return _this4.submitQuiz();
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Submit'
@@ -66274,11 +66258,6 @@ var OnlineTestQuiz = function (_Component) {
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'h3',
                                                 { className: 'm-b-0' },
-                                                'Test Name'
-                                            ),
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'small',
-                                                null,
                                                 'Total Score'
                                             )
                                         ),
@@ -66288,7 +66267,7 @@ var OnlineTestQuiz = function (_Component) {
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'h2',
                                                 { className: 'text-success' },
-                                                '20'
+                                                this.state.score
                                             )
                                         )
                                     )
@@ -66303,29 +66282,6 @@ var OnlineTestQuiz = function (_Component) {
                                             'table',
                                             { className: 'table table-hover earning-box' },
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'thead',
-                                                null,
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'tr',
-                                                    null,
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'th',
-                                                        { colSpan: '2' },
-                                                        'Name'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'th',
-                                                        null,
-                                                        'Priority'
-                                                    ),
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'th',
-                                                        null,
-                                                        'Earnings'
-                                                    )
-                                                )
-                                            ),
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'tbody',
                                                 null,
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -66335,39 +66291,87 @@ var OnlineTestQuiz = function (_Component) {
                                                         'td',
                                                         null,
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'span',
-                                                            { className: 'round' },
-                                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '../assets/images/users/2.jpg',
-                                                                alt: 'user', width: '50' })
+                                                            'h6',
+                                                            null,
+                                                            'Correct Answers'
                                                         )
                                                     ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        this.state.is_correct
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    { className: 'active' },
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'td',
                                                         null,
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                             'h6',
                                                             null,
-                                                            'Andrew'
-                                                        ),
-                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'small',
-                                                            { className: 'text-muted' },
-                                                            'Project Manager'
+                                                            'In Correct Answers'
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'td',
                                                         null,
+                                                        this.state.is_incorrect
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    { className: 'active' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
                                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                            'span',
-                                                            { className: 'label label-info' },
-                                                            'Medium'
+                                                            'h6',
+                                                            null,
+                                                            'Unmarked'
                                                         )
                                                     ),
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'td',
                                                         null,
-                                                        '$23.9K'
+                                                        this.state.unmarked
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    { className: 'active' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'h6',
+                                                            null,
+                                                            'Total Questions'
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        this.state.total
+                                                    )
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'tr',
+                                                    { className: 'active' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                            'h6',
+                                                            null,
+                                                            'Total Score'
+                                                        )
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'td',
+                                                        null,
+                                                        this.state.total_score
                                                     )
                                                 )
                                             )
@@ -66676,7 +66680,7 @@ var Test = function (_Component) {
                             null,
                             name.is_test_taken ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'a',
-                                { type: 'button', className: 'btn btn-rounded btn-block btn-outline-secondary' },
+                                { href: '#', className: 'btn btn-rounded btn-block btn-outline-secondary' },
                                 'Review'
                             ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'a',

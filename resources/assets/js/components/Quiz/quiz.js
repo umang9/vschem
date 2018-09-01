@@ -16,7 +16,15 @@ class OnlineTestQuiz extends Component {
         this.state = {isToggleOn: false};
         this.state = {questionNumber: '1'};
         this.state = {isSubmit: false};
-        this.state = {questions : [] , submitted:false };
+        this.state = {questions : [] , submitted:false,
+            total_score:'',
+            is_correct:'',
+            is_incorrect:'',
+            unmarked :'',
+            total:'',
+            score:'',
+            submittedTest:false
+        };
 
     }
     componentDidMount(){
@@ -79,7 +87,8 @@ class OnlineTestQuiz extends Component {
     submitQuiz() {
 
         this.setState({
-            end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
+            end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' '),
+            submittedTest:true
         });
         console.log('Thank You');
         let url = '/submitTest/'+this.props.match.params.test_id;
@@ -89,15 +98,28 @@ class OnlineTestQuiz extends Component {
             url: url,
             data: {
                 user_response: this.state.questionOptions,
-                start_datetime: this.state.start_datetime,
-                end_datetime: this.state.end_datetime,
+                start_time: this.state.start_datetime,
+                end_time: new Date().toJSON().slice(0, 19).replace('T', ' '),
             }
         })
             .then(json => {
                 console.log(json);
-                this.setState({
-                    submitted: true
-                });
+                let data=json.data;
+                if(data.success){
+                    let test_response = data.data[0];
+                    this.setState({
+                        submitted: true,
+                        total_score:test_response.total_score,
+                        is_correct:test_response.is_correct,
+                        is_incorrect:test_response.is_incorrect,
+                        unmarked :test_response.unmarked,
+                        total:test_response.total,
+                        score:test_response.score,
+                    });
+                }else{
+
+                }
+
                 // this.props.history.push('/onlinetests/JEE')
             });
         // alert('Thank You!!!!');
@@ -188,7 +210,7 @@ class OnlineTestQuiz extends Component {
             var button;
 
             if(this.state.isSubmit){
-                button = <button type="button" disabled={this.state.submitted} onClick={()=>this.submitQuiz()} className="btn btn-md btn-info btn-common next-step next-button">
+                button = <button type="button" disabled={this.state.submittedTest} onClick={()=>this.submitQuiz()} className="btn btn-md btn-info btn-common next-step next-button">
                     Submit
                 </button>;
             }else{
@@ -274,34 +296,54 @@ class OnlineTestQuiz extends Component {
                                     <div className="bg-light p-20">
                                         <div className="d-flex">
                                             <div className="align-self-center">
-                                                <h3 className="m-b-0">Test Name</h3>
-                                                <small>Total Score</small>
+                                                <h3 className="m-b-0">Total Score</h3>
                                             </div>
                                             <div className="ml-auto align-self-center">
-                                                <h2 className="text-success">20</h2></div>
+                                                <h2 className="text-success">{this.state.score}</h2></div>
                                         </div>
                                     </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
                                             <table className="table table-hover earning-box">
-                                                <thead>
-                                                <tr>
-                                                    <th colSpan="2">Name</th>
-                                                    <th>Priority</th>
-                                                    <th>Earnings</th>
-                                                </tr>
-                                                </thead>
+
                                                 <tbody>
                                                 <tr className="active">
-                                                    <td><span className="round"><img src="../assets/images/users/2.jpg"
-                                                                                     alt="user" width="50"/></span></td>
+
                                                     <td>
-                                                        <h6>Andrew</h6>
-                                                        <small className="text-muted">Project Manager</small>
+                                                        <h6>Correct Answers</h6>
                                                     </td>
-                                                    <td><span className="label label-info">Medium</span></td>
-                                                    <td>$23.9K</td>
+                                                    <td>{this.state.is_correct}</td>
                                                 </tr>
+                                                <tr className="active">
+
+                                                    <td>
+                                                        <h6>In Correct Answers</h6>
+                                                    </td>
+                                                    <td>{this.state.is_incorrect}</td>
+                                                </tr>
+                                                <tr className="active">
+
+                                                    <td>
+                                                        <h6>Unmarked</h6>
+                                                    </td>
+                                                    <td>{this.state.unmarked}</td>
+                                                </tr>
+                                                <tr className="active">
+
+                                                    <td>
+                                                        <h6>Total Questions</h6>
+                                                    </td>
+                                                    <td>{this.state.total}</td>
+                                                </tr>
+
+                                                <tr className="active">
+
+                                                    <td>
+                                                        <h6>Total Score</h6>
+                                                    </td>
+                                                    <td>{this.state.total_score}</td>
+                                                </tr>
+
                                                 </tbody>
                                             </table>
                                         </div>
