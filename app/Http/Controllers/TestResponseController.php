@@ -19,14 +19,14 @@ class TestResponseController extends Controller
     public function store(Request $request, $test_id)
     {
         $answers = $request['user_response'];
-        $responseXml = "<rt><r>";
+        $responseXml = "<rt>";
         foreach ($answers as $i=>$response) {
             $questionId = $response['question_id'];
             $selectedOptionId = $response['selected_option'];
             $selectedOption = $selectedOptionId == null ? 'null' : "option_" . $selectedOptionId;
-            $responseXml .= '<q>' . $questionId . '</q><a>' . $selectedOption . '</a>';
+            $responseXml .= '<r><q>' . $questionId . '</q><a>' . $selectedOption . '</a></r>';
         }
-        $responseXml .= "</r></rt>";
+        $responseXml .= "</rt>";
         $spCall = 'call ' . \SPCalls::TEST_SUBMIT_API . '(@xml:="' . $responseXml .'",@user_id:=' . $request->user()->id . ',@test_id:=' . $test_id .  ',@start_time:="' . $request->start_time . '",@end_time:="' . $request->end_time . '")';
 
         \LoggerUtil::logDataToFile($_SERVER ['DOCUMENT_ROOT'] .'/logs/spcall', $spCall);
