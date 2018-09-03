@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import quizStyle from './quiz.css';
 import { HashLink as Link } from 'react-router-hash-link';
 import axios from "axios";
+import { css } from 'react-emotion';
+import ClipLoader from 'react-spinners/ClipLoader';
+
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+ 
+`;
 
 class OnlineTestQuiz extends Component {
 
@@ -23,7 +32,8 @@ class OnlineTestQuiz extends Component {
             unmarked :'',
             total:'',
             score:'',
-            submittedTest:false
+            submittedTest:false,
+            loading:false
         };
 
     }
@@ -34,7 +44,7 @@ class OnlineTestQuiz extends Component {
             .then(json => {
 
                 let data = json.data;
-                console.log('',data);
+
                 if(data.success) {
                     this.setState({
                         questions: data.data
@@ -88,7 +98,8 @@ class OnlineTestQuiz extends Component {
 
         this.setState({
             end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' '),
-            submittedTest:true
+            submittedTest:true,
+            loading:true
         });
         console.log('Thank You');
         let url = '/submitTest/'+this.props.match.params.test_id;
@@ -115,6 +126,7 @@ class OnlineTestQuiz extends Component {
                         unmarked :test_response.unmarked,
                         total:test_response.total,
                         score:test_response.score,
+                        loading:false
                     });
                 }else{
 
@@ -256,32 +268,49 @@ class OnlineTestQuiz extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12">
-                            {!this.state.submitted ?
+                            {!this.state.submitted && !this.state.loading ?
                                 <div className="card">
-                                    <div className="card-body">
+                                    { this.state.questions.length>0 ?
+                                        <div className="card-body">
 
-                                        <form className="form cf {!this.state.isToggleOn ? 'setHidden' : ''}">
-                                            <div className="wizard">
+                                            <form className="form cf {!this.state.isToggleOn ? 'setHidden' : ''}">
+                                                <div className="wizard">
 
-                                                <div className="wizard-inner">
-                                                    <div>
-                                                        <b>Time Limit :</b> '00:00:00'
+                                                    <div className="wizard-inner">
+                                                        <div>
+                                                            <b>Time Limit :</b> '00:00:00'
+                                                        </div>
+                                                        <ul className="nav nav-tabs" role="tablist">
+                                                            {stepsList}
+                                                        </ul>
                                                     </div>
-                                                    <ul className="nav nav-tabs" role="tablist">
-                                                        {stepsList}
-                                                    </ul>
-                                                </div>
-                                                <div className={"questionOf"}>
-                                                    <p className="text-md-center"><b>Question {this.state.questionNumber} of {this.state.questions.length}</b></p>
-                                                </div>
-                                                <div className="tab-content">
-                                                    {questionsLists}
-                                                    <div className="clearfix"></div>
-                                                </div>
+                                                    <div className={"questionOf"}>
+                                                        <p className="text-md-center">
+                                                            <b>Question {this.state.questionNumber} of {this.state.questions.length}</b>
+                                                        </p>
+                                                    </div>
+                                                    <div className="tab-content">
+                                                        {questionsLists}
+                                                        <div className="clearfix"></div>
+                                                    </div>
 
+                                                </div>
+                                            </form>
+                                        </div>
+                                        :
+                                        <div className="card-body">
+
+                                            <div >
+
+                                                <h3 className="text-info"><i
+                                                    className="fa fa-exclamation-circle"></i> Questions not Available.</h3>
+                                                    Test don't have enough questions. No need to proceed further.
                                             </div>
-                                        </form>
-                                    </div>
+                                            <div className="row col-md-12">
+                                                <button className={'btn btn-primary'} onClick={()=>{this.props.history.go(-2);}}>Go Back</button>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
                                 :
                                 <div className="card">
@@ -293,63 +322,89 @@ class OnlineTestQuiz extends Component {
 
                                         </div>
                                     </div>
-                                    <div className="bg-light p-20">
-                                        <div className="d-flex">
-                                            <div className="align-self-center">
-                                                <h3 className="m-b-0">Total Score</h3>
+                                    {!this.state.loading ?
+                                        <div>
+                                            <div className="bg-light p-20">
+                                                <div className="d-flex">
+                                                    <div className="align-self-center">
+                                                        <h3 className="m-b-0">Total Score</h3>
+                                                    </div>
+                                                    <div className="ml-auto align-self-center">
+                                                        <h2 className="text-success">{this.state.score}</h2></div>
+                                                </div>
                                             </div>
-                                            <div className="ml-auto align-self-center">
-                                                <h2 className="text-success">{this.state.score}</h2></div>
+                                            <div className="card-body">
+                                                <div className="table-responsive">
+                                                    <table className="table table-hover earning-box">
+
+                                                        <tbody>
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>Correct Answers</h6>
+                                                            </td>
+                                                            <td>{this.state.is_correct}</td>
+                                                        </tr>
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>In Correct Answers</h6>
+                                                            </td>
+                                                            <td>{this.state.is_incorrect}</td>
+                                                        </tr>
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>Unmarked</h6>
+                                                            </td>
+                                                            <td>{this.state.unmarked}</td>
+                                                        </tr>
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>Total Questions</h6>
+                                                            </td>
+                                                            <td>{this.state.total}</td>
+                                                        </tr>
+
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>Total Score</h6>
+                                                            </td>
+                                                            <td>{this.state.total_score}</td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div className="bg-light p-20">
+                                                <div className="d-flex">
+                                                    <div className="align-self-center">
+
+                                                    </div>
+                                                    <div className="ml-auto align-self-center">
+                                                        <a href={"/onlinetests/JEE"} className={'btn btn-primary'}>End
+                                                            Test</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="card-body">
-                                        <div className="table-responsive">
-                                            <table className="table table-hover earning-box">
-
-                                                <tbody>
-                                                <tr className="active">
-
-                                                    <td>
-                                                        <h6>Correct Answers</h6>
-                                                    </td>
-                                                    <td>{this.state.is_correct}</td>
-                                                </tr>
-                                                <tr className="active">
-
-                                                    <td>
-                                                        <h6>In Correct Answers</h6>
-                                                    </td>
-                                                    <td>{this.state.is_incorrect}</td>
-                                                </tr>
-                                                <tr className="active">
-
-                                                    <td>
-                                                        <h6>Unmarked</h6>
-                                                    </td>
-                                                    <td>{this.state.unmarked}</td>
-                                                </tr>
-                                                <tr className="active">
-
-                                                    <td>
-                                                        <h6>Total Questions</h6>
-                                                    </td>
-                                                    <td>{this.state.total}</td>
-                                                </tr>
-
-                                                <tr className="active">
-
-                                                    <td>
-                                                        <h6>Total Score</h6>
-                                                    </td>
-                                                    <td>{this.state.total_score}</td>
-                                                </tr>
-
-                                                </tbody>
-                                            </table>
+                                    :
+                                        <div className='sweet-loading' style={{'textAlign':'center'}}>
+                                        <ClipLoader
+                                        className={override}
+                                        sizeUnit={"px"}
+                                        size={50}
+                                        color={'#123abc'}
+                                        loading={this.state.loading}
+                                        />
                                         </div>
-                                    </div>
+                                    }
                                 </div>
                             }
+
 
                         </div>
                     </div>
