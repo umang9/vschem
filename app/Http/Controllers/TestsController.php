@@ -9,11 +9,6 @@ include_once '../ud-constants/database.php';
 
 class TestsController extends Controller
 {
-    public function __construct()
-    {
-//        $this->middleware('auth');
-    }
-
     public function show(Request $request)
     {
         $testType = strtoupper($request->query('type'));
@@ -21,8 +16,6 @@ class TestsController extends Controller
             \ApiUtil::printFailureResponse('Invalid test type');
         } else {
             $spCall = 'call '.\SPCalls::TESTS_API.'(@user_id:='.$request->user()->id.',@type:="'.$testType.'")';
-//            echo $spCall;
-//            return;
             echo json_encode(DB::select($spCall));
         }
     }

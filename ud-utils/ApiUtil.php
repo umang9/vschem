@@ -10,6 +10,6 @@ class ApiUtil
 {
     public static function printFailureResponse($message = '')
     {
-        echo '{"success":"false","message":"' . $message . '"}';
+        echo '{"success":false,"message":"' . $message . '"}';
     }
 }

@@ -74,20 +74,18 @@ class SideBar extends Component {
                     <div className="user-profile">
 
                         <div className="profile-img">
-                            <img src="../assets/images/users/profile.png" alt="user"/>
-                            <div className="notify setpos">
-                                <span className="heartbit"></span> <span className="point"></span>
-                            </div>
+                            <img src={"/assets/images/users/profile.png"} alt="user"/>
+
                         </div>
 
                         <div className="profile-text">
                             <h5>{this.state.name}</h5>
-                            <a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="true">
-                                <i className="mdi mdi-settings"></i>
-                            </a>
+                            {/*<a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"*/}
+                               {/*aria-haspopup="true" aria-expanded="true">*/}
+                                {/*<i className="mdi mdi-settings"></i>*/}
+                            {/*</a>*/}
 
-                            <a href="pages-login.html"  className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
+                            <a href="" onClick={this.logout} className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
                             {
                                 this.state.showMenu
                                     ? (
@@ -191,20 +189,18 @@ class SideBar extends Component {
                     <div className="user-profile">
 
                         <div className="profile-img">
-                            <img src="../assets/images/users/profile.png" alt="user"/>
-                            <div className="notify setpos">
-                                <span className="heartbit"></span> <span className="point"></span>
-                            </div>
+                            <img src={"/assets/images/users/profile.png"} alt="user"/>
+
                         </div>
 
                         <div className="profile-text">
                             <h5>{this.state.name}</h5>
-                            <a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="true">
-                                <i className="mdi mdi-settings"></i>
-                            </a>
+                            {/*<a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"*/}
+                               {/*aria-haspopup="true" aria-expanded="true">*/}
+                                {/*<i className="mdi mdi-settings"></i>*/}
+                            {/*</a>*/}
 
-                            <a href="pages-login.html"  className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
+                            <a href="" onClick={this.logout}  className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
                             {
                                 this.state.showMenu
                                     ? (
