@@ -50,6 +50,7 @@ Route::group([
     Route::get('/getuser', 'ApiController@user');
     Route::get('/tests', 'TestsController@show');
     Route::get('/taketest/{test_id}', 'QuestionsController@show');
+    Route::get('/reviewtest/{test_id}', 'QuestionsController@reshow');
 }
 );
 Route::post('/submitTest/{test_id}', 'TestResponseController@store');

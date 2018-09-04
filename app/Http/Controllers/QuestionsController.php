@@ -10,12 +10,17 @@ include_once '../ud-utils/ApiUtil.php';
 
 class QuestionsController extends Controller
 {
+    private function getDBResult($request, $test_id, $type)
+    {
+        $spCall = 'call ' . \SPCalls::QUESTIONS_API . '(@user_id:=' . $request->user()->id . ',@test_id:="' . $test_id . '",@test_flag:="'.$type.' TEST")';//Other option is "REVIEW TEST"
+        return DB::select($spCall);
+    }
+
 //Umang [11:01 PM]
 //call GET_TEST_INTERFACE_DETAILS(@user_id:={user},@test_id:={test},@test_flag:={flag})
     public function show(Request $request, $test_id)
     {
-        $spCall = 'call ' . \SPCalls::QUESTIONS_API . '(@user_id:=' . $request->user()->id . ',@test_id:="' . $test_id . '",@test_flag:="TAKE TEST")';//Other option is "REVIEW TEST"
-        $questions = DB::select($spCall);
+        $questions = $this->getDBResult($request, $test_id, 'TAKE');
         if (count($questions) == 0) {
             return \ApiUtil::printFailureResponse('No questions available');
         }
@@ -44,6 +49,16 @@ class QuestionsController extends Controller
         $response = array(
             "success" => true,
             "data" => $outputQuestions
+        );
+        echo json_encode($response);
+    }
+
+    public function reshow(Request $request, $test_id)
+    {
+        $questions = $this->getDBResult($request, $test_id, 'REVIEW');
+        $response = array(
+            "success" => true,
+            "data" => $questions
         );
         echo json_encode($response);
     }
