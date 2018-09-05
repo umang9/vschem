@@ -11,7 +11,7 @@
     <link rel="manifest" href="{{asset("mix-manifest.json")}}">
     <link rel="shortcut icon" href="{{asset("favicon.ico")}}">
 
-    <link rel="stylesheet" href="{{mix("css/all.css")}}">
+    <link rel="stylesheet" href="{{asset("css/all.css")}}">
     {{--<link rel="stylesheet" href="{{asset("assets/plugins/bootstrap/css/bootstrap.min.css")}}">--}}
     {{--<link href="{{asset("assets/plugins/morrisjs/morris.css")}}" rel="stylesheet">--}}
     <link href="{{asset("css/style.css")}}" rel="stylesheet">
@@ -32,7 +32,7 @@
 </div>
 
     <script src="{{mix('js/app.js')}}"></script>
-    <script src="{{mix('js/all.js')}}"></script>
+    <script src="{{asset('js/all.js')}}"></script>
 
     {{--<script src="{{asset("assets/plugins/jquery/jquery.min.js")}}"></script>--}}
     {{--<script src="{{asset("assets/plugins/bootstrap/js/popper.min.js")}}"></script>--}}
