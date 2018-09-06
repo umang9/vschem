@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 class SideBar extends Component {
 
     constructor(prop) {
         super(prop);
-        console.log(prop);
+        console.log('props',this.props);
         this.state = {
             showMenu: false,
             name:'',
@@ -15,6 +15,7 @@ class SideBar extends Component {
         };
 
         this.showMenu = this.showMenu.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     componentDidMount(){
@@ -45,10 +46,14 @@ class SideBar extends Component {
 
     logout(event) {
         event.preventDefault();
-
+        console.log('prop',this.props);
         axios.post('/logout')
             .then(json => {
-                this.props.history.push('/login')
+                this.props.history.push('/login');
+                window.location.reload();
+                // this.context.router.history.push(`/login`);
+                // console.log(this.props.history,this.context);
+
             });
     }
 
@@ -257,4 +262,4 @@ class SideBar extends Component {
     }
 }
 
-export default SideBar;
+export default withRouter(SideBar);

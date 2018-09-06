@@ -26,6 +26,7 @@ import { OnlineTestInfo,CreateTestInfo } from "./components/OnlineTest/onlinetes
 import OnlineTestQuiz from "./components/Quiz/quiz";
 import Test from "./components/Test/test";
 import Instruction from "./components/Test/instruction";
+import ReviewOnlineTest from "./components/ReviewTest/reviewtest";
 
 // import './index.css';
 
@@ -41,6 +42,7 @@ const routes = [
     { path: '/create-admin', exact: true, name: 'Admin', component: CreateAdmin },
     { path: '/admin/:id', exact: true, name: 'Student Details', component: User },
     { path: '/taketest/:test_id', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
+    { path: '/reviewtest/:test_id', exact: true, name: 'Review Online Test', component: ReviewOnlineTest },
     { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: Test },
     { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: Instruction },
 ];
@@ -72,6 +74,7 @@ class App extends Component {
                         component={route.component}
                         prop={route}
                     />
+
                 ))}
                 </Switch>
             </div>

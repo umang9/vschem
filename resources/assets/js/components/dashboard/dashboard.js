@@ -6,6 +6,7 @@ class DashBoard extends Component {
 
     constructor(prop){
         super(prop);
+        console.log('props in dashboard',this.props);
     }
 
     render() {

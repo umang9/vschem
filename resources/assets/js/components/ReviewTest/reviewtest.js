@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import quizStyle from './quiz.css';
-import { HashLink as Link } from 'react-router-hash-link';
 import axios from "axios";
 import { css } from 'react-emotion';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -12,7 +10,7 @@ const override = css`
  
 `;
 
-class OnlineTestQuiz extends Component {
+class ReviewOnlineTest extends Component {
 
     constructor(props) {
         super(props);
@@ -33,13 +31,14 @@ class OnlineTestQuiz extends Component {
             total:'',
             score:'',
             submittedTest:false,
-            loading:false
+            loading:false,
+            dataLoading:true
         };
 
     }
     componentDidMount(){
 
-        let url = '/api/taketest/'+this.props.match.params.test_id;
+        let url = '/api/reviewtest/'+this.props.match.params.test_id;
         axios.get(url)
             .then(json => {
 
@@ -47,7 +46,9 @@ class OnlineTestQuiz extends Component {
 
                 if(data.success) {
                     this.setState({
-                        questions: data.data
+                        questions: data.data,
+                        questionNumber:1,
+                        dataLoading : false
                     });
                     var array = this.state.questions.map((question,index)=>{
                         return {question_id:question.question_id,selected_option:null};
@@ -62,7 +63,7 @@ class OnlineTestQuiz extends Component {
                     });
                 }
             });
-        console.log('start date',new Date().toJSON().slice(0, 19).replace('T', ' '));
+
         this.setState({
             start_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
         });
@@ -164,39 +165,13 @@ class OnlineTestQuiz extends Component {
     }
 
     render() {
-        /**
-         * Create Steps circles
-         **/
-
-        var questions = [
-            {isActive:'active',step:'#step1',stepClassName:'step1',question_id:1,
-                text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
-                options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
-                category:'Maths'
-            },
-            {isActive:'disabled',step:'#step2',stepClassName:'step2',question_id:13,
-                text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
-                options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
-                category:'Maths1'
-            },
-            {isActive:'disabled',step:'#step3',stepClassName:'step3',question_id:3,
-                text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
-                options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
-                category:'Maths2'
-            },
-            {isActive:'disabled',step:'#step4',stepClassName:'step4',question_id:4,
-                text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
-                options:[{id:3,answer:'Yes'},{id:1,answer:'No'},{id:2,answer:'Not Sure'}],
-                category:'Science'
-            },
-        ];
 
         var stepsList = this.state.questions.map((question, index)=>{
 
             return <li role="presentation" className="nav-item" key={index}>
                 <a href={'#step'+question.question_id} ref={'step'+question.question_id} data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,this.state.questions.length)}
                    role="tab" title={"Step 1"} className={"nav-link"}>
-                    <span className="round-tab">
+                    <span className="round-tab" style={{ 'backgroundColor': question.is_question_answer ? 'green': 'red'}}>
                         {index+1}
                     </span>
                 </a>
@@ -214,17 +189,20 @@ class OnlineTestQuiz extends Component {
 
                 return <li key={option_index}>
                     {/*<input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>*/}
-                    <input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={()=>this.handleOptionChange(question.question_id,option.id)}/>
-                    <label htmlFor={'radio_'+option_index+index}>{option.text}</label>
+                    <input name={'radio_'+index} value={option.id} type='radio' checked={option.selected_option} id={'radio_'+option_index+index} onChange={()=>this.handleOptionChange(question.question_id,option.id)}/>
+                    <label htmlFor={'radio_'+option_index+index} style={{'backgroundColor': option.is_answer  ?'green': 'none'}}>{option.text}</label>
                 </li>
             }.bind(this));
 
             var button;
 
             if(this.state.isSubmit){
-                button = <button type="button" disabled={this.state.submittedTest} onClick={()=>this.submitQuiz()} className="btn btn-md btn-info btn-common next-step next-button">
-                    Submit
-                </button>;
+                // button = <button type="button" disabled={this.state.submittedTest} onClick={()=>this.submitQuiz()} className="btn btn-md btn-info btn-common next-step next-button">
+                //     Submit
+                // </button>;
+                // button = <button type="button" onClick={()=>this.handleClick(index,'step'+this.state.questions[index-1].question_id,this.state.questions.length)} className="btn btn-md btn-info btn-common next-step next-button">
+                //     Prev
+                // </button>;
             }else{
                 button = <button type="button" onClick={()=>this.handleClick(index,'step'+this.state.questions[index+1].question_id,this.state.questions.length)} className="btn btn-md btn-info btn-common next-step next-button">
                     Next
@@ -277,9 +255,7 @@ class OnlineTestQuiz extends Component {
                                                 <div className="wizard">
 
                                                     <div className="wizard-inner">
-                                                        <div>
-                                                            <b>Time Limit :</b> '00:00:00'
-                                                        </div>
+
                                                         <ul className="nav nav-tabs" role="tablist">
                                                             {stepsList}
                                                         </ul>
@@ -299,16 +275,30 @@ class OnlineTestQuiz extends Component {
                                         </div>
                                         :
                                         <div className="card-body">
-
-                                            <div >
-
-                                                <h3 className="text-info"><i
-                                                    className="fa fa-exclamation-circle"></i> Questions not Available.</h3>
-                                                    Test don't have enough questions. No need to proceed further.
-                                            </div>
-                                            <div className="row col-md-12">
-                                                <button className={'btn btn-primary'} onClick={()=>{this.props.history.go(-2);}}>Go Back</button>
-                                            </div>
+                                            {!this.state.dataLoading?
+                                                <div>
+                                                    <div >
+                                                        <h3 className="text-info"><i
+                                                            className="fa fa-exclamation-circle"></i> Questions not Available.</h3>
+                                                        Test don't have enough questions. No need to proceed further.
+                                                    </div>
+                                                    <div className="row col-md-12">
+                                                        <button className={'btn btn-primary'} onClick={()=>{this.props.history.go(-2);}}>Go Back</button>
+                                                    </div>
+                                                </div>
+                                                :
+                                                <div>
+                                                    <div className='sweet-loading' style={{'textAlign':'center'}}>
+                                                        <ClipLoader
+                                                            className={override}
+                                                            sizeUnit={"px"}
+                                                            size={50}
+                                                            color={'#123abc'}
+                                                            loading={this.state.loading}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            }
                                         </div>
                                     }
                                 </div>
@@ -391,15 +381,15 @@ class OnlineTestQuiz extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                    :
+                                        :
                                         <div className='sweet-loading' style={{'textAlign':'center'}}>
-                                        <ClipLoader
-                                        className={override}
-                                        sizeUnit={"px"}
-                                        size={50}
-                                        color={'#123abc'}
-                                        loading={this.state.loading}
-                                        />
+                                            <ClipLoader
+                                                className={override}
+                                                sizeUnit={"px"}
+                                                size={50}
+                                                color={'#123abc'}
+                                                loading={this.state.loading}
+                                            />
                                         </div>
                                     }
                                 </div>
@@ -416,4 +406,4 @@ class OnlineTestQuiz extends Component {
 }
 
 
-export default OnlineTestQuiz;
+export default ReviewOnlineTest;
