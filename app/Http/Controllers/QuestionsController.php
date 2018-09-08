@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\DB;
 
 include_once '../ud-constants/database.php';
 include_once '../ud-utils/ApiUtil.php';
+include_once '../ud-utils/DBUtil.php';
 
 class QuestionsController extends Controller
 {
     private function getDBResult($request, $test_id, $type)
     {
         $spCall = 'call ' . \SPCalls::QUESTIONS_API . '(@user_id:=' . $request->user()->id . ',@test_id:="' . $test_id . '",@test_flag:="'.$type.' TEST")';//Other option is "REVIEW TEST"
-        return DB::select($spCall);
+        return \DBUtil::getSPResult($spCall, true);
     }
 
 //Umang [11:01 PM]

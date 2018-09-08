@@ -8,30 +8,33 @@
  */
 class LoggerUtil
 {
-    private static function getFileHandle( $fileName )
+    private static function getFileHandle($fileName)
     {
-        $fileHandle = fopen( $fileName , 'ab+');
-        if( !$fileHandle )
-        {
-            error("FILEWRITEERROR: Error opening file " . $fileName , NULL , LOG_ALERT);
+        $fileHandle = fopen($fileName, 'ab+');
+        if (!$fileHandle) {
+            error("FILEWRITEERROR: Error opening file " . $fileName, NULL, LOG_ALERT);
         }
         return $fileHandle;
     }
 
+    /**
+     * @param $fileName  {String}
+     * @param $dataToLog {String|Object}
+     */
     public static function logDataToFile($fileName, $dataToLog)
     {
-        $fileHandle = self::getFileHandle( $fileName );
-        if( $fileHandle != FALSE )
-        {
-            if( !fwrite( $fileHandle , $dataToLog ) )
-            {
-                error( "Error writing content to log file :: " . $fileName . "::" . $dataToLog , NULL , LOG_DEBUG );
+        $filePath = $_SERVER ['DOCUMENT_ROOT'] . '../logs/' . $fileName;
+        $fileHandle = self::getFileHandle($filePath);
+        if ($fileHandle != FALSE) {
+            if (gettype($dataToLog) === "object" || gettype($dataToLog) === "array") {
+                $dataToLog = json_encode($dataToLog);
             }
-            fclose( $fileHandle);
-        }
-        else
-        {
-            error( "Error opening log file :: " . $fileName . "::" . $dataToLog , NULL , LOG_DEBUG );
+            if (!fwrite($fileHandle, PHP_EOL . $dataToLog)) {
+                error("Error writing content to log file :: " . $fileName . "::" . $dataToLog, NULL, LOG_DEBUG);
+            }
+            fclose($fileHandle);
+        } else {
+            error("Error opening log file :: " . $fileName . "::" . $dataToLog, NULL, LOG_DEBUG);
         }
     }
 }
