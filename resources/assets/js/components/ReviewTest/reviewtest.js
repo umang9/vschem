@@ -171,7 +171,9 @@ class ReviewOnlineTest extends Component {
             return <li role="presentation" className="nav-item" key={index}>
                 <a href={'#step'+question.question_id} ref={'step'+question.question_id} data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,this.state.questions.length)}
                    role="tab" title={"Step 1"} className={"nav-link"}>
-                    <span className="round-tab" style={{ 'backgroundColor': question.is_question_answer ? 'green': 'red'}}>
+                    <span className="round-tab" style={
+                        { 'border': question.is_question_answer ? '2px solid green': '2px solid red','color': question.is_question_answer ? 'green': 'red'}
+                    }>
                         {index+1}
                     </span>
                 </a>
@@ -190,7 +192,7 @@ class ReviewOnlineTest extends Component {
                 return <li key={option_index}>
                     {/*<input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>*/}
                     <input name={'radio_'+index} value={option.id} type='radio' checked={option.selected_option} id={'radio_'+option_index+index} onChange={()=>this.handleOptionChange(question.question_id,option.id)}/>
-                    <label htmlFor={'radio_'+option_index+index} style={{'backgroundColor': option.is_answer  ?'green': 'none'}}>{option.text}</label>
+                    <label htmlFor={'radio_'+option_index+index} style={{'borderBottom': option.is_answer  ?'5px solid green': 'none'}}>{option.text}</label>
                 </li>
             }.bind(this));
 
@@ -223,6 +225,12 @@ class ReviewOnlineTest extends Component {
                         {optionList}
                     </ul>
                 </div>
+                {/*<div className="row form-group">*/}
+
+                    <h2 className="text-md-left">Solution:</h2>
+                    <h3 className="text-md-left" dangerouslySetInnerHTML={{__html: question.solution}}>
+                    </h3>
+                {/*</div>*/}
                 <ul className="list-inline text-md-right">
                     <li>
                         {button}
