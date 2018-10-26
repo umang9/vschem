@@ -23,7 +23,7 @@ class LoggerUtil
      */
     public static function logDataToFile($fileName, $dataToLog)
     {
-        $filePath = $_SERVER ['DOCUMENT_ROOT'] . '../logs/' . $fileName;
+        $filePath = $_SERVER ['DOCUMENT_ROOT'] . '/logs/' . $fileName;
         $fileHandle = self::getFileHandle($filePath);
         if ($fileHandle != FALSE) {
             if (gettype($dataToLog) === "object" || gettype($dataToLog) === "array") {

@@ -4,6 +4,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import axios from "axios";
 import { css } from 'react-emotion';
 import ClipLoader from 'react-spinners/ClipLoader';
+import Countdown from 'react-countdown-now';
 
 const override = css`
     display: block;
@@ -11,6 +12,19 @@ const override = css`
     border-color: red;
  
 `;
+
+// Random component
+const Completionist = () => <span>You are good to go!</span>;
+// Renderer callback with condition
+const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+        // Render a completed state
+        return <Completionist />;
+    } else {
+        // Render a countdown
+        return <span>{hours}:{minutes}:{seconds}</span>;
+    }
+};
 
 class OnlineTestQuiz extends Component {
 
@@ -25,7 +39,8 @@ class OnlineTestQuiz extends Component {
         this.state = {isToggleOn: false};
         this.state = {questionNumber: '1'};
         this.state = {isSubmit: false};
-        this.state = {questions : [] , submitted:false,
+        this.state = {questions : [] ,
+            submitted:false,
             total_score:'',
             is_correct:'',
             is_incorrect:'',
@@ -33,7 +48,8 @@ class OnlineTestQuiz extends Component {
             total:'',
             score:'',
             submittedTest:false,
-            loading:false
+            loading:false,
+            isClipLoader:true
         };
 
     }
@@ -47,7 +63,9 @@ class OnlineTestQuiz extends Component {
 
                 if(data.success) {
                     this.setState({
-                        questions: data.data
+                        questions: data.data,
+                        isClipLoader : false,
+                        questionNumber : 1
                     });
                     var array = this.state.questions.map((question,index)=>{
                         return {question_id:question.question_id,selected_option:null};
@@ -58,7 +76,8 @@ class OnlineTestQuiz extends Component {
                     });
                 }else{
                     this.setState({
-                        questions: []
+                        questions: [],
+                        isClipLoader : false
                     });
                 }
             });
@@ -156,47 +175,31 @@ class OnlineTestQuiz extends Component {
 
         for (var i=0;i<this.state.questionOptions.length;i++){
             if(this.state.questionOptions[i].question_id==question_id){
-                this.state.questionOptions[i].selected_option = option_id
+                this.state.questionOptions[i].selected_option = option_id;
                 this.forceUpdate();
             }
         }
-        console.log(this.state.questionOptions,question_id, option_id);
+        for (var i=0;i<this.state.questions.length;i++){
+            if(this.state.questions[i].question_id==question_id){
+                this.state.questions[i].is_selected_option = true;
+                this.forceUpdate();
+            }
+        }
+
+        console.log(this.state.questionOptions[0],this.state.questions, option_id);
     }
 
     render() {
-        /**
-         * Create Steps circles
-         **/
 
-        var questions = [
-            {isActive:'active',step:'#step1',stepClassName:'step1',question_id:1,
-                text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
-                options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
-                category:'Maths'
-            },
-            {isActive:'disabled',step:'#step2',stepClassName:'step2',question_id:13,
-                text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
-                options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
-                category:'Maths1'
-            },
-            {isActive:'disabled',step:'#step3',stepClassName:'step3',question_id:3,
-                text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
-                options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
-                category:'Maths2'
-            },
-            {isActive:'disabled',step:'#step4',stepClassName:'step4',question_id:4,
-                text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
-                options:[{id:3,answer:'Yes'},{id:1,answer:'No'},{id:2,answer:'Not Sure'}],
-                category:'Science'
-            },
-        ];
 
         var stepsList = this.state.questions.map((question, index)=>{
 
             return <li role="presentation" className="nav-item" key={index}>
                 <a href={'#step'+question.question_id} ref={'step'+question.question_id} data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,this.state.questions.length)}
                    role="tab" title={"Step 1"} className={"nav-link"}>
-                    <span className="round-tab">
+                    <span className="round-tab" style={
+                        { 'border': question.is_selected_option && question.is_selected_option!==null ? '2px solid green': '','color': question.is_selected_option && question.is_selected_option!==null ? 'green': ''}
+                    }>
                         {index+1}
                     </span>
                 </a>
@@ -278,7 +281,10 @@ class OnlineTestQuiz extends Component {
 
                                                     <div className="wizard-inner">
                                                         <div>
-                                                            <b>Time Limit :</b> '00:00:00'
+                                                            <b>Time Limit :</b>
+                                                            <Countdown date={Date.now() + 3600000}
+                                                                       renderer={renderer}/>
+
                                                         </div>
                                                         <ul className="nav nav-tabs" role="tablist">
                                                             {stepsList}
@@ -298,17 +304,32 @@ class OnlineTestQuiz extends Component {
                                             </form>
                                         </div>
                                         :
+
                                         <div className="card-body">
-
-                                            <div >
-
-                                                <h3 className="text-info"><i
-                                                    className="fa fa-exclamation-circle"></i> Questions not Available.</h3>
+                                            {!this.state.isClipLoader ?
+                                                <div>
+                                                    <h3 className="text-info"><i
+                                                        className="fa fa-exclamation-circle"></i> Questions not
+                                                        Available.</h3>
                                                     Test don't have enough questions. No need to proceed further.
-                                            </div>
-                                            <div className="row col-md-12">
-                                                <button className={'btn btn-primary'} onClick={()=>{this.props.history.go(-2);}}>Go Back</button>
-                                            </div>
+                                                    <div className="row col-md-12">
+                                                        <button className={'btn btn-primary'} onClick={() => {
+                                                            this.props.history.go(-2);
+                                                        }}>Go Back
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                :
+                                                <div className='sweet-loading' style={{'textAlign': 'center'}}>
+                                                    <ClipLoader
+                                                        className={override}
+                                                        sizeUnit={"px"}
+                                                        size={50}
+                                                        color={'#123abc'}
+                                                        loading={this.state.isClipLoader}
+                                                    />
+                                                </div>
+                                            }
                                         </div>
                                     }
                                 </div>
