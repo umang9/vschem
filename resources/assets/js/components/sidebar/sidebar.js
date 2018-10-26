@@ -1,19 +1,21 @@
 import React, {Component} from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 class SideBar extends Component {
 
     constructor(prop) {
         super(prop);
-        console.log(prop);
+        console.log('props',this.props);
         this.state = {
             showMenu: false,
             name:'',
-            user:{}
+            user:{},
+            test_type:[]
         };
 
         this.showMenu = this.showMenu.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     componentDidMount(){
@@ -21,15 +23,17 @@ class SideBar extends Component {
             .then(json => {
 
                 let data = json.data;
-                console.log('data',data);
+                console.log('data',data.test_type.split(','));
                 let full_name = data.first_name+' '+data.last_name;
 
                 this.setState({
                     name: full_name,
-                    user: data
+                    user: data,
+                    test_type: data.test_type.split(',')
                 });
             });
     }
+
 
 
     showMenu(event) {
@@ -42,15 +46,31 @@ class SideBar extends Component {
 
     logout(event) {
         event.preventDefault();
-
+        console.log('prop',this.props);
         axios.post('/logout')
             .then(json => {
-                this.props.history.push('/login')
+                this.props.history.push('/login');
+                window.location.reload();
+                // this.context.router.history.push(`/login`);
+                // console.log(this.props.history,this.context);
+
             });
     }
 
     render() {
         var aside;
+        // var test_type = this.state.user.test_type.split(',');
+
+        var testList = this.state.test_type.map((name, index)=>{
+
+            return <li key={index}>
+                <Link to={`/onlinetests/`+name}>{name}</Link>
+                </li>
+                 ;
+
+        });
+
+
         if(this.state.user.group_id==1){
             aside = <aside className="left-sidebar">
 
@@ -59,20 +79,18 @@ class SideBar extends Component {
                     <div className="user-profile">
 
                         <div className="profile-img">
-                            <img src="../assets/images/users/profile.png" alt="user"/>
-                            <div className="notify setpos">
-                                <span className="heartbit"></span> <span className="point"></span>
-                            </div>
+                            <img src={"/assets/images/users/profile.png"} alt="user"/>
+
                         </div>
 
                         <div className="profile-text">
                             <h5>{this.state.name}</h5>
-                            <a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="true">
-                                <i className="mdi mdi-settings"></i>
-                            </a>
+                            {/*<a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"*/}
+                               {/*aria-haspopup="true" aria-expanded="true">*/}
+                                {/*<i className="mdi mdi-settings"></i>*/}
+                            {/*</a>*/}
 
-                            <a href="pages-login.html"  className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
+                            <a href="" onClick={this.logout} className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
                             {
                                 this.state.showMenu
                                     ? (
@@ -176,20 +194,18 @@ class SideBar extends Component {
                     <div className="user-profile">
 
                         <div className="profile-img">
-                            <img src="../assets/images/users/profile.png" alt="user"/>
-                            <div className="notify setpos">
-                                <span className="heartbit"></span> <span className="point"></span>
-                            </div>
+                            <img src={"/assets/images/users/profile.png"} alt="user"/>
+
                         </div>
 
                         <div className="profile-text">
                             <h5>{this.state.name}</h5>
-                            <a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="true">
-                                <i className="mdi mdi-settings"></i>
-                            </a>
+                            {/*<a href="" onClick={this.showMenu} className="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"*/}
+                               {/*aria-haspopup="true" aria-expanded="true">*/}
+                                {/*<i className="mdi mdi-settings"></i>*/}
+                            {/*</a>*/}
 
-                            <a href="pages-login.html"  className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
+                            <a href="" onClick={this.logout}  className="" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power"></i></a>
                             {
                                 this.state.showMenu
                                     ? (
@@ -228,14 +244,7 @@ class SideBar extends Component {
                             <li><a className="has-arrow waves-effect waves-dark" href="      #" aria-expanded="false"><i className="mdi mdi-email"></i>
                                 <span className="hide-menu">Test</span></a>
                                 <ul aria-expanded="false" className="collapse">
-                                    <li>
-                                        {/*<Link to="/onlinetests/NEET">CET</Link>*/}
-                                        <Link to={`/onlinetests/NEET`}>NEET</Link>
-
-                                    </li>
-                                    <li>
-                                        <Link to="/onlinetests/JEE">JEE</Link>
-                                    </li>
+                                    {testList}
                                 </ul>
                             </li>
 
@@ -253,4 +262,4 @@ class SideBar extends Component {
     }
 }
 
-export default SideBar;
+export default withRouter(SideBar);

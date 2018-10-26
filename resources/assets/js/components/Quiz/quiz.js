@@ -1,6 +1,16 @@
 import React, {Component} from 'react';
 import quizStyle from './quiz.css';
 import { HashLink as Link } from 'react-router-hash-link';
+import axios from "axios";
+import { css } from 'react-emotion';
+import ClipLoader from 'react-spinners/ClipLoader';
+
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+ 
+`;
 
 class OnlineTestQuiz extends Component {
 
@@ -11,9 +21,57 @@ class OnlineTestQuiz extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.checkboxHandler = this.checkboxHandler.bind(this);
         this.submitQuiz = this.submitQuiz.bind(this);
+        this.handleOptionChange = this.handleOptionChange.bind(this);
         this.state = {isToggleOn: false};
         this.state = {questionNumber: '1'};
         this.state = {isSubmit: false};
+        this.state = {questions : [] , submitted:false,
+            total_score:'',
+            is_correct:'',
+            is_incorrect:'',
+            unmarked :'',
+            total:'',
+            score:'',
+            submittedTest:false,
+            loading:false
+        };
+
+    }
+    componentDidMount(){
+
+        let url = '/api/taketest/'+this.props.match.params.test_id;
+        axios.get(url)
+            .then(json => {
+
+                let data = json.data;
+
+                if(data.success) {
+                    this.setState({
+                        questions: data.data
+                    });
+                    var array = this.state.questions.map((question,index)=>{
+                        return {question_id:question.question_id,selected_option:null};
+                    });
+
+                    this.setState({
+                        questionOptions: array
+                    });
+                }else{
+                    this.setState({
+                        questions: []
+                    });
+                }
+            });
+        console.log('start date',new Date().toJSON().slice(0, 19).replace('T', ' '));
+        this.setState({
+            start_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
+        });
+
+    }
+
+    getQuestionOptionArray(){
+
+
     }
 
     handleClick(nextIndex,ele,total) {
@@ -37,8 +95,46 @@ class OnlineTestQuiz extends Component {
     }
 
     submitQuiz() {
+
+        this.setState({
+            end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' '),
+            submittedTest:true,
+            loading:true
+        });
         console.log('Thank You');
-        alert('Thank You!!!!');
+        let url = '/submitTest/'+this.props.match.params.test_id;
+        // axios.post(url,{user_response:this.state.questionOptions})
+        axios({
+            method: 'post',
+            url: url,
+            data: {
+                user_response: this.state.questionOptions,
+                start_time: this.state.start_datetime,
+                end_time: new Date().toJSON().slice(0, 19).replace('T', ' '),
+            }
+        })
+            .then(json => {
+                console.log(json);
+                let data=json.data;
+                if(data.success){
+                    let test_response = data.data[0];
+                    this.setState({
+                        submitted: true,
+                        total_score:test_response.total_score,
+                        is_correct:test_response.is_correct,
+                        is_incorrect:test_response.is_incorrect,
+                        unmarked :test_response.unmarked,
+                        total:test_response.total,
+                        score:test_response.score,
+                        loading:false
+                    });
+                }else{
+
+                }
+
+                // this.props.history.push('/onlinetests/JEE')
+            });
+        // alert('Thank You!!!!');
     }
 
     getActiveQuestion(index,totalQuestions) {
@@ -56,6 +152,17 @@ class OnlineTestQuiz extends Component {
         }));
     }
 
+    handleOptionChange(question_id,option_id){
+
+        for (var i=0;i<this.state.questionOptions.length;i++){
+            if(this.state.questionOptions[i].question_id==question_id){
+                this.state.questionOptions[i].selected_option = option_id
+                this.forceUpdate();
+            }
+        }
+        console.log(this.state.questionOptions,question_id, option_id);
+    }
+
     render() {
         /**
          * Create Steps circles
@@ -67,7 +174,7 @@ class OnlineTestQuiz extends Component {
                 options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
                 category:'Maths'
             },
-            {isActive:'disabled',step:'#step2',stepClassName:'step2',question_id:2,
+            {isActive:'disabled',step:'#step2',stepClassName:'step2',question_id:13,
                 text:"If the vectors AB 3i + 4k and AC = 5i – 2j + 4k are the sides of a triangle ABC, then the length of the median through A is",
                 options:[{id:1,answer:'33'},{id:2,answer:'18'},{id:3,answer:'72'},{id:4,answer:'42'}],
                 category:'Maths1'
@@ -84,11 +191,11 @@ class OnlineTestQuiz extends Component {
             },
         ];
 
-        var stepsList = questions.map((name, index)=>{
+        var stepsList = this.state.questions.map((question, index)=>{
 
             return <li role="presentation" className="nav-item" key={index}>
-                <a href={name.step} ref={name.stepClassName}   data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,questions.length)}
-                   role="tab" title="Step 1" className={"nav-link"}>
+                <a href={'#step'+question.question_id} ref={'step'+question.question_id} data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,this.state.questions.length)}
+                   role="tab" title={"Step 1"} className={"nav-link"}>
                     <span className="round-tab">
                         {index+1}
                     </span>
@@ -100,38 +207,36 @@ class OnlineTestQuiz extends Component {
          * Create Steps circles
          **/
 
+        var questionsLists = this.state.questions.map((question, index)=> {
 
-
-        var questionsLists = questions.map((question, index)=> {
-            // console.log(question.options);
             var optionList;
             optionList = question.options.map(function(option,option_index){
 
                 return <li key={option_index}>
-                    {/*<input name={"group_"+option.id+index} type="radio" id={"radio_"+option_index+index} className="custom-control-input"  />*/}
-                    <input name={'radio_'+index} value='value1' type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>
-                    <label htmlFor={'radio_'+option_index+index}>{option.answer}</label>
+                    {/*<input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>*/}
+                    <input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={()=>this.handleOptionChange(question.question_id,option.id)}/>
+                    <label htmlFor={'radio_'+option_index+index}>{option.text}</label>
                 </li>
-            });
+            }.bind(this));
 
             var button;
 
             if(this.state.isSubmit){
-                button = <button type="button" onClick={()=>this.submitQuiz()} className="btn btn-md btn-info btn-common next-step next-button">
+                button = <button type="button" disabled={this.state.submittedTest} onClick={()=>this.submitQuiz()} className="btn btn-md btn-info btn-common next-step next-button">
                     Submit
                 </button>;
             }else{
-                button = <button type="button" onClick={()=>this.handleClick(index,questions[index+1].stepClassName,questions.length)} className="btn btn-md btn-info btn-common next-step next-button">
+                button = <button type="button" onClick={()=>this.handleClick(index,'step'+this.state.questions[index+1].question_id,this.state.questions.length)} className="btn btn-md btn-info btn-common next-step next-button">
                     Next
                 </button>;
             }
 
-            return <div className={"tab-pane text-center "+question.isActive} role="tabpanel" key={index} id={question.stepClassName}>
+            return <div className={"tab-pane text-center "+question.isActive} role="tabpanel" key={index} id={'step'+question.question_id}>
                 <h2 className="text-md-left">{index+1}. Question</h2>
 
-                <h5 className="text-md-left">Category: {question.category}</h5>
+                {/*<h5 className="text-md-left">Category: {question.category}</h5>*/}
 
-                <h3 className="text-md-left"> {question.text}
+                <h3 className="text-md-left" dangerouslySetInnerHTML={{__html: question.text}}>
                 </h3>
 
                 <div className="row form-group">
@@ -163,32 +268,144 @@ class OnlineTestQuiz extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12">
-                            <div className="card">
-                                <div className="card-body">
+                            {!this.state.submitted && !this.state.loading ?
+                                <div className="card">
+                                    { this.state.questions.length>0 ?
+                                        <div className="card-body">
 
-                                    <form className="form cf {!this.state.isToggleOn ? 'setHidden' : ''}">
-                                        <div className="wizard">
+                                            <form className="form cf {!this.state.isToggleOn ? 'setHidden' : ''}">
+                                                <div className="wizard">
 
-                                            <div className="wizard-inner">
-                                                <div>
-                                                    <b>Time Limit :</b> '00:00:00'
+                                                    <div className="wizard-inner">
+                                                        <div>
+                                                            <b>Time Limit :</b> '00:00:00'
+                                                        </div>
+                                                        <ul className="nav nav-tabs" role="tablist">
+                                                            {stepsList}
+                                                        </ul>
+                                                    </div>
+                                                    <div className={"questionOf"}>
+                                                        <p className="text-md-center">
+                                                            <b>Question {this.state.questionNumber} of {this.state.questions.length}</b>
+                                                        </p>
+                                                    </div>
+                                                    <div className="tab-content">
+                                                        {questionsLists}
+                                                        <div className="clearfix"></div>
+                                                    </div>
+
                                                 </div>
-                                                <ul className="nav nav-tabs" role="tablist">
-                                                    {stepsList}
-                                                </ul>
+                                            </form>
+                                        </div>
+                                        :
+                                        <div className="card-body">
+
+                                            <div >
+
+                                                <h3 className="text-info"><i
+                                                    className="fa fa-exclamation-circle"></i> Questions not Available.</h3>
+                                                    Test don't have enough questions. No need to proceed further.
                                             </div>
-                                            <div className={"questionOf"}>
-                                                <p className="text-md-center"><b>Question {this.state.questionNumber} of 4</b></p>
+                                            <div className="row col-md-12">
+                                                <button className={'btn btn-primary'} onClick={()=>{this.props.history.go(-2);}}>Go Back</button>
                                             </div>
-                                            <div className="tab-content">
-                                                {questionsLists}
-                                                <div className="clearfix"></div>
-                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                :
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex no-block">
+                                            <h4 className="card-title">Test Report<br/>
+                                                <small className="text-muted">Test summary report</small>
+                                            </h4>
 
                                         </div>
-                                    </form>
+                                    </div>
+                                    {!this.state.loading ?
+                                        <div>
+                                            <div className="bg-light p-20">
+                                                <div className="d-flex">
+                                                    <div className="align-self-center">
+                                                        <h3 className="m-b-0">Total Score</h3>
+                                                    </div>
+                                                    <div className="ml-auto align-self-center">
+                                                        <h2 className="text-success">{this.state.score}</h2></div>
+                                                </div>
+                                            </div>
+                                            <div className="card-body">
+                                                <div className="table-responsive">
+                                                    <table className="table table-hover earning-box">
+
+                                                        <tbody>
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>Correct Answers</h6>
+                                                            </td>
+                                                            <td>{this.state.is_correct}</td>
+                                                        </tr>
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>In Correct Answers</h6>
+                                                            </td>
+                                                            <td>{this.state.is_incorrect}</td>
+                                                        </tr>
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>Unmarked</h6>
+                                                            </td>
+                                                            <td>{this.state.unmarked}</td>
+                                                        </tr>
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>Total Questions</h6>
+                                                            </td>
+                                                            <td>{this.state.total}</td>
+                                                        </tr>
+
+                                                        <tr className="active">
+
+                                                            <td>
+                                                                <h6>Total Score</h6>
+                                                            </td>
+                                                            <td>{this.state.total_score}</td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div className="bg-light p-20">
+                                                <div className="d-flex">
+                                                    <div className="align-self-center">
+
+                                                    </div>
+                                                    <div className="ml-auto align-self-center">
+                                                        <a href={"/onlinetests/JEE"} className={'btn btn-primary'}>End
+                                                            Test</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    :
+                                        <div className='sweet-loading' style={{'textAlign':'center'}}>
+                                        <ClipLoader
+                                        className={override}
+                                        sizeUnit={"px"}
+                                        size={50}
+                                        color={'#123abc'}
+                                        loading={this.state.loading}
+                                        />
+                                        </div>
+                                    }
                                 </div>
-                            </div>
+                            }
+
+
                         </div>
                     </div>
                 </div>

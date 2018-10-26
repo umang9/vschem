@@ -49,6 +49,10 @@ Route::group([
 ], function () {
     Route::get('/getuser', 'ApiController@user');
     Route::get('/tests', 'TestsController@show');
+    Route::get('/taketest/{test_id}', 'QuestionsController@show');
+    Route::get('/reviewtest/{test_id}', 'QuestionsController@reshow');
 }
 );
-Route::get('/{path?}', 'MainController@index');
+Route::post('/submitTest/{test_id}', 'TestResponseController@store');
+Route::any('{all}', 'MainController@index')->where(['all' => '.*']);
+
