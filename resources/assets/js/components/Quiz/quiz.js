@@ -120,7 +120,7 @@ class OnlineTestQuiz extends Component {
             submittedTest:true,
             loading:true
         });
-        console.log('Thank You');
+        
         let url = '/submitTest/'+this.props.match.params.test_id;
         // axios.post(url,{user_response:this.state.questionOptions})
         axios({

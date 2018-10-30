@@ -128,9 +128,7 @@ class SideBar extends Component {
                             <li className="nav-small-cap">ADMIN</li>
                             <li>
                                 <a className="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i className="mdi mdi-gauge"></i>
-                                    <span className="hide-menu">Admin
-
-                                    </span>
+                                    <span className="hide-menu">Admin</span>
                                 </a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
@@ -145,7 +143,7 @@ class SideBar extends Component {
                             </li>
 
                             <li>
-                                <a className="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i className="mdi mdi-bullseye"></i>
+                                <a className="has-arrow waves-effect waves-dark student-sidebar" href="#" aria-expanded="false"><i className="mdi mdi-bullseye"></i>
                                     <span className="hide-menu">Student</span></a>
                                 <ul aria-expanded="false" className="collapse">
 
@@ -160,7 +158,7 @@ class SideBar extends Component {
                             </li>
                             <li><a className="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i className="mdi mdi-email"></i>
                                 <span className="hide-menu">Online Test</span></a>
-                                <ul aria-expanded="false" className="collapse">
+                                <ul aria-expanded="false" className="student collapse">
 
                                     <li>
                                         <Link to="/create-onlinetest">Create Test</Link>
@@ -171,7 +169,8 @@ class SideBar extends Component {
                                 </ul>
                             </li>
 
-                            <li><a className="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i className="mdi mdi-email"></i>
+                            <li><a className="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                            <i className="mdi mdi-email"></i>
                                 <span className="hide-menu">Quiz</span></a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
