@@ -5,7 +5,8 @@ import axios from "axios";
 import { css } from 'react-emotion';
 import ClipLoader from 'react-spinners/ClipLoader';
 import Countdown from 'react-countdown-now';
-
+import { constants } from 'fs';
+import constant from '../constant';
 const override = css`
     display: block;
     margin: 0 auto;
@@ -55,7 +56,7 @@ class OnlineTestQuiz extends Component {
     }
     componentDidMount(){
 
-        let url = '/api/taketest/'+this.props.match.params.test_id;
+        let url = constant.APP_URL+'/api/taketest/'+this.props.match.params.test_id;
         axios.get(url)
             .then(json => {
 
@@ -121,7 +122,7 @@ class OnlineTestQuiz extends Component {
             loading:true
         });
         
-        let url = '/submitTest/'+this.props.match.params.test_id;
+        let url = constant.APP_URL+'submitTest/'+this.props.match.params.test_id;
         // axios.post(url,{user_response:this.state.questionOptions})
         axios({
             method: 'post',

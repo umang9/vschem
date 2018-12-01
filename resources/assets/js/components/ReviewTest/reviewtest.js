@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import { css } from 'react-emotion';
 import ClipLoader from 'react-spinners/ClipLoader';
+import constants from '../constant';
 
 const override = css`
     display: block;
@@ -38,7 +39,7 @@ class ReviewOnlineTest extends Component {
     }
     componentDidMount(){
 
-        let url = '/api/reviewtest/'+this.props.match.params.test_id;
+        let url = constants.APP_URL+'api/reviewtest/'+this.props.match.params.test_id;
         axios.get(url)
             .then(json => {
 
@@ -103,7 +104,7 @@ class ReviewOnlineTest extends Component {
             loading:true
         });
         console.log('Thank You');
-        let url = '/submitTest/'+this.props.match.params.test_id;
+        let url = constants.APP_URL+'/submitTest/'+this.props.match.params.test_id;
         // axios.post(url,{user_response:this.state.questionOptions})
         axios({
             method: 'post',

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import { css } from 'react-emotion';
 import ClipLoader from 'react-spinners/ClipLoader';
-
+import constant from '../constant';
 const override = css`
     display: block;
     margin: 0 auto;
@@ -40,7 +40,7 @@ class Test extends Component {
     }
 
     getCallApi(test){
-        let url = '/api/tests?type='+test;
+        let url = constant.APP_URL+'api/tests?type='+test;
 
         axios.get(url)
             .then(json => {

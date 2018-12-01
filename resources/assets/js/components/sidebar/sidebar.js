@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Link, NavLink, withRouter} from 'react-router-dom';
 import axios from 'axios';
+import constants from '../constant';
 
 class SideBar extends Component {
 
     constructor(prop) {
         super(prop);
-        console.log('props',this.props);
+        console.log('constants',constants);
         this.state = {
             showMenu: false,
             name:'',
@@ -19,7 +20,7 @@ class SideBar extends Component {
     }
 
     componentDidMount(){
-        axios.get('/api/getuser')
+        axios.get(constants.APP_URL+'api/getuser')
             .then(json => {
 
                 let data = json.data;
