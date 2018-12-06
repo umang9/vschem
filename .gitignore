@@ -13,3 +13,4 @@ yarn-error.log
 .env
 .DS_Store
 public/logs
+resources/assets/js/constant.js
