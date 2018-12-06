@@ -62975,7 +62975,7 @@ var SideBar = function (_Component) {
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'li',
-                                    null,
+                                    { key: 'student' },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'a',
                                         { className: 'has-arrow waves-effect waves-dark student-sidebar', href: '#', 'aria-expanded': 'false' },
@@ -75038,8 +75038,7 @@ var Question = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_spinners_ClipLoader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_spinners_ClipLoader__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_countdown_now__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_countdown_now___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_countdown_now__);
-throw new Error("Cannot find module \"fs\"");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__constant__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constant__ = __webpack_require__(252);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    margin: 0 auto;\n    border-color: red;\n \n'], ['\n    display: block;\n    margin: 0 auto;\n    border-color: red;\n \n']);
@@ -75059,7 +75058,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-
+// import { constants } from 'fs';
 
 var override = Object(__WEBPACK_IMPORTED_MODULE_4_react_emotion__["a" /* css */])(_templateObject);
 
@@ -75132,7 +75131,7 @@ var OnlineTestQuiz = function (_Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            var url = __WEBPACK_IMPORTED_MODULE_8__constant__["a" /* default */].APP_URL + '/api/taketest/' + this.props.match.params.test_id;
+            var url = __WEBPACK_IMPORTED_MODULE_7__constant__["a" /* default */].APP_URL + '/api/taketest/' + this.props.match.params.test_id;
             __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get(url).then(function (json) {
 
                 var data = json.data;
@@ -75201,7 +75200,7 @@ var OnlineTestQuiz = function (_Component) {
                 loading: true
             });
 
-            var url = __WEBPACK_IMPORTED_MODULE_8__constant__["a" /* default */].APP_URL + 'submitTest/' + this.props.match.params.test_id;
+            var url = __WEBPACK_IMPORTED_MODULE_7__constant__["a" /* default */].APP_URL + 'submitTest/' + this.props.match.params.test_id;
             // axios.post(url,{user_response:this.state.questionOptions})
             __WEBPACK_IMPORTED_MODULE_3_axios___default()({
                 method: 'post',

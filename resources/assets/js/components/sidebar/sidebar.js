@@ -143,9 +143,11 @@ class SideBar extends Component {
                                 </ul>
                             </li>
 
-                            <li>
-                                <a className="has-arrow waves-effect waves-dark student-sidebar" href="#" aria-expanded="false"><i className="mdi mdi-bullseye"></i>
-                                    <span className="hide-menu">Student</span></a>
+                            <li key='student'>
+                                <a className="has-arrow waves-effect waves-dark student-sidebar" href="#" aria-expanded="false" >
+                                    <i className="mdi mdi-bullseye"></i>
+                                    <span className="hide-menu">Student</span>
+                                </a>
                                 <ul aria-expanded="false" className="collapse">
 
                                     <li>

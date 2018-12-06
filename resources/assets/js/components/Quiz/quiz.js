@@ -5,7 +5,7 @@ import axios from "axios";
 import { css } from 'react-emotion';
 import ClipLoader from 'react-spinners/ClipLoader';
 import Countdown from 'react-countdown-now';
-import { constants } from 'fs';
+// import { constants } from 'fs';
 import constant from '../constant';
 const override = css`
     display: block;
