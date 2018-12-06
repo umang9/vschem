@@ -79586,7 +79586,8 @@ var ReviewOnlineTest = function (_Component) {
 * @providesModule Constants
 */
 
-var APP_ENV = 'Local';
+// let APP_ENV =  'Local';
+var APP_ENV = 'Prod';
 var APP_PROD_URL = 'vschem/public/';
 var APP_LOCAL_URL = '/';
 var APP_URL = APP_ENV === 'Local' ? APP_LOCAL_URL : APP_PROD_URL;
