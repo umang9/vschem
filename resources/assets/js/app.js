@@ -27,24 +27,24 @@ import OnlineTestQuiz from "./components/Quiz/quiz";
 import Test from "./components/Test/test";
 import Instruction from "./components/Test/instruction";
 import ReviewOnlineTest from "./components/ReviewTest/reviewtest";
-
+import constants from './components/constant';
 // import './index.css';
 
 const routes = [
-    { path: '/', exact: true, name: 'Home', component: DashBoard },
-    { path: '/dashboard', exact:true,name: 'Dashboard', component: DashBoard },
-    { path: '/user', exact: true, name: 'User', component: User },
-    { path: '/admin', exact: true, name: 'User', component: Admin },
-    { path: '/onlinetest', exact: true, name: 'Test Info', component: OnlineTestInfo },
-    { path: '/create-onlinetest', exact: true, name: 'Test Info', component: CreateTestInfo },
-    { path: '/create-student', exact: true, name: 'Admin', component: CreateStudent },
-    { path: '/student', exact: true, name: 'Admin', component: Student },
-    { path: '/create-admin', exact: true, name: 'Admin', component: CreateAdmin },
-    { path: '/admin/:id', exact: true, name: 'Student Details', component: User },
-    { path: '/taketest/:test_id', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
-    { path: '/reviewtest/:test_id', exact: true, name: 'Review Online Test', component: ReviewOnlineTest },
-    { path: '/onlinetests/:test', exact: true, name: 'Online Test - CET', component: Test },
-    { path: '/onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: Instruction },
+    { path: constants.APP_URL+'/', exact: true, name: 'Home', component: DashBoard },
+    { path: constants.APP_URL+'dashboard', exact:true,name: 'Dashboard', component: DashBoard },
+    { path: constants.APP_URL+'user', exact: true, name: 'User', component: User },
+    { path: constants.APP_URL+'admin', exact: true, name: 'User', component: Admin },
+    { path: constants.APP_URL+'onlinetest', exact: true, name: 'Test Info', component: OnlineTestInfo },
+    { path: constants.APP_URL+'create-onlinetest', exact: true, name: 'Test Info', component: CreateTestInfo },
+    { path: constants.APP_URL+'create-student', exact: true, name: 'Admin', component: CreateStudent },
+    { path: constants.APP_URL+'student', exact: true, name: 'Admin', component: Student },
+    { path: constants.APP_URL+'create-admin', exact: true, name: 'Admin', component: CreateAdmin },
+    { path: constants.APP_URL+'admin/:id', exact: true, name: 'Student Details', component: User },
+    { path: constants.APP_URL+'taketest/:test_id', exact: true, name: 'Online Test Quiz', component: OnlineTestQuiz },
+    { path: constants.APP_URL+'reviewtest/:test_id', exact: true, name: 'Review Online Test', component: ReviewOnlineTest },
+    { path: constants.APP_URL+'onlinetests/:test', exact: true, name: 'Online Test - CET', component: Test },
+    { path: constants.APP_URL+'onlinetest/instruction/:test_id', exact: true, name: 'Online Test - Instruction', component: Instruction },
 ];
 
 class App extends Component {
