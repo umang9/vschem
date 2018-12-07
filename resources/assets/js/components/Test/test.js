@@ -71,9 +71,9 @@ class Test extends Component {
                     <td>{name.end_date}</td>
                     <td>
                         {name.is_test_taken ?
-                            <a href={constants.APP_URL+'reviewtest/' + name.test_id} className="btn btn-rounded btn-block btn-outline-secondary">Review</a>
+                            <a href={constant.APP_URL+'reviewtest/' + name.test_id} className="btn btn-rounded btn-block btn-outline-secondary">Review</a>
                             :
-                            <a href={constants.APP_URL+'onlinetest/instruction/' + name.test_id}  className="btn btn-rounded btn-block btn-outline-primary">Take Test</a> }
+                            <a href={constant.APP_URL+'onlinetest/instruction/' + name.test_id}  className="btn btn-rounded btn-block btn-outline-primary">Take Test</a> }
                     </td>
 
                 </tr>;
