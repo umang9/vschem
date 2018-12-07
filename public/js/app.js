@@ -62844,7 +62844,7 @@ var SideBar = function (_Component) {
             event.preventDefault();
             console.log('prop', this.props);
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + 'logout').then(function (json) {
-                _this3.props.history.push('/login');
+                _this3.props.history.push(__WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + 'login');
                 window.location.reload();
                 // this.context.router.history.push(`/login`);
                 // console.log(this.props.history,this.context);

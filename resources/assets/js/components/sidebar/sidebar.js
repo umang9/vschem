@@ -50,7 +50,7 @@ class SideBar extends Component {
         console.log('prop',this.props);
         axios.post(constants.APP_URL+'logout')
             .then(json => {
-                this.props.history.push('/login');
+                this.props.history.push(constants.APP_URL+'login');
                 window.location.reload();
                 // this.context.router.history.push(`/login`);
                 // console.log(this.props.history,this.context);
