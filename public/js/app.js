@@ -62863,7 +62863,7 @@ var SideBar = function (_Component) {
                     { key: index },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                        { to: '/onlinetests/' + name },
+                        { to: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + 'onlinetests/' + name },
                         name
                     )
                 );
@@ -62958,7 +62958,7 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/create-admin' },
+                                                { to: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "create-admin" },
                                                 'Create Admin'
                                             )
                                         ),
@@ -62967,7 +62967,7 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/admin' },
+                                                { to: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "admin" },
                                                 'Update Admin'
                                             )
                                         )
@@ -62994,7 +62994,7 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/create-student' },
+                                                { to: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "create-student" },
                                                 'Create Student'
                                             )
                                         ),
@@ -63003,7 +63003,7 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/student' },
+                                                { to: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "student" },
                                                 'Update Student'
                                             )
                                         )
@@ -63030,7 +63030,7 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/create-onlinetest' },
+                                                { to: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "create-onlinetest" },
                                                 'Create Test'
                                             )
                                         ),
@@ -63039,7 +63039,7 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/onlinetest' },
+                                                { to: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "onlinetest" },
                                                 'Update Test'
                                             )
                                         )
@@ -63066,7 +63066,7 @@ var SideBar = function (_Component) {
                                             null,
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"],
-                                                { to: '/onlinetests-quiz' },
+                                                { to: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "onlinetests-quiz" },
                                                 'Solve Quiz'
                                             )
                                         )
@@ -63147,7 +63147,7 @@ var SideBar = function (_Component) {
                                     null,
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'a',
-                                        { className: 'has-arrow waves-effect waves-dark', href: '      #', 'aria-expanded': 'false' },
+                                        { className: 'has-arrow waves-effect waves-dark', href: '#', 'aria-expanded': 'false' },
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'mdi mdi-email' }),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                             'span',

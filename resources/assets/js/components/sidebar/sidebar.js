@@ -65,7 +65,7 @@ class SideBar extends Component {
         var testList = this.state.test_type.map((name, index)=>{
 
             return <li key={index}>
-                <Link to={`/onlinetests/`+name}>{name}</Link>
+                <Link to={constants.APP_URL+`onlinetests/`+name}>{name}</Link>
                 </li>
                  ;
 
@@ -133,12 +133,12 @@ class SideBar extends Component {
                                 </a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
-                                        <Link to="/create-admin">Create Admin</Link>
+                                        <Link to={constants.APP_URL+"create-admin"}>Create Admin</Link>
 
                                     </li>
                                     <li>
 
-                                        <Link to="/admin">Update Admin</Link>
+                                        <Link to={constants.APP_URL+"admin"}>Update Admin</Link>
                                     </li>
                                 </ul>
                             </li>
@@ -151,10 +151,10 @@ class SideBar extends Component {
                                 <ul aria-expanded="false" className="collapse">
 
                                     <li>
-                                        <Link to="/create-student">Create Student</Link>
+                                        <Link to={constants.APP_URL+"create-student"}>Create Student</Link>
                                     </li>
                                     <li>
-                                        <Link to="/student">Update Student</Link>
+                                        <Link to={constants.APP_URL+"student"}>Update Student</Link>
                                     </li>
 
                                 </ul>
@@ -164,10 +164,10 @@ class SideBar extends Component {
                                 <ul aria-expanded="false" className="student collapse">
 
                                     <li>
-                                        <Link to="/create-onlinetest">Create Test</Link>
+                                        <Link to={constants.APP_URL+"create-onlinetest"}>Create Test</Link>
                                     </li>
                                     <li>
-                                        <Link to="/onlinetest">Update Test</Link>
+                                        <Link to={constants.APP_URL+"onlinetest"}>Update Test</Link>
                                     </li>
                                 </ul>
                             </li>
@@ -177,7 +177,7 @@ class SideBar extends Component {
                                 <span className="hide-menu">Quiz</span></a>
                                 <ul aria-expanded="false" className="collapse">
                                     <li>
-                                        <Link to="/onlinetests-quiz">Solve Quiz</Link>
+                                        <Link to={constants.APP_URL+"onlinetests-quiz"}>Solve Quiz</Link>
                                     </li>
                                 </ul>
                             </li>
@@ -243,7 +243,7 @@ class SideBar extends Component {
                             <li className="nav-small-cap">STUDENT</li>
 
 
-                            <li><a className="has-arrow waves-effect waves-dark" href="      #" aria-expanded="false"><i className="mdi mdi-email"></i>
+                            <li><a className="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i className="mdi mdi-email"></i>
                                 <span className="hide-menu">Test</span></a>
                                 <ul aria-expanded="false" className="collapse">
                                     {testList}
