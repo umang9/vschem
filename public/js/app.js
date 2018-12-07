@@ -62885,7 +62885,7 @@ var SideBar = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'profile-img' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "/assets/images/users/profile.png", alt: 'user' })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "assets/images/users/profile.png", alt: 'user' })
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
@@ -63090,7 +63090,7 @@ var SideBar = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'profile-img' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: "/assets/images/users/profile.png", alt: 'user' })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "assets/images/users/profile.png", alt: 'user' })
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
@@ -79588,7 +79588,7 @@ var ReviewOnlineTest = function (_Component) {
 */
 
 // let APP_ENV =  'Local';
-var APP_ENV = 'Prod';
+var APP_ENV = 'PROD';
 var APP_PROD_URL = '/vschem/public/';
 var APP_LOCAL_URL = '/';
 var APP_URL = APP_ENV === 'Local' ? APP_LOCAL_URL : APP_PROD_URL;

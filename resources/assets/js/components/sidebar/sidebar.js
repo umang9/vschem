@@ -80,7 +80,7 @@ class SideBar extends Component {
                     <div className="user-profile">
 
                         <div className="profile-img">
-                            <img src={"/assets/images/users/profile.png"} alt="user"/>
+                            <img src={constants.APP_URL+"assets/images/users/profile.png"} alt="user"/>
 
                         </div>
 
@@ -196,7 +196,7 @@ class SideBar extends Component {
                     <div className="user-profile">
 
                         <div className="profile-img">
-                            <img src={"/assets/images/users/profile.png"} alt="user"/>
+                            <img src={constants.APP_URL+"assets/images/users/profile.png"} alt="user"/>
 
                         </div>
 
