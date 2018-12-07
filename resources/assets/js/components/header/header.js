@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import axios from "axios";
+import constants from '../constant';
 
 class Header extends Component {
     componentDidMount(){
@@ -53,12 +54,12 @@ class Header extends Component {
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="/assets/images/users/1.jpg" alt="user" className="profile-pic"/></a>
+                                    src={constants.APP_URL+"assets/images/users/1.jpg"} alt="user" className="profile-pic"/></a>
                                 <div className="dropdown-menu dropdown-menu-right scale-up">
                                     <ul className="dropdown-user">
                                         <li>
                                             <div className="dw-user-box">
-                                                <div className="u-img"><img src="../assets/images/users/1.jpg"
+                                                <div className="u-img"><img src={constants.APP_URL+"assets/images/users/1.jpg"}
                                                                             alt="user"/></div>
                                                 <div className="u-text">
                                                     <h4>Steave Jobs</h4>
