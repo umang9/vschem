@@ -48,7 +48,7 @@ class SideBar extends Component {
     logout(event) {
         event.preventDefault();
         console.log('prop',this.props);
-        axios.post('/logout')
+        axios.post(constants.APP_URL+'logout')
             .then(json => {
                 this.props.history.push('/login');
                 window.location.reload();
