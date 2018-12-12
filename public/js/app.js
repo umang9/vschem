@@ -78682,7 +78682,7 @@ var Test = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'td',
                             null,
-                            name.is_test_taken ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            name.is_test_taken == "1" ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'a',
                                 { href: __WEBPACK_IMPORTED_MODULE_4__constant__["a" /* default */].APP_URL + 'reviewtest/' + name.test_id, className: 'btn btn-rounded btn-block btn-outline-secondary' },
                                 'Review'

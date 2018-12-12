@@ -70,7 +70,7 @@ class Test extends Component {
                     <td>{name.highest_score ? name.highest_score:'NA'}</td>
                     <td>{name.end_date}</td>
                     <td>
-                        {name.is_test_taken ?
+                        {name.is_test_taken=="1" ?
                             <a href={constant.APP_URL+'reviewtest/' + name.test_id} className="btn btn-rounded btn-block btn-outline-secondary">Review</a>
                             :
                             <a href={constant.APP_URL+'onlinetest/instruction/' + name.test_id}  className="btn btn-rounded btn-block btn-outline-primary">Take Test</a> }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Laravel React application</title>
+    <title>VSCHEM application</title>
     {{--This is use for react file--}}
     <link href="{{mix('css/app.css')}}" rel="stylesheet" type="text/css">
     <link rel="manifest" href="{{asset("mix-manifest.json")}}">
