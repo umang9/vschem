@@ -78936,7 +78936,7 @@ var Instruction = function (_Component) {
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'a',
-                                        { href: __WEBPACK_IMPORTED_MODULE_2__constant__["a" /* default */].APP_URL + '/taketest/' + this.state.test_id, className: 'btn btn-primary' },
+                                        { href: __WEBPACK_IMPORTED_MODULE_2__constant__["a" /* default */].APP_URL + 'taketest/' + this.state.test_id, className: 'btn btn-primary' },
                                         'Start Test'
                                     )
                                 )
