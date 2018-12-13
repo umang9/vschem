@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import constants from '../constant';
 
 
 class Instruction extends Component {
@@ -45,7 +46,7 @@ class Instruction extends Component {
                                         {/*The candidates must sign on the Attendance Sheet at the appropriate place.*/}
                                         </ul>
                                     {/*</p>*/}
-                                    <a href={'/taketest/'+this.state.test_id} className="btn btn-primary">Start Test</a>
+                                    <a href={constants.APP_URL+'/taketest/'+this.state.test_id} className="btn btn-primary">Start Test</a>
 
                                 </div>
                             </div>
