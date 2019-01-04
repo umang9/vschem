@@ -75096,13 +75096,12 @@ var Completionist = function Completionist() {
 };
 // Renderer callback with condition
 var renderer = function renderer(_ref) {
-    var e = _ref.e,
-        hours = _ref.hours,
+    var hours = _ref.hours,
         minutes = _ref.minutes,
         seconds = _ref.seconds,
         completed = _ref.completed;
 
-    e.preventDefault();
+
     if (completed) {
         // Render a completed state
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Completionist, null);

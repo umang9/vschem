@@ -17,8 +17,8 @@ const override = css`
 // Random component
 const Completionist = () => <span>Test completed!</span>;
 // Renderer callback with condition
-const renderer = ({ e, hours, minutes, seconds, completed }) => {
-    e.preventDefault();
+const renderer = ({ hours, minutes, seconds, completed }) => {
+    
     if (completed) {
         // Render a completed state
         return <Completionist />;
