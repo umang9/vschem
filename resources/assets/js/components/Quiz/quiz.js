@@ -15,9 +15,10 @@ const override = css`
 `;
 
 // Random component
-const Completionist = () => <span>You are good to go!</span>;
+const Completionist = () => <span>Test completed!</span>;
 // Renderer callback with condition
 const renderer = ({ hours, minutes, seconds, completed }) => {
+    e.preventDefault();
     if (completed) {
         // Render a completed state
         return <Completionist />;
@@ -56,7 +57,8 @@ class OnlineTestQuiz extends Component {
     }
     componentDidMount(){
 
-        let url = constant.APP_URL+'/api/taketest/'+this.props.match.params.test_id;
+        let url = constant.APP_URL+'api/taketest/'+this.props.match.params.test_id;
+        console.log(url);
         axios.get(url)
             .then(json => {
 
@@ -407,7 +409,7 @@ class OnlineTestQuiz extends Component {
 
                                                     </div>
                                                     <div className="ml-auto align-self-center">
-                                                        <a href={"/onlinetests/JEE"} className={'btn btn-primary'}>End
+                                                        <a href={constant.APP_URL+"onlinetests/JEE"} className={'btn btn-primary'}>End
                                                             Test</a>
                                                     </div>
                                                 </div>
