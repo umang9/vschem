@@ -75096,7 +75096,8 @@ var Completionist = function Completionist() {
 };
 // Renderer callback with condition
 var renderer = function renderer(_ref) {
-    var hours = _ref.hours,
+    var e = _ref.e,
+        hours = _ref.hours,
         minutes = _ref.minutes,
         seconds = _ref.seconds,
         completed = _ref.completed;
