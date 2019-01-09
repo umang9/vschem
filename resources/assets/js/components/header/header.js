@@ -2,11 +2,39 @@ import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import axios from "axios";
 import constants from '../constant';
+import Countdown from 'react-countdown-now';
+import Quiz from '../Quiz/quiz';
+
+
+// Random component
+const Completionist = () => {
+    // console.log(this.props.dispatch(Quiz.demoMethod()));
+    return <span>Test</span>;
+};
+// Renderer callback with condition
+const renderer = ({ hours, minutes, seconds, completed }) => {
+    
+    if (completed) {
+        // Render a completed state
+        return <Completionist/>;
+    } else {
+        // Render a countdown
+        return <span>{hours}:{minutes}:{seconds}</span>;
+    }
+};
 
 class Header extends Component {
-    componentDidMount(){
-
+    constructor(props){
+        super(props);
     }
+    componentDidMount(){
+        
+    }
+
+    // onTimerChange(){
+    //     console.log('props',this.props.onTimerOver());
+    //     return <span>Test</span>;
+    // }
 
     render() {
         return (
@@ -30,7 +58,7 @@ class Header extends Component {
                     <div className="navbar-collapse">
 
                         <ul className="navbar-nav mr-auto mt-md-0">
-
+                        
                             <li className="nav-item"><a
                                 className="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
                                 href="javascript:void(0)"><i className="mdi mdi-menu"/></a></li>
@@ -41,8 +69,15 @@ class Header extends Component {
                         </ul>
 
                         <ul className="navbar-nav my-lg-0">
-
-                            <li className="nav-item hidden-sm-down search-box"><a
+                            
+                            <li className="nav-item hidden-sm-down search-box">
+                                <a className="nav-link hidden-sm-down text-muted waves-effect waves-dark"
+                                    href="javascript:void(0)">
+                                    <b>Time Limit:</b> <Countdown  date={Date.now() + 360} renderer={renderer}/>
+                                </a>
+                            </li>
+                            <li className="nav-item hidden-sm-down search-box">
+                            <a
                                 className="nav-link hidden-sm-down text-muted waves-effect waves-dark"
                                 href="javascript:void(0)"><i className="ti-search"/></a>
                                 {/*<form className="app-search">*/}

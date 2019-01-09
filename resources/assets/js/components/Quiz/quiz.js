@@ -7,6 +7,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import Countdown from 'react-countdown-now';
 // import { constants } from 'fs';
 import constant from '../constant';
+import CountdownTimer from './countdown';
 const override = css`
     display: block;
     margin: 0 auto;
@@ -14,21 +15,9 @@ const override = css`
  
 `;
 
-// Random component
-const Completionist = () => <span>Test completed!</span>;
-// Renderer callback with condition
-const renderer = ({ hours, minutes, seconds, completed }) => {
-    
-    if (completed) {
-        // Render a completed state
-        return <Completionist />;
-    } else {
-        // Render a countdown
-        return <span>{hours}:{minutes}:{seconds}</span>;
-    }
-};
 
 class OnlineTestQuiz extends Component {
+    
 
     constructor(props) {
         super(props);
@@ -159,6 +148,11 @@ class OnlineTestQuiz extends Component {
         // alert('Thank You!!!!');
     }
 
+    
+    demoMethod(){
+        alert(1);
+    }
+
     getActiveQuestion(index,totalQuestions) {
         if(index<totalQuestions-1){
             this.setState(() => ({
@@ -268,8 +262,9 @@ class OnlineTestQuiz extends Component {
                 <div className="row page-titles">
                     <div className="col-md-5 align-self-center">
                         <h3 className="text-themecolor">Online Quiz</h3>
+                        
                     </div>
-
+                
                 </div>
                 <div className="container-fluid">
                     <div className="row">
@@ -283,12 +278,12 @@ class OnlineTestQuiz extends Component {
                                                 <div className="wizard">
 
                                                     <div className="wizard-inner">
-                                                        <div>
+                                                        {/* <div>
                                                             <b>Time Limit :</b>
                                                             <Countdown date={Date.now() + 3600000}
                                                                        renderer={renderer}/>
 
-                                                        </div>
+                                                        </div> */}
                                                         <ul className="nav nav-tabs" role="tablist">
                                                             {stepsList}
                                                         </ul>

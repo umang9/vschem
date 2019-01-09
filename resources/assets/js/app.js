@@ -48,6 +48,17 @@ const routes = [
 ];
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        // this.onTimerOver = this.onTimerOver.bind(this);
+    }
+
+    onTimerOver(timer) {
+        console.log('Test here.');
+        this.setState({ timer: true });
+    }    
+
     render() {
         return (
             <div id="main-wrapper">
