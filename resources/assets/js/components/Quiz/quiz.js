@@ -32,7 +32,7 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
         return <span>{hours}:{minutes}:{seconds}</span>;
     }
 };
-
+import { Prompt } from 'react-router'
 
 class OnlineTestQuiz extends Component {
     
@@ -98,6 +98,14 @@ class OnlineTestQuiz extends Component {
             start_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
         });
 
+        // this.props.router.setRouteLeaveHook(this.props.route, this.routerWillLeave)
+        window.onbeforeunload = this.handleOnBeforeUnload;
+
+    }
+    handleOnBeforeUnload(e){
+        const message = 'Are you sure?';
+        e.returnValue = message;
+        return message;
     }
 
     componentDidUpdate(){

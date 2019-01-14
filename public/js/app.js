@@ -2254,6 +2254,7 @@ Countdown.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_countdown_now___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_countdown_now__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constant__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__countdown__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_router__ = __webpack_require__(252);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _this = this;
@@ -2314,6 +2315,7 @@ var renderer = function renderer(_ref) {
         );
     }
 };
+
 
 var OnlineTestQuiz = function (_Component) {
     _inherits(OnlineTestQuiz, _Component);
@@ -2384,6 +2386,16 @@ var OnlineTestQuiz = function (_Component) {
             this.setState({
                 start_datetime: new Date().toJSON().slice(0, 19).replace('T', ' ')
             });
+
+            // this.props.router.setRouteLeaveHook(this.props.route, this.routerWillLeave)
+            window.onbeforeunload = this.handleOnBeforeUnload;
+        }
+    }, {
+        key: 'handleOnBeforeUnload',
+        value: function handleOnBeforeUnload(e) {
+            var message = 'Are you sure?';
+            e.returnValue = message;
+            return message;
         }
     }, {
         key: 'componentDidUpdate',
@@ -79796,6 +79808,53 @@ var ReviewOnlineTest = function (_Component) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 251 */,
+/* 252 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MemoryRouter__ = __webpack_require__(142);
+/* unused harmony reexport MemoryRouter */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Prompt__ = __webpack_require__(146);
+/* unused harmony reexport Prompt */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Redirect__ = __webpack_require__(148);
+/* unused harmony reexport Redirect */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(76);
+/* unused harmony reexport Route */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(39);
+/* unused harmony reexport Router */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__StaticRouter__ = __webpack_require__(150);
+/* unused harmony reexport StaticRouter */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Switch__ = __webpack_require__(152);
+/* unused harmony reexport Switch */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__generatePath__ = __webpack_require__(78);
+/* unused harmony reexport generatePath */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__matchPath__ = __webpack_require__(40);
+/* unused harmony reexport matchPath */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__withRouter__ = __webpack_require__(156);
+/* unused harmony reexport withRouter */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /***/ })
 /******/ ]);
