@@ -8,7 +8,7 @@ class MainController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth',['except' => 'homepage']);
+        $this->middleware('auth',['except' => ['homepage','register']]);
     }
 
     public function index()
@@ -18,7 +18,11 @@ class MainController extends Controller
 
     public function homepage()
     {
-        return view('homepage');
+        return view('layouts.homepage');
+    }
+    public function register()
+    {
+        return view('layouts.register');
     }
 
 }

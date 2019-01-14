@@ -14,4 +14,5 @@ yarn-error.log
 .DS_Store
 public/logs
 /resources/assets/js/components/constant.js
-/public/app
+/public/app/img
+/public/app/video

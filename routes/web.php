@@ -54,6 +54,7 @@ Route::group([
 }
 );
 Route::get('/','MainController@homepage');
+Route::get('/student/register','MainController@register');
 Route::post('/submitTest/{test_id}', 'TestResponseController@store');
 Route::any('{all}', 'MainController@index')->where(['all' => '.*']);
 
