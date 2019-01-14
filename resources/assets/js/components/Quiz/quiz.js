@@ -15,6 +15,24 @@ const override = css`
  
 `;
 
+// Random component
+const Completionist = () => {
+    // console.log(this.props.dispatch(Quiz.demoMethod()));
+    console.log(this.checkboxHandler());
+    return <span>Test</span>;
+};
+// Renderer callback with condition
+const renderer = ({ hours, minutes, seconds, completed }) => {
+    
+    if (completed) {
+        // Render a completed state
+        return <Completionist/>;
+    } else {
+        // Render a countdown
+        return <span>{hours}:{minutes}:{seconds}</span>;
+    }
+};
+
 
 class OnlineTestQuiz extends Component {
     
@@ -24,9 +42,10 @@ class OnlineTestQuiz extends Component {
 
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
-        this.checkboxHandler = this.checkboxHandler.bind(this);
+        // this.checkboxHandler = this.checkboxHandler.bind(this);
         this.submitQuiz = this.submitQuiz.bind(this);
         this.handleOptionChange = this.handleOptionChange.bind(this);
+        this.getActiveQuestion = this.getActiveQuestion.bind(this);
         this.state = {isToggleOn: false};
         this.state = {questionNumber: '1'};
         this.state = {isSubmit: false};
@@ -40,7 +59,8 @@ class OnlineTestQuiz extends Component {
             score:'',
             submittedTest:false,
             loading:false,
-            isClipLoader:true
+            isClipLoader:true,
+            test_time:Date.now() + 3600000
         };
 
     }
@@ -80,15 +100,21 @@ class OnlineTestQuiz extends Component {
 
     }
 
+    componentDidUpdate(){
+       
+    }
+
     getQuestionOptionArray(){
 
 
     }
 
+    
     handleClick(nextIndex,ele,total) {
+        
         let nextStep = this.refs[ele];
         nextStep.click();
-        console.log(nextIndex,total);
+
         if(nextIndex+2<=total-1){
             this.setState(() => ({
                 isSubmit: false
@@ -102,7 +128,7 @@ class OnlineTestQuiz extends Component {
     }
 
     checkboxHandler() {
-        console.log('in checkboxHandler click',this);
+        console.log('in checkboxHandler click');
     }
 
     submitQuiz() {
@@ -148,24 +174,34 @@ class OnlineTestQuiz extends Component {
         // alert('Thank You!!!!');
     }
 
-    
-    demoMethod(){
-        alert(1);
+    renderer({ hours, minutes, seconds, completed }){
+        if (completed) {
+            // Render a completed state
+            // console.log(this);
+            return false;
+        } else {
+            // Render a countdown
+            return <span>{hours}:{minutes}:{seconds}</span>;
+        }
     }
 
-    getActiveQuestion(index,totalQuestions) {
+
+    getActiveQuestion(index,totalQuestions){
+        
         if(index<totalQuestions-1){
-            this.setState(() => ({
+            this.setState({
                 isSubmit: false
-            }));
+            });
         }else{
-            this.setState(() => ({
+            this.setState({
                 isSubmit: true
-            }));
+            });
         }
-        this.setState(() => ({
+        this.setState({
             questionNumber: index+1
-        }));
+        });
+
+        return false;
     }
 
     handleOptionChange(question_id,option_id){
@@ -192,8 +228,9 @@ class OnlineTestQuiz extends Component {
         var stepsList = this.state.questions.map((question, index)=>{
 
             return <li role="presentation" className="nav-item" key={index}>
-                <a href={'#step'+question.question_id} ref={'step'+question.question_id} data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,this.state.questions.length)}
-                   role="tab" title={"Step 1"} className={"nav-link"}>
+                <a href={'#step'+question.question_id} ref={'step'+question.question_id} data-toggle="tab" aria-controls="step1" 
+                    onClick={()=>this.getActiveQuestion(index,this.state.questions.length)}
+                    role="tab" title={"Step 1"} className={"nav-link"}>
                     <span className="round-tab" style={
                         { 'border': question.is_selected_option && question.is_selected_option!==null ? '2px solid green': '','color': question.is_selected_option && question.is_selected_option!==null ? 'green': ''}
                     }>
@@ -278,12 +315,15 @@ class OnlineTestQuiz extends Component {
                                                 <div className="wizard">
 
                                                     <div className="wizard-inner">
-                                                        {/* <div>
+                                                        <div>
                                                             <b>Time Limit :</b>
-                                                            <Countdown date={Date.now() + 3600000}
-                                                                       renderer={renderer}/>
+                                                            <Countdown 
+                                                                date={this.state.test_time}
+                                                                renderer={this.renderer}
+                                                                onComplete={this.submitQuiz}
+                                                            />
 
-                                                        </div> */}
+                                                        </div>
                                                         <ul className="nav nav-tabs" role="tablist">
                                                             {stepsList}
                                                         </ul>

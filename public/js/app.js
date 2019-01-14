@@ -1413,7 +1413,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
+ * 
  */
 
 function makeEmptyFunction(arg) {
@@ -2256,6 +2256,8 @@ Countdown.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__countdown__ = __webpack_require__(219);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _this = this;
+
 var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    margin: 0 auto;\n    border-color: red;\n \n'], ['\n    display: block;\n    margin: 0 auto;\n    border-color: red;\n \n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2278,6 +2280,41 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var override = Object(__WEBPACK_IMPORTED_MODULE_4_react_emotion__["a" /* css */])(_templateObject);
 
+// Random component
+var Completionist = function Completionist() {
+    // console.log(this.props.dispatch(Quiz.demoMethod()));
+    console.log(_this.checkboxHandler());
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'span',
+        null,
+        'Test'
+    );
+};
+// Renderer callback with condition
+var renderer = function renderer(_ref) {
+    var hours = _ref.hours,
+        minutes = _ref.minutes,
+        seconds = _ref.seconds,
+        completed = _ref.completed;
+
+
+    if (completed) {
+        // Render a completed state
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Completionist, null);
+    } else {
+        // Render a countdown
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'span',
+            null,
+            hours,
+            ':',
+            minutes,
+            ':',
+            seconds
+        );
+    }
+};
+
 var OnlineTestQuiz = function (_Component) {
     _inherits(OnlineTestQuiz, _Component);
 
@@ -2285,16 +2322,17 @@ var OnlineTestQuiz = function (_Component) {
         _classCallCheck(this, OnlineTestQuiz);
 
         // This binding is necessary to make `this` work in the callback
-        var _this = _possibleConstructorReturn(this, (OnlineTestQuiz.__proto__ || Object.getPrototypeOf(OnlineTestQuiz)).call(this, props));
+        var _this2 = _possibleConstructorReturn(this, (OnlineTestQuiz.__proto__ || Object.getPrototypeOf(OnlineTestQuiz)).call(this, props));
 
-        _this.handleClick = _this.handleClick.bind(_this);
-        _this.checkboxHandler = _this.checkboxHandler.bind(_this);
-        _this.submitQuiz = _this.submitQuiz.bind(_this);
-        _this.handleOptionChange = _this.handleOptionChange.bind(_this);
-        _this.state = { isToggleOn: false };
-        _this.state = { questionNumber: '1' };
-        _this.state = { isSubmit: false };
-        _this.state = { questions: [],
+        _this2.handleClick = _this2.handleClick.bind(_this2);
+        // this.checkboxHandler = this.checkboxHandler.bind(this);
+        _this2.submitQuiz = _this2.submitQuiz.bind(_this2);
+        _this2.handleOptionChange = _this2.handleOptionChange.bind(_this2);
+        _this2.getActiveQuestion = _this2.getActiveQuestion.bind(_this2);
+        _this2.state = { isToggleOn: false };
+        _this2.state = { questionNumber: '1' };
+        _this2.state = { isSubmit: false };
+        _this2.state = { questions: [],
             submitted: false,
             total_score: '',
             is_correct: '',
@@ -2304,16 +2342,17 @@ var OnlineTestQuiz = function (_Component) {
             score: '',
             submittedTest: false,
             loading: false,
-            isClipLoader: true
+            isClipLoader: true,
+            test_time: Date.now() + 3600000
         };
 
-        return _this;
+        return _this2;
     }
 
     _createClass(OnlineTestQuiz, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var _this2 = this;
+            var _this3 = this;
 
             var url = __WEBPACK_IMPORTED_MODULE_7__constant__["a" /* default */].APP_URL + 'api/taketest/' + this.props.match.params.test_id;
             console.log(url);
@@ -2322,20 +2361,20 @@ var OnlineTestQuiz = function (_Component) {
                 var data = json.data;
 
                 if (data.success) {
-                    _this2.setState({
+                    _this3.setState({
                         questions: data.data,
                         isClipLoader: false,
                         questionNumber: 1
                     });
-                    var array = _this2.state.questions.map(function (question, index) {
+                    var array = _this3.state.questions.map(function (question, index) {
                         return { question_id: question.question_id, selected_option: null };
                     });
 
-                    _this2.setState({
+                    _this3.setState({
                         questionOptions: array
                     });
                 } else {
-                    _this2.setState({
+                    _this3.setState({
                         questions: [],
                         isClipLoader: false
                     });
@@ -2347,14 +2386,18 @@ var OnlineTestQuiz = function (_Component) {
             });
         }
     }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {}
+    }, {
         key: 'getQuestionOptionArray',
         value: function getQuestionOptionArray() {}
     }, {
         key: 'handleClick',
         value: function handleClick(nextIndex, ele, total) {
+
             var nextStep = this.refs[ele];
             nextStep.click();
-            console.log(nextIndex, total);
+
             if (nextIndex + 2 <= total - 1) {
                 this.setState(function () {
                     return {
@@ -2372,12 +2415,12 @@ var OnlineTestQuiz = function (_Component) {
     }, {
         key: 'checkboxHandler',
         value: function checkboxHandler() {
-            console.log('in checkboxHandler click', this);
+            console.log('in checkboxHandler click');
         }
     }, {
         key: 'submitQuiz',
         value: function submitQuiz() {
-            var _this3 = this;
+            var _this4 = this;
 
             this.setState({
                 end_datetime: new Date().toJSON().slice(0, 19).replace('T', ' '),
@@ -2400,7 +2443,7 @@ var OnlineTestQuiz = function (_Component) {
                 var data = json.data;
                 if (data.success) {
                     var test_response = data.data[0];
-                    _this3.setState({
+                    _this4.setState({
                         submitted: true,
                         total_score: test_response.total_score,
                         is_correct: test_response.is_correct,
@@ -2417,31 +2460,48 @@ var OnlineTestQuiz = function (_Component) {
             // alert('Thank You!!!!');
         }
     }, {
-        key: 'demoMethod',
-        value: function demoMethod() {
-            alert(1);
+        key: 'renderer',
+        value: function renderer(_ref2) {
+            var hours = _ref2.hours,
+                minutes = _ref2.minutes,
+                seconds = _ref2.seconds,
+                completed = _ref2.completed;
+
+            if (completed) {
+                // Render a completed state
+                // console.log(this);
+                return false;
+            } else {
+                // Render a countdown
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'span',
+                    null,
+                    hours,
+                    ':',
+                    minutes,
+                    ':',
+                    seconds
+                );
+            }
         }
     }, {
         key: 'getActiveQuestion',
         value: function getActiveQuestion(index, totalQuestions) {
+
             if (index < totalQuestions - 1) {
-                this.setState(function () {
-                    return {
-                        isSubmit: false
-                    };
+                this.setState({
+                    isSubmit: false
                 });
             } else {
-                this.setState(function () {
-                    return {
-                        isSubmit: true
-                    };
+                this.setState({
+                    isSubmit: true
                 });
             }
-            this.setState(function () {
-                return {
-                    questionNumber: index + 1
-                };
+            this.setState({
+                questionNumber: index + 1
             });
+
+            return false;
         }
     }, {
         key: 'handleOptionChange',
@@ -2465,7 +2525,7 @@ var OnlineTestQuiz = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this5 = this;
 
             var stepsList = this.state.questions.map(function (question, index) {
 
@@ -2474,8 +2534,9 @@ var OnlineTestQuiz = function (_Component) {
                     { role: 'presentation', className: 'nav-item', key: index },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'a',
-                        { href: '#step' + question.question_id, ref: 'step' + question.question_id, 'data-toggle': 'tab', 'aria-controls': 'step1', onClick: function onClick() {
-                                return _this4.getActiveQuestion(index, _this4.state.questions.length);
+                        { href: '#step' + question.question_id, ref: 'step' + question.question_id, 'data-toggle': 'tab', 'aria-controls': 'step1',
+                            onClick: function onClick() {
+                                return _this5.getActiveQuestion(index, _this5.state.questions.length);
                             },
                             role: 'tab', title: "Step 1", className: "nav-link" },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -2494,13 +2555,13 @@ var OnlineTestQuiz = function (_Component) {
 
                 var optionList;
                 optionList = question.options.map(function (option, option_index) {
-                    var _this5 = this;
+                    var _this6 = this;
 
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'li',
                         { key: option_index },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'radio_' + index, value: option.id, type: 'radio', id: 'radio_' + option_index + index, onChange: function onChange() {
-                                return _this5.handleOptionChange(question.question_id, option.id);
+                                return _this6.handleOptionChange(question.question_id, option.id);
                             } }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'label',
@@ -2508,15 +2569,15 @@ var OnlineTestQuiz = function (_Component) {
                             option.text
                         )
                     );
-                }.bind(_this4));
+                }.bind(_this5));
 
                 var button;
 
-                if (_this4.state.isSubmit) {
+                if (_this5.state.isSubmit) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
-                        { type: 'button', disabled: _this4.state.submittedTest, onClick: function onClick() {
-                                return _this4.submitQuiz();
+                        { type: 'button', disabled: _this5.state.submittedTest, onClick: function onClick() {
+                                return _this5.submitQuiz();
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Submit'
                     );
@@ -2524,7 +2585,7 @@ var OnlineTestQuiz = function (_Component) {
                     button = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { type: 'button', onClick: function onClick() {
-                                return _this4.handleClick(index, 'step' + _this4.state.questions[index + 1].question_id, _this4.state.questions.length);
+                                return _this5.handleClick(index, 'step' + _this5.state.questions[index + 1].question_id, _this5.state.questions.length);
                             }, className: 'btn btn-md btn-info btn-common next-step next-button' },
                         'Next'
                     );
@@ -2602,6 +2663,20 @@ var OnlineTestQuiz = function (_Component) {
                                                 'div',
                                                 { className: 'wizard-inner' },
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    null,
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'b',
+                                                        null,
+                                                        'Time Limit :'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_countdown_now___default.a, {
+                                                        date: this.state.test_time,
+                                                        renderer: this.renderer,
+                                                        onComplete: this.submitQuiz
+                                                    })
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                     'ul',
                                                     { className: 'nav nav-tabs', role: 'tablist' },
                                                     stepsList
@@ -2651,7 +2726,7 @@ var OnlineTestQuiz = function (_Component) {
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'button',
                                                 { className: 'btn btn-primary', onClick: function onClick() {
-                                                        _this4.props.history.go(-2);
+                                                        _this5.props.history.go(-2);
                                                     } },
                                                 'Go Back'
                                             )
@@ -3807,7 +3882,7 @@ module.exports = ReactPropTypesSecret;
  * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
- *
+ * 
  */
 
 /*eslint-disable no-self-compare */
@@ -38856,7 +38931,7 @@ module.exports = getActiveElement;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
+ * 
  */
 
 var isTextNode = __webpack_require__(104);
@@ -61270,6 +61345,124 @@ var Header = function (_Component) {
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-menu' })
                                 )
                             )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'ul',
+                            { className: 'navbar-nav my-lg-0' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'li',
+                                { className: 'nav-item hidden-sm-down search-box' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { className: 'nav-link hidden-sm-down text-muted waves-effect waves-dark',
+                                        href: 'javascript:void(0)' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'b',
+                                        null,
+                                        'Time Limit:'
+                                    ),
+                                    ' ',
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_countdown_now___default.a, { date: Date.now() + 360, renderer: renderer })
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'li',
+                                { className: 'nav-item hidden-sm-down search-box' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    {
+                                        className: 'nav-link hidden-sm-down text-muted waves-effect waves-dark',
+                                        href: 'javascript:void(0)' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-search' })
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'li',
+                                { className: 'nav-item dropdown' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { className: 'nav-link dropdown-toggle text-muted waves-effect waves-dark', href: '',
+                                        'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', {
+                                        src: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "assets/images/users/1.jpg", alt: 'user', className: 'profile-pic' })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'dropdown-menu dropdown-menu-right scale-up' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'ul',
+                                        { className: 'dropdown-user' },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { className: 'dw-user-box' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { className: 'u-img' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_3__constant__["a" /* default */].APP_URL + "assets/images/users/1.jpg",
+                                                        alt: 'user' })
+                                                ),
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'div',
+                                                    { className: 'u-text' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'h4',
+                                                        null,
+                                                        'Steave Jobs'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'p',
+                                                        { className: 'text-muted' },
+                                                        'test@gmail.com'
+                                                    ),
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'a',
+                                                        {
+                                                            href: 'pages-profile.html',
+                                                            className: 'btn btn-rounded btn-danger btn-sm' },
+                                                        'View Profile'
+                                                    )
+                                                )
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('li', { role: 'separator', className: 'divider' }),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'a',
+                                                { href: '#' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-user' }),
+                                                ' My Profile'
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('li', { role: 'separator', className: 'divider' }),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'a',
+                                                { href: '#' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-settings' }),
+                                                ' Account Setting'
+                                            )
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('li', { role: 'separator', className: 'divider' }),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'li',
+                                            null,
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'a',
+                                                { href: '#' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-power-off' }),
+                                                ' Logout'
+                                            )
+                                        )
+                                    )
+                                )
+                            )
                         )
                     )
                 )
@@ -63704,7 +63897,7 @@ exports = module.exports = __webpack_require__(80)(false);
 
 
 // module
-exports.push([module.i, ".wizard {\r\n    margin: 20px auto;\r\n    background: #fff;\r\n}\r\n\r\n.wizard .nav-tabs {\r\n    position: relative;\r\n    margin: auto;\r\n    margin-bottom: 0;\r\n    border-bottom-color: #e0e0e0;\r\n    border-top-color: #e0e0e0;\r\n    border-top: 1px solid #dee2e6\r\n}\r\n\r\n.wizard > div.wizard-inner {\r\n    position: relative;\r\n}\r\n\r\n.connecting-line {\r\n    height: 2px;\r\n    background: #e0e0e0;\r\n    position: absolute;\r\n    width: 80%;\r\n    margin: 0 auto;\r\n    left: 0;\r\n    right: 0;\r\n    top: 50%;\r\n    z-index: 1;\r\n}\r\n\r\n.wizard .nav-tabs > li.active > a,\r\n.wizard .nav-tabs > li.active > a:hover,\r\n.wizard .nav-tabs > li.active > a:focus {\r\n    color: #555555;\r\n    cursor: default;\r\n    border: 0;\r\n    border-bottom-color: transparent;\r\n}\r\n\r\nspan.round-tab {\r\n    width: 50px;\r\n    height: 50px;\r\n    line-height: 50px;\r\n    display: inline-block;\r\n    border-radius: 100px;\r\n    background: #fff;\r\n    border: 2px solid #e0e0e0;\r\n    z-index: 2;\r\n    position: absolute;\r\n    left: 0;\r\n    text-align: center;\r\n    font-size: 25px;\r\n}\r\n\r\nspan.round-tab i {\r\n    color: #555555;\r\n}\r\n\r\n.wizard li a.active span.round-tab {\r\n    background: #fff;\r\n    border: 2px solid #5bc0de;\r\n\r\n}\r\n\r\n.wizard li a.active span.round-tab i {\r\n    color: #5bc0de;\r\n}\r\n\r\nspan.round-tab:hover {\r\n    color: #333;\r\n    border: 2px solid #333;\r\n}\r\n\r\n.wizard .nav-tabs > li {\r\n    width: 8%;\r\n}\r\n\r\n.wizard li a:after {\r\n    content: \" \";\r\n    position: relative;\r\n    left: 46%;\r\n    top: -20px;\r\n    opacity: 0;\r\n    margin: 0 auto;\r\n    bottom: 0px;\r\n    border: 5px solid transparent;\r\n    border-bottom-color: #5bc0de;\r\n    transition: 0.1s ease-in-out;\r\n}\r\n\r\n.wizard li.active.nav-item:after {\r\n    content: \" \";\r\n    position: relative;\r\n    left: 46%;\r\n    top: -20px;\r\n    opacity: 1;\r\n    margin: 0 auto;\r\n    bottom: 0px;\r\n    border: 10px solid transparent;\r\n    border-bottom-color: #5bc0de;\r\n}\r\n\r\n.wizard .nav-tabs > li a {\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: 20px auto;\r\n    border-radius: 100%;\r\n    padding: 0;\r\n    position: relative;\r\n}\r\n\r\n.wizard .nav-tabs > li a:hover {\r\n    background: transparent;\r\n}\r\n\r\n.wizard .tab-pane {\r\n    position: relative;\r\n    padding-top: 50px;\r\n}\r\n\r\n.wizard h3 {\r\n    margin-top: 0;\r\n}\r\n\r\n.questionList{\r\n    list-style-type: none;\r\n    text-align: left;\r\n}\r\n\r\n.setHidden { display:none; }\r\n\r\n.questionOf{\r\n    padding-top: 2%;\r\n}\r\n\r\n\r\n@media( max-width: 585px) {\r\n\r\n    .wizard {\r\n        width: 90%;\r\n        height: auto !important;\r\n    }\r\n\r\n    span.round-tab {\r\n        font-size: 16px;\r\n        width: 50px;\r\n        height: 50px;\r\n        line-height: 50px;\r\n    }\r\n\r\n    .wizard .nav-tabs > li a {\r\n        width: 50px;\r\n        height: 50px;\r\n        line-height: 50px;\r\n    }\r\n\r\n    .wizard li.active:after {\r\n        content: \" \";\r\n        position: absolute;\r\n        left: 35%;\r\n    }\r\n}", ""]);
+exports.push([module.i, ".wizard {\n    margin: 20px auto;\n    background: #fff;\n}\n\n.wizard .nav-tabs {\n    position: relative;\n    margin: auto;\n    margin-bottom: 0;\n    border-bottom-color: #e0e0e0;\n    border-top-color: #e0e0e0;\n    border-top: 1px solid #dee2e6\n}\n\n.wizard > div.wizard-inner {\n    position: relative;\n}\n\n.connecting-line {\n    height: 2px;\n    background: #e0e0e0;\n    position: absolute;\n    width: 80%;\n    margin: 0 auto;\n    left: 0;\n    right: 0;\n    top: 50%;\n    z-index: 1;\n}\n\n.wizard .nav-tabs > li.active > a,\n.wizard .nav-tabs > li.active > a:hover,\n.wizard .nav-tabs > li.active > a:focus {\n    color: #555555;\n    cursor: default;\n    border: 0;\n    border-bottom-color: transparent;\n}\n\nspan.round-tab {\n    width: 50px;\n    height: 50px;\n    line-height: 50px;\n    display: inline-block;\n    border-radius: 100px;\n    background: #fff;\n    border: 2px solid #e0e0e0;\n    z-index: 2;\n    position: absolute;\n    left: 0;\n    text-align: center;\n    font-size: 25px;\n}\n\nspan.round-tab i {\n    color: #555555;\n}\n\n.wizard li a.active span.round-tab {\n    background: #fff;\n    border: 2px solid #5bc0de;\n\n}\n\n.wizard li a.active span.round-tab i {\n    color: #5bc0de;\n}\n\nspan.round-tab:hover {\n    color: #333;\n    border: 2px solid #333;\n}\n\n.wizard .nav-tabs > li {\n    width: 8%;\n}\n\n.wizard li a:after {\n    content: \" \";\n    position: relative;\n    left: 46%;\n    top: -20px;\n    opacity: 0;\n    margin: 0 auto;\n    bottom: 0px;\n    border: 5px solid transparent;\n    border-bottom-color: #5bc0de;\n    transition: 0.1s ease-in-out;\n}\n\n.wizard li.active.nav-item:after {\n    content: \" \";\n    position: relative;\n    left: 46%;\n    top: -20px;\n    opacity: 1;\n    margin: 0 auto;\n    bottom: 0px;\n    border: 10px solid transparent;\n    border-bottom-color: #5bc0de;\n}\n\n.wizard .nav-tabs > li a {\n    width: 50px;\n    height: 50px;\n    margin: 20px auto;\n    border-radius: 100%;\n    padding: 0;\n    position: relative;\n}\n\n.wizard .nav-tabs > li a:hover {\n    background: transparent;\n}\n\n.wizard .tab-pane {\n    position: relative;\n    padding-top: 50px;\n}\n\n.wizard h3 {\n    margin-top: 0;\n}\n\n.questionList{\n    list-style-type: none;\n    text-align: left;\n}\n\n.setHidden { display:none; }\n\n.questionOf{\n    padding-top: 2%;\n}\n\n\n@media( max-width: 585px) {\n\n    .wizard {\n        width: 90%;\n        height: auto !important;\n    }\n\n    span.round-tab {\n        font-size: 16px;\n        width: 50px;\n        height: 50px;\n        line-height: 50px;\n    }\n\n    .wizard .nav-tabs > li a {\n        width: 50px;\n        height: 50px;\n        line-height: 50px;\n    }\n\n    .wizard li.active:after {\n        content: \" \";\n        position: absolute;\n        left: 35%;\n    }\n}", ""]);
 
 // exports
 
