@@ -2576,11 +2576,7 @@ var OnlineTestQuiz = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { name: 'radio_' + index, value: option.id, type: 'radio', id: 'radio_' + option_index + index, onChange: function onChange() {
                                 return _this6.handleOptionChange(question.question_id, option.id);
                             } }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'label',
-                            { htmlFor: 'radio_' + option_index + index },
-                            option.text
-                        )
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('label', { htmlFor: 'radio_' + option_index + index, dangerouslySetInnerHTML: { __html: option.text } })
                     );
                 }.bind(_this5));
 
