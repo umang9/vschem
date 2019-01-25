@@ -581,8 +581,8 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 * @providesModule Constants
 */
 
-var APP_ENV = 'Local';
-// let APP_ENV =  'PROD';
+// let APP_ENV =  'Local';
+var APP_ENV = 'PROD';
 var APP_PROD_URL = '/vschem/public/';
 var APP_LOCAL_URL = '/';
 var APP_URL = APP_ENV === 'Local' ? APP_LOCAL_URL : APP_PROD_URL;
@@ -2325,7 +2325,7 @@ var OnlineTestQuiz = function (_Component) {
 
         var _this2 = _possibleConstructorReturn(this, (OnlineTestQuiz.__proto__ || Object.getPrototypeOf(OnlineTestQuiz)).call(this, props));
 
-        var milliseconds = 60 * 60000;
+        var milliseconds = 75 * 60000;
         // This binding is necessary to make `this` work in the callback
         _this2.handleClick = _this2.handleClick.bind(_this2);
         // this.checkboxHandler = this.checkboxHandler.bind(this);
