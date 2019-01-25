@@ -260,7 +260,7 @@ class OnlineTestQuiz extends Component {
                 return <li key={option_index}>
                     {/*<input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={(e)=>{console.log(e.target);}}/>*/}
                     <input name={'radio_'+index} value={option.id} type='radio' id={'radio_'+option_index+index} onChange={()=>this.handleOptionChange(question.question_id,option.id)}/>
-                    <label htmlFor={'radio_'+option_index+index}>{option.text}</label>
+                    <label htmlFor={'radio_'+option_index+index} dangerouslySetInnerHTML={{__html: option.text}}></label>
                 </li>
             }.bind(this));
 
