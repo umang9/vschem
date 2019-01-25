@@ -1,13 +1,25 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import constants from '../constant';
-
+// var converter = new Showdown.converter();
 
 class Instruction extends Component {
 
     constructor(prop){
         super(prop);
-        this.state = {test_id:this.props.match.params.test_id};
+        this.state = {
+            test_id:this.props.match.params.test_id,
+            instruction:'<li>The test will start exactly after click on start test button.</li><li>The test will be of 1 hrs duration.</li><li>The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.</li><li>The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.</li><li>There will be three parts in the question paper consisting of Physics, Chemistry and Mathematics having equal weightage.</li><li>Each question is allotted 4 (four) marks for the correct response. ¼ (one fourth) marksi.e. one mark will be deducted for indicating incorrect response of each question.No deduction from the total score will be made if no response is indicated for a question.</li><li>There is only one correct response for each question out of four responses given.</li>'
+        };
+    }
+
+    componentDidMount(){
+        axios.get(constants.APP_URL+'api/getuser')
+            .then(json => {
+                // console.log('instruction',json);
+                // var rawMarkup = converter.makeHtml(this.instruction.toString());
+            
+        });
     }
 
     render() {
@@ -29,9 +41,9 @@ class Instruction extends Component {
                                 <div className="card-body">
                                     <h4 className="card-title">Please follow below instructions</h4>
                                     {/*<p className="card-text">*/}
-                                        <ul>
+                                        <ul dangerouslySetInnerHTML={{__html: this.state.instruction}}>
 
-                                            <li>The test will start exactly after click on start test button.</li>
+                                            {/* <li>The test will start exactly after click on start test button.</li>
                                             <li>The test will be of 1 hrs duration.</li>
                                             <li>The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.</li>
                                             <li>The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.</li>
@@ -39,7 +51,7 @@ class Instruction extends Component {
                                             <li>Each question is allotted 4 (four) marks for the correct response. ¼ (one fourth) marks
                                                 i.e. one mark will be deducted for indicating incorrect response of each question.
                                                 No deduction from the total score will be made if no response is indicated for a question.</li>
-                                            <li>There is only one correct response for each question out of four responses given.</li>
+                                            <li>There is only one correct response for each question out of four responses given.</li> */}
                                         {/*All calculations/writing work are to be done only in the rough sheet provided at the centre and on completion of the test candidates must hand over the rough sheets to the invigilator on duty in the Room/Hall.*/}
                                         {/*During the examination time, the invigilator will check Admit Card of the candidate to satisfy himself/herself about the identity of each candidate.*/}
                                         {/*The candidates are governed by all Rules and Regulations of the Board with regard to their conduct in the Examination Hall. All cases of unfair means will be dealt with as per rules.*/}

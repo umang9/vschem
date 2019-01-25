@@ -6,23 +6,6 @@ import Countdown from 'react-countdown-now';
 import Quiz from '../Quiz/quiz';
 
 
-// Random component
-const Completionist = () => {
-    // console.log(this.props.dispatch(Quiz.demoMethod()));
-    return <span>Test</span>;
-};
-// Renderer callback with condition
-const renderer = ({ hours, minutes, seconds, completed }) => {
-    
-    if (completed) {
-        // Render a completed state
-        return <Completionist/>;
-    } else {
-        // Render a countdown
-        return <span>{hours}:{minutes}:{seconds}</span>;
-    }
-};
-
 class Header extends Component {
     constructor(props){
         super(props);
@@ -70,16 +53,11 @@ class Header extends Component {
 
                         <ul className="navbar-nav my-lg-0">
                             
+                            
                             <li className="nav-item hidden-sm-down search-box">
-                                <a className="nav-link hidden-sm-down text-muted waves-effect waves-dark"
-                                    href="javascript:void(0)">
-                                    <b>Time Limit:</b> <Countdown  date={Date.now() + 360} renderer={renderer}/>
-                                </a>
-                            </li>
-                            <li className="nav-item hidden-sm-down search-box">
-                            <a
+                            {/* <a
                                 className="nav-link hidden-sm-down text-muted waves-effect waves-dark"
-                                href="javascript:void(0)"><i className="ti-search"/></a>
+                                href="javascript:void(0)"><i className="ti-search"/></a> */}
                                 {/*<form className="app-search">*/}
                                     {/*<input type="text" className="form-control" placeholder="Search & enter"/>*/}
                                     {/*<a className="srh-btn"><i className="ti-close"/></a>*/}

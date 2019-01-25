@@ -172,11 +172,17 @@ class ReviewOnlineTest extends Component {
             return <li role="presentation" className="nav-item" key={index}>
                 <a href={'#step'+question.question_id} ref={'step'+question.question_id} data-toggle="tab" aria-controls="step1" onClick={()=>this.getActiveQuestion(index,this.state.questions.length)}
                    role="tab" title={"Step 1"} className={"nav-link"}>
-                    <span className="round-tab" style={
-                        { 'border': question.is_question_answer ? '2px solid green': '2px solid red','color': question.is_question_answer ? 'green': 'red'}
-                    }>
-                        {index+1}
-                    </span>
+                   {question.is_question_answer !==null?(
+                        <span className="round-tab" style={
+                            { 'border': question.is_question_answer ? '2px solid green': '2px solid red','color': question.is_question_answer ? 'green': 'red'}
+                        }>
+                            {index+1}
+                        </span>
+                    ):
+                        <span className="round-tab">
+                            {index+1}
+                        </span>
+                    }
                 </a>
             </li>;
 

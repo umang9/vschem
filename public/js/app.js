@@ -2323,9 +2323,10 @@ var OnlineTestQuiz = function (_Component) {
     function OnlineTestQuiz(props) {
         _classCallCheck(this, OnlineTestQuiz);
 
-        // This binding is necessary to make `this` work in the callback
         var _this2 = _possibleConstructorReturn(this, (OnlineTestQuiz.__proto__ || Object.getPrototypeOf(OnlineTestQuiz)).call(this, props));
 
+        var milliseconds = 60 * 60000;
+        // This binding is necessary to make `this` work in the callback
         _this2.handleClick = _this2.handleClick.bind(_this2);
         // this.checkboxHandler = this.checkboxHandler.bind(this);
         _this2.submitQuiz = _this2.submitQuiz.bind(_this2);
@@ -2345,7 +2346,7 @@ var OnlineTestQuiz = function (_Component) {
             submittedTest: false,
             loading: false,
             isClipLoader: true,
-            test_time: Date.now() + 3600000
+            test_time: Date.now() + milliseconds
         };
 
         return _this2;
@@ -61248,40 +61249,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-// Random component
-var Completionist = function Completionist() {
-    // console.log(this.props.dispatch(Quiz.demoMethod()));
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'span',
-        null,
-        'Test'
-    );
-};
-// Renderer callback with condition
-var renderer = function renderer(_ref) {
-    var hours = _ref.hours,
-        minutes = _ref.minutes,
-        seconds = _ref.seconds,
-        completed = _ref.completed;
-
-
-    if (completed) {
-        // Render a completed state
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Completionist, null);
-    } else {
-        // Render a countdown
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'span',
-            null,
-            hours,
-            ':',
-            minutes,
-            ':',
-            seconds
-        );
-    }
-};
-
 var Header = function (_Component) {
     _inherits(Header, _Component);
 
@@ -61361,33 +61328,7 @@ var Header = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'ul',
                             { className: 'navbar-nav my-lg-0' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                { className: 'nav-item hidden-sm-down search-box' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    { className: 'nav-link hidden-sm-down text-muted waves-effect waves-dark',
-                                        href: 'javascript:void(0)' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'b',
-                                        null,
-                                        'Time Limit:'
-                                    ),
-                                    ' ',
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_countdown_now___default.a, { date: Date.now() + 360, renderer: renderer })
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'li',
-                                { className: 'nav-item hidden-sm-down search-box' },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'a',
-                                    {
-                                        className: 'nav-link hidden-sm-down text-muted waves-effect waves-dark',
-                                        href: 'javascript:void(0)' },
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'ti-search' })
-                                )
-                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('li', { className: 'nav-item hidden-sm-down search-box' }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'li',
                                 { className: 'nav-item dropdown' },
@@ -79073,6 +79014,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+// var converter = new Showdown.converter();
 
 var Instruction = function (_Component) {
     _inherits(Instruction, _Component);
@@ -79082,11 +79024,23 @@ var Instruction = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Instruction.__proto__ || Object.getPrototypeOf(Instruction)).call(this, prop));
 
-        _this.state = { test_id: _this.props.match.params.test_id };
+        _this.state = {
+            test_id: _this.props.match.params.test_id,
+            instruction: '<li>The test will start exactly after click on start test button.</li><li>The test will be of 1 hrs duration.</li><li>The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.</li><li>The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.</li><li>There will be three parts in the question paper consisting of Physics, Chemistry and Mathematics having equal weightage.</li><li>Each question is allotted 4 (four) marks for the correct response. ¼ (one fourth) marksi.e. one mark will be deducted for indicating incorrect response of each question.No deduction from the total score will be made if no response is indicated for a question.</li><li>There is only one correct response for each question out of four responses given.</li>'
+        };
         return _this;
     }
 
     _createClass(Instruction, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_2__constant__["a" /* default */].APP_URL + 'api/getuser').then(function (json) {
+                // console.log('instruction',json);
+                // var rawMarkup = converter.makeHtml(this.instruction.toString());
+
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -79125,45 +79079,7 @@ var Instruction = function (_Component) {
                                         { className: 'card-title' },
                                         'Please follow below instructions'
                                     ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'ul',
-                                        null,
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'li',
-                                            null,
-                                            'The test will start exactly after click on start test button.'
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'li',
-                                            null,
-                                            'The test will be of 1 hrs duration.'
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'li',
-                                            null,
-                                            'The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.'
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'li',
-                                            null,
-                                            'The test paper will be consisting questions of Physics, Chemistry & Mathematics and all questions will have equal weightage.'
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'li',
-                                            null,
-                                            'There will be three parts in the question paper consisting of Physics, Chemistry and Mathematics having equal weightage.'
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'li',
-                                            null,
-                                            'Each question is allotted 4 (four) marks for the correct response. \xBC (one fourth) marks i.e. one mark will be deducted for indicating incorrect response of each question. No deduction from the total score will be made if no response is indicated for a question.'
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'li',
-                                            null,
-                                            'There is only one correct response for each question out of four responses given.'
-                                        )
-                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('ul', { dangerouslySetInnerHTML: { __html: this.state.instruction } }),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'a',
                                         { href: __WEBPACK_IMPORTED_MODULE_2__constant__["a" /* default */].APP_URL + 'taketest/' + this.state.test_id, className: 'btn btn-primary' },
@@ -79401,9 +79317,13 @@ var ReviewOnlineTest = function (_Component) {
                                 return _this4.getActiveQuestion(index, _this4.state.questions.length);
                             },
                             role: 'tab', title: "Step 1", className: "nav-link" },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        question.is_question_answer !== null ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: 'round-tab', style: { 'border': question.is_question_answer ? '2px solid green' : '2px solid red', 'color': question.is_question_answer ? 'green' : 'red' } },
+                            index + 1
+                        ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: 'round-tab' },
                             index + 1
                         )
                     )
