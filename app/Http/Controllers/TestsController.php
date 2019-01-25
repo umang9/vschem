@@ -12,7 +12,7 @@ class TestsController extends Controller
     public function show(Request $request)
     {
         $testType = strtoupper($request->query('type'));
-        if (!in_array($testType, array('JEE', 'NEET'))) {
+        if (!in_array($testType, array('JEE', 'NEET', 'CET'))) {
             \ApiUtil::printFailureResponse('Invalid test type');
         } else {
             $spCall = 'call '.\SPCalls::TESTS_API.'(@user_id:='.$request->user()->id.',@type:="'.$testType.'")';
